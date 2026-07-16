@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>珍品书架 · 彩绘抄本典藏</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <title>卡美洛古籍图书馆 · 罗马万神殿</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-        /* ===== 重置 & 基础 ===== */
+        /* ===== 全局重置 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -16,1974 +14,1395 @@
         }
 
         body {
-            background: #1a1410;
-            background-image: radial-gradient(ellipse at 40% 20%, #2d1f15 0%, #0f0b09 100%);
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            background: #1a0f0a;
+            padding: 20px;
             min-height: 100vh;
-            font-family: 'Inter', 'Cormorant Garamond', 'Times New Roman', serif;
-            color: #e8dcc8;
-            padding: 1.5rem 1.2rem;
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            background-image: radial-gradient(ellipse at 20% 30%, #3d1f14 0%, #0d0806 100%);
         }
 
-        .container {
-            max-width: 1200px;
+        /* ===== 主容器 — 深色古典 ===== */
+        .temple {
+            max-width: 1440px;
             width: 100%;
-            background: rgba(22, 16, 12, 0.82);
-            backdrop-filter: blur(4px);
-            border-radius: 36px 36px 28px 28px;
-            border: 1px solid #7a6a4e;
-            padding: 2rem 2.2rem 2.5rem;
-            box-shadow: 0 24px 72px rgba(0, 0, 0, 0.85), inset 0 0 60px rgba(120, 90, 60, 0.06);
+            margin: 0 auto;
+            background: #ece4d7;
+            background-image: repeating-linear-gradient(45deg, rgba(200, 180, 160, 0.06) 0px, rgba(200, 180, 160, 0.06) 2px, transparent 2px, transparent 6px),
+                radial-gradient(ellipse at 50% 20%, #f5efe4, #dcd0c0);
+            border: 8px solid #b8923a;
+            box-shadow: 0 0 0 2px #5c3a1a, 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(180, 140, 80, 0.08);
+            border-radius: 4px;
             position: relative;
+            padding: 0 40px 30px;
+            transition: all 0.3s ease;
         }
-        .container::before {
+
+        /* ===== 神庙三角楣（修改：flex 布局，左侧放 Logo，右侧放标题） ===== */
+        .pediment {
+            position: relative;
+            margin: -8px -40px 0 -40px;
+            padding: 12px 40px 12px;
+            background: linear-gradient(180deg, #8b1a1a 0%, #5c0e0e 100%);
+            border-bottom: 4px solid #c9a84c;
+            text-align: center;
+            box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .pediment::before {
             content: '';
             position: absolute;
-            inset: 10px;
-            border: 1px solid rgba(180, 150, 100, 0.12);
-            border-radius: 26px;
-            pointer-events: none;
-        }
-
-        /* ===== 页眉 ===== */
-        .header {
-            text-align: center;
-            padding-bottom: 1.6rem;
-            border-bottom: 2px solid #7a6a4e;
-            position: relative;
-            margin-bottom: 2.4rem;
-        }
-        .header::after {
-            content: '✦ ✦ ✦';
-            position: absolute;
-            bottom: -13px;
+            top: -6px;
             left: 50%;
             transform: translateX(-50%);
-            background: #1a1410;
-            padding: 0 1.8rem;
-            font-size: 0.9rem;
-            letter-spacing: 0.6rem;
-            color: #c9a84c;
-            font-family: 'Cinzel', serif;
+            width: 60%;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #c9a84c, #f0d68a, #c9a84c, transparent);
+            border-radius: 0 0 50% 50%;
         }
-        .header .badge {
-            display: inline-block;
-            font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.3rem;
-            color: #b8943c;
-            border: 1px solid #7a6a4e;
-            padding: 0.25rem 2rem;
-            border-radius: 30px;
-            margin-bottom: 0.8rem;
-            text-transform: uppercase;
-            background: rgba(180, 150, 100, 0.05);
-        }
-        .header h1 {
-            font-family: 'Cinzel', 'Times New Roman', serif;
-            font-weight: 700;
-            font-size: 2.8rem;
-            color: #f0e4d0;
-            text-shadow: 0 2px 16px rgba(180, 150, 100, 0.15);
-            letter-spacing: 0.04em;
-        }
-        .header h1 span {
-            color: #c9a84c;
-            font-weight: 900;
-        }
-        .header .sub {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-            color: #b8aa8e;
-            margin-top: 0.2rem;
-            letter-spacing: 0.1rem;
-        }
-        .header .sub span {
-            margin: 0 0.4rem;
-            color: #7a6a4e;
-        }
-
-        /* ===== 通用板块标题 ===== */
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            text-align: center;
-            color: #e8dcc8;
-            margin: 2.8rem 0 1.8rem;
-            letter-spacing: 0.08rem;
-            position: relative;
-        }
-        .section-title .deco {
-            color: #c9a84c;
-            margin: 0 0.6rem;
-            font-size: 1.2rem;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #c9a84c, transparent);
-            margin: 0.6rem auto 0;
-        }
-
-        /* ===== 书架区域 ===== */
-        .shelf-wrapper {
-            position: relative;
-            padding: 1.8rem 0.8rem 2.2rem;
-            margin-bottom: 0.6rem;
-            background: linear-gradient(180deg,
-                    rgba(60, 40, 28, 0.3) 0%,
-                    rgba(40, 28, 18, 0.5) 40%,
-                    rgba(30, 20, 12, 0.7) 100%);
-            border-radius: 28px 28px 18px 18px;
-            border: 1px solid #5a4a3a;
-            box-shadow: inset 0 8px 32px rgba(0, 0, 0, 0.5);
-        }
-
-        .shelf-board {
-            position: relative;
-            padding: 0 0.4rem 1.2rem;
-            margin-bottom: 0.6rem;
-        }
-        .shelf-board::after {
+        .pediment::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 2%;
-            right: 2%;
-            height: 12px;
-            background: linear-gradient(180deg,
-                    #4a3a2a 0%,
-                    #5a4a3a 20%,
-                    #3a2a1a 60%,
-                    #2a1a0e 100%);
-            border-radius: 4px 4px 12px 12px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(180, 150, 100, 0.1);
-            border: 1px solid #6a5a4a;
-            border-top: none;
-        }
-        .shelf-board::before {
-            content: '';
-            position: absolute;
-            bottom: 8px;
+            bottom: -4px;
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg,
-                    transparent 0%,
-                    rgba(180, 150, 100, 0.08) 20%,
-                    rgba(180, 150, 100, 0.15) 50%,
-                    rgba(180, 150, 100, 0.08) 80%,
-                    transparent 100%);
-            border-radius: 50%;
-            filter: blur(2px);
-            z-index: 0;
+            background: linear-gradient(90deg, #c9a84c, #f0d68a, #c9a84c);
+            opacity: 0.5;
         }
 
-        .books-grid {
+        /* Logo 图片样式 */
+        .pediment-logo {
+            height: 50px;      /* 可调整大小 */
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            flex-shrink: 0;
+        }
+
+        .pediment h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 2.0rem;
+            color: #f5efe4;
+            letter-spacing: 6px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            margin: 0;
+        }
+
+        /* ===== 罗马柱装饰 ===== */
+        .temple .column-left,
+        .temple .column-right {
+            position: absolute;
+            top: 80px;
+            bottom: 40px;
+            width: 18px;
+            background: linear-gradient(90deg, #dcd0c0, #f5efe4, #dcd0c0);
+            border-left: 2px solid #c9a84c;
+            border-right: 2px solid #c9a84c;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .temple .column-left {
+            left: 14px;
+        }
+        .temple .column-right {
+            right: 14px;
+        }
+        .temple .column-left::before,
+        .temple .column-right::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: radial-gradient(ellipse at 50% 100%, #c9a84c, transparent 70%);
+            opacity: 0.3;
+            border-radius: 50% 50% 0 0;
+        }
+        .temple .column-left::after,
+        .temple .column-right::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: radial-gradient(ellipse at 50% 0%, #c9a84c, transparent 70%);
+            opacity: 0.3;
+            border-radius: 0 0 50% 50%;
+        }
+
+        /* ===== 头部 ===== */
+        .temple-header {
+            padding: 20px 0 16px;
+            border-bottom: 2px solid #c9a84c;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            position: relative;
+        }
+        .temple-header::after {
+            content: '⚜ ⚜ ⚜';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ece4d7;
+            padding: 0 16px;
+            color: #b8923a;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+        }
+        .temple-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .temple-logo .title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            color: #3d1f14;
+        }
+        .temple-logo .title span {
+            color: #8b1a1a;
+        }
+        .temple-logo .sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #7a5d46;
+            margin-left: 6px;
+        }
+
+        /* 搜索 */
+        .temple-search {
+            display: flex;
+            border: 1px solid #c9a84c;
+            border-radius: 30px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px);
+        }
+        .temple-search input {
+            border: none;
+            padding: 8px 18px;
+            width: 200px;
+            font-size: 0.9rem;
+            outline: none;
+            background: transparent;
+            color: #3d1f14;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .temple-search input::placeholder {
+            color: #7a5d46;
+            font-style: italic;
+        }
+        .temple-search button {
+            background: #8b1a1a;
+            border: none;
+            color: #f5efe4;
+            padding: 8px 22px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .temple-search button:hover {
+            background: #5c0e0e;
+        }
+
+        /* ===== 导航 ===== */
+        .temple-nav {
+            padding: 12px 0 8px;
+            margin: 0 0 12px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.25);
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: flex-end;
-            gap: 1.2rem 1.8rem;
-            padding: 0.4rem 0.2rem 2rem;
+            gap: 6px 28px;
+        }
+        .temple-nav a {
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+            color: #5c4436;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
             position: relative;
-            z-index: 2;
-            min-height: 380px;
+        }
+        .temple-nav a::before {
+            content: '⚜ ';
+            opacity: 0.6;
+            transition: 0.2s;
+        }
+        .temple-nav a:hover {
+            color: #8b1a1a;
+            border-bottom-color: #c9a84c;
+        }
+        .temple-nav a:hover::before {
+            opacity: 1;
         }
 
-        /* ===== 书脊样式 ===== */
-        .book-spine {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 148px;
-            min-height: 360px;
-            background: linear-gradient(135deg, #f4ede4 0%, #e8ddd0 100%);
-            border-radius: 6px 6px 4px 4px;
-            padding: 0.8rem 0.6rem 1rem;
+        /* ================================================================ */
+        /* ===== 万神殿 — 仅此区域改为明亮暖色 ===== */
+        .pantheon-magnus {
+            margin: 16px 0 30px;
+            padding: 40px 30px 30px;
+            background: #f5efe4;  /* 浅色背景 */
+            border: 4px solid #b8923a;
+            border-radius: 2px;
+            box-shadow: inset 0 0 60px rgba(184, 146, 58, 0.08), 0 0 0 1px #d4c0a0 inset;
+            position: relative;
+        }
+
+        /* SPQR 标志 — 红底黄字 */
+        .spqr-banner {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #b22222;
+            padding: 4px 28px 4px 32px;
+            border: 2px solid #f0d68a;
+            border-radius: 2px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 10px;
+            color: #f0d68a;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+        .spqr-banner::before {
+            content: '⚜';
+            font-size: 0.6rem;
+            color: #f0d68a;
+            margin-right: 8px;
+            opacity: 0.6;
+        }
+        .spqr-banner::after {
+            content: '⚜';
+            font-size: 0.6rem;
+            color: #f0d68a;
+            margin-left: 8px;
+            opacity: 0.6;
+        }
+
+        .pantheon-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 2.6rem;
+            color: #3d1f14;
+            letter-spacing: 12px;
+            text-shadow: 1px 1px 0 rgba(184, 146, 58, 0.15);
+            margin-top: 8px;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+        .pantheon-title .light {
+            font-weight: 400;
+            font-size: 1.0rem;
+            color: #7a5d46;
+            letter-spacing: 6px;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            display: block;
+            margin-top: 0px;
+            text-transform: none;
+        }
+        .pantheon-sub {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #5c4436;
+            margin-bottom: 28px;
+            border-bottom: 1px solid rgba(184, 146, 58, 0.2);
+            padding-bottom: 14px;
+            letter-spacing: 4px;
+        }
+
+        /* ===== 石碑 — 浅色 ===== */
+        .stele-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stele {
+            background: linear-gradient(170deg, #faf6ee 0%, #f0e8dc 60%, #e8ddd0 100%);
+            border: 2px solid #b8923a;
+            border-radius: 2px;
+            padding: 18px 12px 14px;
+            text-align: center;
             cursor: pointer;
             position: relative;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.35s ease;
-            box-shadow: 4px 6px 18px rgba(0, 0, 0, 0.45),
-                -2px 0 6px rgba(0, 0, 0, 0.15),
-                inset -2px 0 8px rgba(255, 245, 220, 0.2);
-            border: 1px solid #b8a88a;
-            border-bottom-width: 3px;
-            border-bottom-color: #8a7a62;
-            text-decoration: none;
-            color: #1f140e;
-            flex-shrink: 0;
-        }
-        .book-spine:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 8px 14px 36px rgba(0, 0, 0, 0.6),
-                -2px 0 10px rgba(0, 0, 0, 0.2),
-                inset -2px 0 8px rgba(255, 245, 220, 0.3);
-            z-index: 10;
-        }
-        .book-spine:active {
-            transform: translateY(-4px) scale(0.98);
-        }
-
-        .book-spine .headband {
-            width: 100%;
-            height: 8px;
-            border-radius: 4px 4px 0 0;
-            margin-bottom: 0.4rem;
-            background: linear-gradient(90deg, #c9a84c, #e8d080, #c9a84c);
-            border-bottom: 1px solid #b8943c;
-            flex-shrink: 0;
-        }
-
-        .book-spine .spine-title {
-            font-family: 'Cinzel', 'Times New Roman', serif;
-            font-weight: 700;
-            font-size: 1.05rem;
-            line-height: 1.3;
-            text-align: center;
-            color: #1f140e;
-            margin: 0.2rem 0 0.1rem;
-            padding: 0 0.1rem;
-            word-break: break-word;
-            flex: 1;
+            transition: all 0.35s ease;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 240, 0.5);
+            min-height: 200px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            letter-spacing: 0.02em;
+            text-decoration: none;
+            color: inherit;
         }
-        .book-spine .spine-title .small {
-            font-size: 0.7rem;
-            font-weight: 400;
-            opacity: 0.7;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
+        .stele::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 10px;
+            background: linear-gradient(180deg, #f0d68a, #b8923a);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            opacity: 0.5;
+        }
+        .stele::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #b8923a, #f0d68a, #b8923a, transparent);
+            opacity: 0.3;
         }
 
-        .book-spine .spine-author {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.8rem;
-            color: #4a3a2a;
-            text-align: center;
-            margin: 0.1rem 0 0.2rem;
-            font-style: italic;
-            border-top: 1px dashed rgba(100, 80, 60, 0.2);
-            padding-top: 0.3rem;
-            width: 90%;
+        .stele:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #c9a84c;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 0 20px rgba(184, 146, 58, 0.08);
+            background: linear-gradient(170deg, #fcf8f0, #f5efe4, #ede4d8);
         }
 
-        .book-spine .spine-year {
+        .stele .symbol-mark {
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #7a6a4e;
-            background: rgba(180, 150, 100, 0.15);
-            padding: 0.1rem 0.6rem;
-            border-radius: 20px;
-            margin-top: 0.2rem;
-            letter-spacing: 0.04rem;
-            border: 1px solid rgba(180, 150, 100, 0.15);
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #8b6a3a;
+            line-height: 1;
+            margin-bottom: 4px;
+            letter-spacing: 0;
+            opacity: 0.5;
         }
-
-        .book-spine .spine-type {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.55rem;
-            font-weight: 600;
+        .stele .name {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #2c1810;
+            letter-spacing: 3px;
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+        .stele .latin {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.8rem;
+            color: #7a5d46;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            opacity: 0.7;
+        }
+        .stele .theme {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #8b1a1a;
+            letter-spacing: 6px;
+            border-top: 1px solid rgba(139, 26, 26, 0.15);
+            padding-top: 6px;
+            margin-top: 4px;
+            width: 60%;
             text-transform: uppercase;
-            letter-spacing: 0.08rem;
-            color: #f4ede4;
-            background: #5a4a3a;
-            padding: 0.1rem 0.6rem;
-            border-radius: 12px;
-            margin-top: 0.2rem;
-            opacity: 0.85;
+            position: relative;
+        }
+        .stele .theme::before,
+        .stele .theme::after {
+            content: '⚜';
+            font-size: 0.35rem;
+            color: #b8923a;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.5;
+        }
+        .stele .theme::before {
+            left: -12px;
+        }
+        .stele .theme::after {
+            right: -12px;
         }
 
-        .book-spine .footband {
-            width: 100%;
-            height: 4px;
-            border-radius: 0 0 4px 4px;
-            margin-top: 0.4rem;
-            background: linear-gradient(90deg, #8a7a62, #b8a88a, #8a7a62);
-            flex-shrink: 0;
-        }
-
-        .book-spine .view-hint {
-            font-family: 'Inter', sans-serif;
+        .stele .entry-hint {
+            font-family: 'Cinzel', serif;
             font-size: 0.5rem;
+            letter-spacing: 4px;
+            color: #8b6a3a;
+            margin-top: 6px;
             text-transform: uppercase;
-            letter-spacing: 0.12rem;
-            color: #8a7a62;
-            margin-top: 0.3rem;
             opacity: 0;
-            transition: opacity 0.3s ease;
-            border-top: 1px solid rgba(100, 80, 60, 0.1);
-            padding-top: 0.3rem;
-            width: 80%;
-            text-align: center;
+            transition: 0.3s;
         }
-        .book-spine:hover .view-hint {
+        .stele:hover .entry-hint {
+            opacity: 0.5;
+        }
+
+        /* ================================================================ */
+        /* ===== 以下所有模块恢复深色古典样式（上上版） ===== */
+
+        /* 轮播区 */
+        .carousel-section {
+            margin: 16px 0 30px;
+            padding: 10px;
+            background: rgba(180, 160, 130, 0.08);
+            border-radius: 4px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+        .carousel-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .carousel-item {
+            background: rgba(255, 255, 255, 0.4);
+            border: 4px solid #c9a84c;
+            outline: 1px solid #8b6a3a;
+            outline-offset: -2px;
+            border-radius: 2px;
+            padding: 20px 16px 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            text-align: center;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .carousel-item:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border-color: #f0d68a;
+        }
+        .carousel-item .icon-placeholder {
+            font-size: 3.6rem;
+            color: #8b1a1a;
+            margin-bottom: 10px;
             opacity: 0.8;
         }
-
-        /* 颜色主题 */
-        .book-spine.color-1 {
-            background: linear-gradient(135deg, #e8d5c4 0%, #d4b8a0 100%);
-            border-bottom-color: #8a5a4a;
-        }
-        .book-spine.color-1 .headband {
-            background: linear-gradient(90deg, #8a3a2a, #c96a4a, #8a3a2a);
-        }
-        .book-spine.color-1 .spine-type {
-            background: #8a3a2a;
-        }
-
-        .book-spine.color-2 {
-            background: linear-gradient(135deg, #d4d8e0 0%, #b8c0d0 100%);
-            border-bottom-color: #3a4a6a;
-        }
-        .book-spine.color-2 .headband {
-            background: linear-gradient(90deg, #2c3e6b, #5a7a9a, #2c3e6b);
-        }
-        .book-spine.color-2 .spine-type {
-            background: #2c3e6b;
-        }
-
-        .book-spine.color-3 {
-            background: linear-gradient(135deg, #d4e0d0 0%, #b8c8b0 100%);
-            border-bottom-color: #3a5a3a;
-        }
-        .book-spine.color-3 .headband {
-            background: linear-gradient(90deg, #2d5a3a, #5a8a5a, #2d5a3a);
-        }
-        .book-spine.color-3 .spine-type {
-            background: #2d5a3a;
-        }
-
-        .book-spine.color-4 {
-            background: linear-gradient(135deg, #e0d4e0 0%, #c8b8c8 100%);
-            border-bottom-color: #5a3a6a;
-        }
-        .book-spine.color-4 .headband {
-            background: linear-gradient(90deg, #4a2d5a, #7a5a8a, #4a2d5a);
-        }
-        .book-spine.color-4 .spine-type {
-            background: #4a2d5a;
-        }
-
-        .book-spine.color-5 {
-            background: linear-gradient(135deg, #e8ddc8 0%, #d4c8b0 100%);
-            border-bottom-color: #6a5a3a;
-        }
-        .book-spine.color-5 .headband {
-            background: linear-gradient(90deg, #6a5a2a, #b8943c, #6a5a2a);
-        }
-        .book-spine.color-5 .spine-type {
-            background: #6a5a3a;
-        }
-
-        /* ===== 新增板块：编辑精选 ===== */
-        .featured-section {
-            margin: 3.2rem 0 1.8rem;
-            padding: 2rem 1.8rem;
-            background: rgba(60, 40, 28, 0.25);
-            border-radius: 28px;
-            border: 1px solid #5a4a3a;
-            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        .featured-card {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            background: #f4ede4;
-            background-image: radial-gradient(circle at 20% 30%, #faf6ef 0%, #ece2d4 100%);
-            border-radius: 18px;
-            padding: 2rem 2.2rem;
-            border: 1px solid #c9b89a;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 245, 220, 0.5);
-            color: #2c1810;
-        }
-        .featured-image {
-            flex: 0 0 180px;
-            height: 240px;
-            background: linear-gradient(135deg, #d4c8b0 0%, #b8a88a 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: #7a6a4e;
-            border: 1px solid #b8a88a;
-            box-shadow: inset 0 4px 16px rgba(0, 0, 0, 0.15);
-            font-family: 'Cinzel', serif;
-        }
-        .featured-content {
-            flex: 1;
-            min-width: 240px;
-        }
-        .featured-content .label {
-            font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.15rem;
-            color: #b8943c;
-            text-transform: uppercase;
+        .carousel-item .badge {
             display: inline-block;
-            border: 1px solid #b8943c;
-            padding: 0.1rem 1rem;
+            background: #8b1a1a;
+            color: #f5efe4;
+            font-family: 'Cinzel', serif;
+            font-size: 0.5rem;
+            letter-spacing: 2px;
+            padding: 2px 12px;
             border-radius: 30px;
-            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            align-self: center;
         }
-        .featured-content h3 {
+        .carousel-item h3 {
             font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: #1f140e;
-            margin: 0.2rem 0 0.2rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #2c1810;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
         }
-        .featured-content h3 .sub {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
+        .carousel-item p {
+            font-size: 0.9rem;
+            color: #5c4436;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+        .carousel-item .call-to {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #8b1a1a;
+            margin-top: 10px;
+            border-top: 1px solid rgba(201, 168, 76, 0.3);
+            padding-top: 8px;
+            text-transform: uppercase;
+        }
+
+        /* 客户标志 */
+        .clients-section {
+            margin: 30px 0 20px;
+            padding: 20px 10px;
+            background: rgba(180, 160, 130, 0.06);
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+        .clients-section h2 {
+            font-family: 'Cinzel', serif;
             font-weight: 400;
-            color: #7a6a4e;
-            font-style: italic;
-            margin-left: 0.6rem;
+            font-size: 1rem;
+            color: #5c4436;
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
         }
-        .featured-content .meta {
+        .clients-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem 1.2rem;
+            justify-content: center;
+            align-items: center;
+            gap: 20px 40px;
+        }
+        .clients-grid .client {
+            font-family: 'Cinzel', serif;
             font-size: 0.85rem;
-            color: #5a4a38;
-            border-bottom: 1px dashed #d4c8b0;
-            padding-bottom: 0.4rem;
-            margin-bottom: 0.6rem;
-        }
-        .featured-content .meta .label {
-            font-weight: 600;
-            color: #3a2a1a;
-            font-size: 0.65rem;
+            color: #3d2a1a;
+            opacity: 0.7;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 0.06rem;
-            font-family: 'Cinzel', serif;
-            border: none;
-            padding: 0;
-            border-radius: 0;
-            color: #3a2a1a;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
         }
-        .featured-content .desc {
-            font-style: italic;
-            line-height: 1.7;
-            color: #3a2a1a;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-        }
-        .featured-content .btn-featured {
-            display: inline-block;
-            font-family: 'Cinzel', serif;
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 0.08rem;
-            color: #f4ede4;
-            background: linear-gradient(135deg, #8a6a4a, #5a3a2a);
-            padding: 0.4rem 2rem;
-            border: 1px solid #b8943c;
-            border-radius: 40px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-        .featured-content .btn-featured:hover {
-            background: linear-gradient(135deg, #9a7a5a, #6a4a3a);
-            box-shadow: 0 4px 24px rgba(180, 150, 100, 0.3);
-            transform: scale(1.03);
+        .clients-grid .client:hover {
+            opacity: 1;
+            border-bottom-color: #c9a84c;
         }
 
-        /* ===== 新增板块：主题分类 ===== */
-        .categories-section {
-            margin: 2.4rem 0 1.8rem;
-        }
-        .categories-grid {
+        /* 特色功能 */
+        .features-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 30px 0 20px;
+            padding: 20px 10px;
         }
-        .category-item {
-            background: rgba(60, 40, 28, 0.4);
-            border: 1px solid #5a4a3a;
-            border-radius: 16px;
-            padding: 1.6rem 1rem;
+        .feature-item {
             text-align: center;
-            transition: all 0.3s ease;
-            cursor: default;
-            backdrop-filter: blur(4px);
+            padding: 16px 12px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            transition: 0.3s;
         }
-        .category-item:hover {
-            transform: translateY(-6px);
-            border-color: #c9a84c;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
-            background: rgba(80, 60, 40, 0.5);
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(201, 168, 76, 0.3);
         }
-        .category-item .icon {
+        .feature-item .icon {
             font-size: 2.8rem;
+            color: #8b1a1a;
+            margin-bottom: 10px;
             display: block;
-            margin-bottom: 0.4rem;
-            color: #c9a84c;
         }
-        .category-item .name {
+        .feature-item h3 {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            color: #e8dcc8;
-            letter-spacing: 0.04rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #2c1810;
+            letter-spacing: 2px;
         }
-        .category-item .count {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            color: #b8aa8e;
-            border-top: 1px solid #5a4a3a;
-            padding-top: 0.4rem;
-            margin-top: 0.4rem;
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #5c4436;
+            line-height: 1.6;
+            margin-top: 6px;
         }
 
-        /* ===== 新增板块：藏家评价 ===== */
+        /* 评价 */
         .testimonials-section {
-            margin: 2.4rem 0 1.8rem;
+            margin: 30px 0 20px;
+        }
+        .testimonials-section h2 {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #5c4436;
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
         }
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
-        .testimonial-card {
-            background: rgba(60, 40, 28, 0.3);
-            border: 1px solid #5a4a3a;
-            border-radius: 16px;
-            padding: 1.8rem 1.6rem;
-            backdrop-filter: blur(4px);
-            transition: border-color 0.3s ease;
+        .testimonial-box {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 18px 20px;
+            border-radius: 4px;
+            border-left: 4px solid #c9a84c;
+            transition: 0.3s;
         }
-        .testimonial-card:hover {
-            border-color: #c9a84c;
+        .testimonial-box:hover {
+            background: rgba(255, 255, 255, 0.4);
         }
-        .testimonial-card .quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.05rem;
-            font-style: italic;
-            color: #e8dcc8;
-            line-height: 1.6;
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.2rem;
-        }
-        .testimonial-card .quote::before {
-            content: '“';
-            font-size: 2.4rem;
-            color: #c9a84c;
-            position: absolute;
-            left: -0.6rem;
-            top: -0.4rem;
-            font-family: 'Cinzel', serif;
-        }
-        .testimonial-card .author {
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            color: #b8aa8e;
-            border-top: 1px solid #5a4a3a;
-            padding-top: 0.6rem;
-            text-align: right;
-        }
-        .testimonial-card .author span {
-            font-weight: 400;
-            color: #8a7a62;
-            font-size: 0.7rem;
-        }
-
-        /* ===== 新增板块：手稿动态 ===== */
-        .news-section {
-            margin: 2.4rem 0 1.8rem;
-        }
-        .news-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
-        }
-        .news-item {
-            background: rgba(60, 40, 28, 0.2);
-            border-left: 3px solid #c9a84c;
-            padding: 1rem 1.4rem;
-            border-radius: 0 12px 12px 0;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(2px);
-        }
-        .news-item:hover {
-            background: rgba(80, 60, 40, 0.3);
-            border-left-color: #e8d080;
-        }
-        .news-item .date {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06rem;
-            color: #b8943c;
-        }
-        .news-item h4 {
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
-            color: #e8dcc8;
-            margin: 0.2rem 0 0.1rem;
-        }
-        .news-item p {
-            font-size: 0.85rem;
-            color: #b8aa8e;
-            line-height: 1.5;
-            margin-bottom: 0.3rem;
-        }
-        .news-item .read-more {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            color: #c9a84c;
-            text-decoration: none;
-            border-bottom: 1px dotted #7a6a4e;
-            transition: color 0.2s;
-        }
-        .news-item .read-more:hover {
-            color: #e8d080;
-            border-bottom-color: #c9a84c;
-        }
-
-        /* ===== 新增：邮件订阅 ===== */
-        .subscribe-section {
-            margin: 2.4rem 0 1.8rem;
-            background: rgba(60, 40, 28, 0.2);
-            border-radius: 28px;
-            padding: 2rem 1.8rem;
-            text-align: center;
-            border: 1px solid #5a4a3a;
-        }
-        .subscribe-section h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: #e8dcc8;
-            margin-bottom: 0.4rem;
-        }
-        .subscribe-section p {
-            color: #b8aa8e;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .subscribe-form {
+        .testimonial-box .head {
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+        .testimonial-box .head .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #dcd0c0;
+            border: 2px solid #c9a84c;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 0.6rem;
-            max-width: 480px;
-            margin: 0 auto;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #8b1a1a;
+            font-weight: 700;
+            flex-shrink: 0;
         }
-        .subscribe-form input {
-            flex: 1;
-            min-width: 200px;
-            padding: 0.6rem 1.2rem;
-            border-radius: 40px;
-            border: 1px solid #5a4a3a;
-            background: rgba(0, 0, 0, 0.3);
-            color: #e8dcc8;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        .subscribe-form input:focus {
-            border-color: #c9a84c;
-        }
-        .subscribe-form input::placeholder {
-            color: #8a7a62;
-        }
-        .subscribe-form button {
+        .testimonial-box .head .name {
             font-family: 'Cinzel', serif;
             font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 0.08rem;
-            color: #f4ede4;
-            background: linear-gradient(135deg, #8a6a4a, #5a3a2a);
-            padding: 0.6rem 2rem;
-            border: 1px solid #b8943c;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-        .subscribe-form button:hover {
-            background: linear-gradient(135deg, #9a7a5a, #6a4a3a);
-            box-shadow: 0 4px 24px rgba(180, 150, 100, 0.3);
-            transform: scale(1.03);
-        }
-
-        /* ===== 模态框 ===== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 1.2rem;
-            animation: fadeIn 0.3s ease;
-        }
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .modal-box {
-            background: #f4ede4;
-            background-image: radial-gradient(circle at 20% 30%, #faf6ef 0%, #ece2d4 100%);
-            max-width: 860px;
-            width: 100%;
-            max-height: 92vh;
-            border-radius: 24px;
-            padding: 2.2rem 2.4rem 2rem;
-            border: 2px solid #c9b89a;
-            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 245, 220, 0.5);
-            position: relative;
-            overflow-y: auto;
+            font-size: 0.85rem;
             color: #2c1810;
         }
-        .modal-box::-webkit-scrollbar {
-            width: 6px;
-        }
-        .modal-box::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-        }
-        .modal-box::-webkit-scrollbar-thumb {
-            background: #b8a88a;
-            border-radius: 10px;
-        }
-
-        .modal-close {
-            position: sticky;
-            top: 0;
-            float: right;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            line-height: 1;
-            color: #7a6a4e;
-            cursor: pointer;
-            transition: transform 0.2s, color 0.2s;
-            padding: 0 0.2rem;
-            z-index: 10;
-        }
-        .modal-close:hover {
-            color: #3a2a1a;
-            transform: rotate(90deg);
-        }
-
-        .modal-box .modal-title {
-            font-family: 'Cinzel', 'Times New Roman', serif;
-            font-weight: 700;
-            font-size: 2.2rem;
-            color: #1f140e;
-            margin: 0.2rem 0 0.1rem;
-            padding-right: 2.5rem;
-        }
-        .modal-box .modal-title .sub {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            font-size: 1.1rem;
-            color: #7a6a4e;
+        .testimonial-box .head .name em {
             font-style: italic;
-            margin-left: 0.6rem;
-        }
-
-        .modal-box .modal-meta {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 0.4rem 1.6rem;
-            font-size: 0.9rem;
-            color: #5a4a38;
-            border-bottom: 1px dashed #d4c8b0;
-            padding-bottom: 0.5rem;
-            margin: 0.6rem 0 0.8rem;
-        }
-        .modal-box .modal-meta .label {
-            font-weight: 600;
-            color: #3a2a1a;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06rem;
-            font-family: 'Cinzel', serif;
-        }
-        .modal-box .modal-meta .sep {
-            color: #b8a88a;
-        }
-
-        .modal-box .modal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 0.2rem 1.2rem;
-            padding: 0.6rem 0 0.3rem;
-            font-size: 0.95rem;
-            color: #3a2a1a;
-            border-bottom: 1px solid #d4c8b0;
-            margin-bottom: 0.8rem;
-        }
-        .modal-box .modal-grid .item {
-            display: flex;
-            align-items: baseline;
-            gap: 0.3rem;
-            padding: 0.1rem 0;
-        }
-        .modal-box .modal-grid .item .tag {
-            font-weight: 600;
-            color: #6a5a42;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06rem;
-            font-family: 'Cinzel', serif;
-            min-width: 3.6rem;
-        }
-
-        /* 扩展描述区域 - 多段 */
-        .modal-box .modal-desc {
-            padding: 0.6rem 0 0.2rem 0.6rem;
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #2c1a0e;
-            border-left: 3px solid rgba(180, 150, 100, 0.3);
-            padding-left: 1rem;
-            margin-bottom: 0.8rem;
-        }
-        .modal-box .modal-desc p {
-            margin-bottom: 0.6rem;
-        }
-        .modal-box .modal-desc .sub-head {
-            font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #5a3a2a;
-            margin-top: 0.6rem;
-            margin-bottom: 0.2rem;
-            display: block;
-            font-style: normal;
-        }
-
-        .modal-box .modal-extras {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem 2rem;
-            background: rgba(180, 150, 100, 0.08);
-            border-radius: 12px;
-            padding: 0.6rem 1.2rem;
-            margin: 0.6rem 0 0.8rem;
-            font-size: 0.85rem;
-            color: #3a2a1a;
-        }
-        .modal-box .modal-extras .extra-item {
-            display: flex;
-            align-items: baseline;
-            gap: 0.3rem;
-        }
-        .modal-box .modal-extras .extra-item .label {
-            font-weight: 600;
-            color: #6a5a42;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.04rem;
-            font-family: 'Cinzel', serif;
-        }
-
-        /* 相关藏品推荐 */
-        .modal-box .related-section {
-            margin-top: 1rem;
-            padding-top: 0.8rem;
-            border-top: 1px solid #d4c8b0;
-        }
-        .modal-box .related-section h4 {
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            color: #5a4a3a;
-            margin-bottom: 0.6rem;
-            letter-spacing: 0.04rem;
-        }
-        .modal-box .related-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-        .modal-box .related-items .rel-item {
-            background: rgba(180, 150, 100, 0.12);
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            color: #3a2a1a;
-            cursor: pointer;
-            border: 1px solid transparent;
-            transition: all 0.2s;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 0.04rem;
-        }
-        .modal-box .related-items .rel-item:hover {
-            border-color: #b8943c;
-            background: rgba(180, 150, 100, 0.25);
-            transform: scale(1.02);
-        }
-
-        .modal-box .modal-price {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #8a3a1a;
-            margin: 0.4rem 0 0.6rem;
-            text-align: right;
-            border-top: 2px solid #c9b89a;
-            padding-top: 0.6rem;
-        }
-        .modal-box .modal-price small {
-            font-size: 1rem;
             font-weight: 400;
-            color: #6a5a42;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .modal-box .modal-notice {
-            padding: 0.6rem 1rem 0.6rem 1.4rem;
-            background: rgba(180, 100, 60, 0.05);
-            border-left: 4px solid #b8943c;
-            border-radius: 0 8px 8px 0;
-            font-size: 0.88rem;
-            color: #5a3a28;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin: 0.6rem 0 1rem;
-        }
-        .modal-box .modal-notice .icon {
-            font-size: 1rem;
-            color: #b8943c;
-        }
-        .modal-box .modal-notice strong {
-            color: #8a3a1a;
-        }
-
-        .modal-box .modal-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: 0.2rem;
-        }
-        .modal-box .btn-purchase {
-            display: inline-block;
-            font-family: 'Cinzel', serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.1rem;
-            color: #f4ede4;
-            background: linear-gradient(135deg, #8a6a4a, #5a3a2a);
-            padding: 0.5rem 2.4rem;
-            border: 1px solid #b8943c;
-            border-radius: 40px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-        .modal-box .btn-purchase:hover {
-            background: linear-gradient(135deg, #9a7a5a, #6a4a3a);
-            box-shadow: 0 4px 24px rgba(180, 150, 100, 0.3);
-            transform: scale(1.03);
-        }
-        .modal-box .btn-close-modal {
-            font-family: 'Inter', sans-serif;
+            color: #7a5d46;
             font-size: 0.75rem;
-            font-weight: 500;
-            color: #7a6a4e;
-            background: none;
-            border: 1px solid #b8a88a;
-            border-radius: 30px;
-            padding: 0.4rem 1.6rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            letter-spacing: 0.04rem;
-        }
-        .modal-box .btn-close-modal:hover {
-            background: rgba(180, 150, 100, 0.1);
-            border-color: #c9a84c;
-            color: #5a4a3a;
-        }
-
-        /* ===== 页脚 ===== */
-        .footer {
-            margin-top: 2.8rem;
-            padding-top: 1.6rem;
-            border-top: 2px solid #7a6a4e;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #8a7a62;
+            display: block;
             font-family: 'Cormorant Garamond', serif;
         }
-        .footer .deco {
-            font-size: 0.7rem;
-            color: #7a6a4e;
-            letter-spacing: 0.8rem;
-            margin-bottom: 0.3rem;
+        .testimonial-box p {
+            font-size: 0.95rem;
+            color: #3d2a1a;
+            line-height: 1.7;
+            font-style: italic;
         }
-        .footer a {
-            color: #c9a84c;
+        .testimonial-box p a {
+            color: #8b1a1a;
             text-decoration: none;
-            border-bottom: 1px dotted #7a6a4e;
-            transition: color 0.2s;
+            border-bottom: 1px dotted #c9a84c;
         }
-        .footer a:hover {
-            color: #e8d080;
+        .testimonial-box p a:hover {
+            color: #2c1810;
+        }
+
+        /* 博客 */
+        .blog-section {
+            margin: 30px 0 20px;
+        }
+        .blog-section h2 {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #5c4436;
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+        .blog-post {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+        }
+        .blog-post:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+            border-color: #c9a84c;
+        }
+        .blog-post .body {
+            padding: 16px 14px 18px;
+            text-align: center;
+        }
+        .blog-post .body .icon-placeholder {
+            font-size: 2.4rem;
+            color: #8b1a1a;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .blog-post .body .date {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: #7a5d46;
+            text-transform: uppercase;
+        }
+        .blog-post .body h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #2c1810;
+            margin: 6px 0 6px;
+            line-height: 1.3;
+        }
+        .blog-post .body p {
+            font-size: 0.85rem;
+            color: #5c4436;
+            line-height: 1.5;
+        }
+        .blog-post .body .read-more {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: #8b1a1a;
+            text-transform: uppercase;
+            margin-top: 8px;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            transition: 0.2s;
+        }
+        .blog-post .body .read-more:hover {
+            border-bottom-color: #8b1a1a;
+        }
+
+        /* 分类浏览 */
+        .browse-section {
+            margin: 30px 0 20px;
+            padding: 20px 10px;
+            background: rgba(180, 160, 130, 0.06);
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+        .browse-section h2 {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #5c4436;
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .browse-categories {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        .browse-cat {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 14px 16px;
+            border-radius: 4px;
+            border: 1px solid rgba(201, 168, 76, 0.08);
+            transition: 0.3s;
+        }
+        .browse-cat:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(201, 168, 76, 0.2);
+        }
+        .browse-cat h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: #2c1810;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            padding-bottom: 6px;
+        }
+        .browse-cat ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .browse-cat ul li {
+            font-size: 0.8rem;
+            padding: 3px 0;
+            color: #5c4436;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.05);
+            transition: 0.2s;
+            cursor: default;
+        }
+        .browse-cat ul li:hover {
+            color: #8b1a1a;
+            padding-left: 4px;
+        }
+        .browse-cat ul li a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* ===== 页脚 — 深色 ===== */
+        .temple-footer {
+            background: rgba(30, 18, 12, 0.6);
+            padding: 28px 20px 18px;
+            margin-top: 45px;
+            border-radius: 4px;
+            border-top: 3px solid #c9a84c;
+            backdrop-filter: blur(2px);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 28px;
+        }
+        .footer-grid h4 {
+            font-family: 'Cinzel', serif;
+            color: #c9a84c;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            padding-bottom: 6px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        .footer-grid p,
+        .footer-grid li {
+            font-size: 0.9rem;
+            color: #d4c5b2;
+            line-height: 1.8;
+        }
+        .footer-grid ul {
+            list-style: none;
+        }
+        .footer-grid ul li a {
+            text-decoration: none;
+            color: #b8a693;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+        .footer-grid ul li a:hover {
+            color: #f0d68a;
             border-bottom-color: #c9a84c;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            font-size: 0.85rem;
+            color: #c9b89a;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+        .footer-bottom p {
+            color: #c9b89a;
         }
 
         /* ===== 响应式 ===== */
-        @media (max-width: 820px) {
-            .container {
-                padding: 1.2rem 0.8rem 1.8rem;
-                border-radius: 24px;
-            }
-            .header h1 {
-                font-size: 2rem;
-            }
-            .book-spine {
-                width: 120px;
-                min-height: 300px;
-                padding: 0.6rem 0.4rem 0.8rem;
-            }
-            .book-spine .spine-title {
-                font-size: 0.85rem;
-            }
-            .book-spine .spine-author {
-                font-size: 0.7rem;
-            }
-            .books-grid {
-                gap: 0.8rem 1.2rem;
-            }
-            .modal-box {
-                padding: 1.6rem 1.2rem 1.4rem;
-                max-height: 92vh;
-            }
-            .modal-box .modal-title {
-                font-size: 1.6rem;
-            }
-            .modal-box .modal-grid {
-                grid-template-columns: 1fr 1fr;
-                font-size: 0.85rem;
-            }
-            .featured-card {
-                padding: 1.4rem;
-            }
-            .featured-image {
-                flex: 0 0 140px;
-                height: 180px;
-                font-size: 3rem;
-            }
-            .featured-content h3 {
-                font-size: 1.6rem;
-            }
-            .section-title {
-                font-size: 1.3rem;
-            }
+        @media (max-width: 1200px) {
+            .stele-grid { grid-template-columns: repeat(3, 1fr); }
+            .carousel-grid { grid-template-columns: repeat(2, 1fr); }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .browse-categories { grid-template-columns: repeat(3, 1fr); }
         }
-
-        @media (max-width: 540px) {
-            body {
-                padding: 0.6rem 0.4rem;
-            }
-            .container {
-                padding: 0.8rem 0.4rem 1.2rem;
-                border-radius: 16px;
-            }
-            .header h1 {
-                font-size: 1.5rem;
-            }
-            .header .badge {
-                font-size: 0.55rem;
-                padding: 0.15rem 1rem;
-            }
-            .header::after {
-                font-size: 0.6rem;
-                padding: 0 0.8rem;
-                bottom: -10px;
-            }
-            .shelf-wrapper {
-                padding: 0.6rem 0.2rem 1.2rem;
-                border-radius: 16px;
-            }
-            .books-grid {
-                gap: 0.6rem 0.6rem;
-                min-height: 240px;
-                padding-bottom: 1.2rem;
-            }
-            .book-spine {
-                width: 90px;
-                min-height: 220px;
-                padding: 0.4rem 0.2rem 0.6rem;
-                border-radius: 4px 4px 2px 2px;
-            }
-            .book-spine .headband {
-                height: 5px;
-                margin-bottom: 0.2rem;
-            }
-            .book-spine .spine-title {
-                font-size: 0.65rem;
-                line-height: 1.2;
-            }
-            .book-spine .spine-title .small {
-                font-size: 0.55rem;
-            }
-            .book-spine .spine-author {
-                font-size: 0.55rem;
-                padding-top: 0.15rem;
-                margin: 0;
-            }
-            .book-spine .spine-year {
-                font-size: 0.55rem;
-                padding: 0 0.3rem;
-                margin-top: 0.1rem;
-            }
-            .book-spine .spine-type {
-                font-size: 0.45rem;
-                padding: 0 0.3rem;
-                margin-top: 0.1rem;
-            }
-            .book-spine .footband {
-                height: 3px;
-                margin-top: 0.2rem;
-            }
-            .book-spine .view-hint {
-                display: none;
-            }
-            .book-spine:hover {
-                transform: translateY(-6px) scale(1.01);
-            }
-            .modal-box {
-                padding: 1rem 0.8rem 1rem;
-                border-radius: 16px;
-                max-height: 94vh;
-            }
-            .modal-box .modal-title {
-                font-size: 1.2rem;
-            }
-            .modal-box .modal-title .sub {
-                font-size: 0.8rem;
-                display: block;
-                margin-left: 0;
-            }
-            .modal-box .modal-meta {
-                font-size: 0.75rem;
-                gap: 0.2rem 0.6rem;
-            }
-            .modal-box .modal-grid {
-                grid-template-columns: 1fr;
-                font-size: 0.8rem;
-                gap: 0.1rem;
-            }
-            .modal-box .modal-grid .item .tag {
-                min-width: 2.6rem;
-                font-size: 0.6rem;
-            }
-            .modal-box .modal-desc {
-                font-size: 0.82rem;
-                padding-left: 0.4rem;
-                border-left-width: 2px;
-            }
-            .modal-box .modal-extras {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
-                gap: 0.3rem 1rem;
-            }
-            .modal-box .modal-price {
-                font-size: 1.4rem;
-            }
-            .modal-box .modal-notice {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.6rem;
-                flex-wrap: wrap;
-            }
-            .modal-box .modal-actions {
-                justify-content: center;
-            }
-            .modal-box .btn-purchase {
-                font-size: 0.7rem;
-                padding: 0.3rem 1.4rem;
-                width: 100%;
-                text-align: center;
-            }
-            .modal-box .btn-close-modal {
-                font-size: 0.65rem;
-                padding: 0.3rem 1rem;
-            }
-            .footer {
-                font-size: 0.7rem;
-            }
-            .featured-section {
-                padding: 0.8rem;
-            }
-            .featured-card {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 1.2rem;
-            }
-            .featured-image {
-                width: 100%;
-                max-width: 200px;
-                height: 160px;
-                flex: unset;
-            }
-            .featured-content h3 {
-                font-size: 1.3rem;
-            }
-            .featured-content .meta {
-                justify-content: center;
-            }
-            .categories-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.8rem;
-            }
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            .news-list {
-                grid-template-columns: 1fr;
-            }
-            .section-title {
-                font-size: 1.1rem;
-                margin: 2rem 0 1.2rem;
-            }
-            .subscribe-section {
-                padding: 1.2rem 1rem;
-            }
-            .subscribe-form input {
-                min-width: 140px;
-                width: 100%;
-            }
-            .modal-box .related-items .rel-item {
-                font-size: 0.65rem;
-                padding: 0.1rem 0.8rem;
-            }
+        @media (max-width: 992px) {
+            .stele-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .features-section { grid-template-columns: 1fr; gap: 16px; }
         }
-
-        @media (max-width: 400px) {
-            .book-spine {
-                width: 72px;
-                min-height: 180px;
-            }
-            .book-spine .spine-title {
-                font-size: 0.55rem;
-            }
-            .book-spine .spine-author {
-                font-size: 0.45rem;
-            }
-            .book-spine .spine-year {
-                font-size: 0.45rem;
-            }
-            .book-spine .spine-type {
-                font-size: 0.4rem;
-            }
-            .books-grid {
-                gap: 0.4rem 0.4rem;
-            }
-            .categories-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.5rem;
-            }
-            .category-item {
-                padding: 1rem 0.6rem;
-            }
-            .category-item .icon {
-                font-size: 2rem;
-            }
+        @media (max-width: 768px) {
+            .temple { padding: 0 20px 20px; }
+            .pediment { margin: -8px -20px 0 -20px; padding: 10px 20px; flex-direction: column; gap: 6px; }
+            .pediment h1 { font-size: 1.4rem; letter-spacing: 4px; }
+            .pediment-logo { height: 40px; }
+            .temple-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .temple-search input { width: 140px; }
+            .stele-grid { grid-template-columns: 1fr 1fr; }
+            .carousel-grid { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .browse-categories { grid-template-columns: 1fr 1fr; }
+            .temple .column-left, .temple .column-right { display: none; }
+            .pantheon-title { font-size: 2rem; letter-spacing: 6px; }
+            .pantheon-title .light { font-size: 1rem; }
+            .pantheon-magnus { padding: 30px 16px 20px; }
+            .spqr-banner { font-size: 1.0rem; letter-spacing: 6px; padding: 3px 16px; }
         }
-
-        /* ===== 打印优化 ===== */
-        @media print {
-            body {
-                background: #fff;
-                padding: 0.3in;
-            }
-            .container {
-                background: #fff;
-                border: 1px solid #ccc;
-                box-shadow: none;
-                backdrop-filter: none;
-            }
-            .book-spine {
-                box-shadow: none;
-                border: 1px solid #999;
-            }
-            .book-spine:hover {
-                transform: none;
-                box-shadow: none;
-            }
-            .modal-overlay {
-                display: none !important;
-            }
-            .footer {
-                border-top-color: #ccc;
-            }
-            .btn-purchase,
-            .btn-close-modal,
-            .modal-close,
-            .btn-featured,
-            .view-hint,
-            .subscribe-form button {
-                display: none !important;
-            }
-            .featured-section,
-            .categories-section,
-            .testimonials-section,
-            .news-section,
-            .subscribe-section {
-                border: 1px solid #ccc;
-                background: #f9f9f9;
-            }
-            .featured-card {
-                background: #fff;
-                border: 1px solid #ccc;
-            }
-            .category-item {
-                background: #f9f9f9;
-                border: 1px solid #ccc;
-            }
-            .testimonial-card {
-                background: #f9f9f9;
-                border: 1px solid #ccc;
-            }
-            .news-item {
-                background: #f9f9f9;
-                border-left-color: #999;
-            }
-            .subscribe-form input {
-                border: 1px solid #ccc;
-                background: #fff;
-                color: #333;
-            }
+        @media (max-width: 480px) {
+            .stele-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+            .browse-categories { grid-template-columns: 1fr; }
+            .pediment h1 { font-size: 1.0rem; letter-spacing: 2px; }
+            .pediment-logo { height: 30px; }
+            .temple-search input { width: 100px; }
+            .temple-logo .title { font-size: 1.0rem; }
+            .temple-logo .sub { font-size: 0.75rem; display: block; margin-left: 0; }
+            .pantheon-title { font-size: 1.5rem; letter-spacing: 4px; }
+            .pantheon-title .light { font-size: 0.85rem; }
+            .stele .name { font-size: 1.2rem; }
+            .stele .theme { font-size: 0.95rem; }
+            .spqr-banner { font-size: 0.8rem; letter-spacing: 4px; padding: 2px 12px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="temple">
 
-        <!-- ===== 页眉 ===== -->
-        <header class="header">
-            <div class="badge">✦ 珍品书架 · 彩绘抄本 ✦</div>
-            <h1>古代<span>手稿</span>典藏</h1>
-            <div class="sub">
-                <span>✦</span> 罗曼式 · 哥特式 · 文艺复兴 <span>✦</span>
+        <!-- 罗马柱装饰 -->
+        <div class="column-left"></div>
+        <div class="column-right"></div>
+
+        <!-- ===== 三角楣（Logo 在标题左侧） ===== -->
+        <div class="pediment">
+            <img src="logo.png" alt="卡美洛古籍图书馆 Logo" class="pediment-logo" />
+            <h1>— 卡美洛古籍图书馆 —</h1>
+        </div>
+
+        <!-- 头部 -->
+        <header class="temple-header">
+            <div class="temple-logo">
+                <div>
+                    <div class="title"><span>卡美洛</span> 古籍图书馆</div>
+                    <div class="sub">彩绘手抄本 · 摹本珍藏 · 学术数据库</div>
+                </div>
+            </div>
+            <div class="temple-search">
+                <input type="text" placeholder="搜索超过 1580 种摹本..." />
+                <button>检索</button>
             </div>
         </header>
 
-        <!-- ===== 书架 ===== -->
-        <div class="shelf-wrapper" id="shelf">
-            <div class="shelf-board">
-                <div class="books-grid">
+        <!-- 导航 -->
+        <nav class="temple-nav">
+            <a href="#">首页</a>
+            <a href="#">高级检索</a>
+            <a href="#">全部摹本</a>
+            <a href="#">按价格筛选</a>
+            <a href="#">视频</a>
+            <a href="#">书评</a>
+            <a href="#">书斋博客</a>
+        </nav>
 
-                    <!-- 书籍 1 -->
-                    <div class="book-spine color-1" data-book="1">
-                        <div class="headband"></div>
-                        <div class="spine-title">
-                            天文志
-                            <span class="small">希吉努斯</span>
-                        </div>
-                        <div class="spine-author">盖乌斯·尤利乌斯</div>
-                        <div class="spine-year">约1125年</div>
-                        <div class="spine-type">天文学</div>
-                        <div class="view-hint">◈ 点击查看 ◈</div>
-                        <div class="footband"></div>
-                    </div>
+        <!-- ================================================================ -->
+        <!-- ===== 万神殿 — 仅此区域改为明亮暖色 ===== -->
+        <section class="pantheon-magnus">
+            <div class="spqr-banner">S·P·Q·R</div>
 
-                    <!-- 书籍 2 -->
-                    <div class="book-spine color-2" data-book="2">
-                        <div class="headband"></div>
-                        <div class="spine-title">
-                            不列颠纹章全书
-                            <span class="small">富格尔藏</span>
-                        </div>
-                        <div class="spine-author">佚名</div>
-                        <div class="spine-year">1540年</div>
-                        <div class="spine-type">纹章学</div>
-                        <div class="view-hint">◈ 点击查看 ◈</div>
-                        <div class="footband"></div>
-                    </div>
-
-                    <!-- 书籍 3 -->
-                    <div class="book-spine color-3" data-book="3">
-                        <div class="headband"></div>
-                        <div class="spine-title">
-                            论万物本性之书
-                            <span class="small">比德 &amp; 塞涅卡</span>
-                        </div>
-                        <div class="spine-author">圣比德 · 塞涅卡</div>
-                        <div class="spine-year">1490年</div>
-                        <div class="spine-type">自然哲学</div>
-                        <div class="view-hint">◈ 点击查看 ◈</div>
-                        <div class="footband"></div>
-                    </div>
-
-                    <!-- 书籍 4 -->
-                    <div class="book-spine color-4" data-book="4">
-                        <div class="headband"></div>
-                        <div class="spine-title">
-                            萨伏伊时祷书
-                            <span class="small">安妮公主</span>
-                        </div>
-                        <div class="spine-author">佚名 · 吉拉尔迪</div>
-                        <div class="spine-year">1445年</div>
-                        <div class="spine-type">时祷书</div>
-                        <div class="view-hint">◈ 点击查看 ◈</div>
-                        <div class="footband"></div>
-                    </div>
-
-                    <!-- 书籍 5 -->
-                    <div class="book-spine color-5" data-book="5">
-                        <div class="headband"></div>
-                        <div class="spine-title">
-                            亨利二世时祷书
-                            <span class="small">丹特维尔家族</span>
-                        </div>
-                        <div class="spine-author">佚名 · 大师</div>
-                        <div class="spine-year">1542年</div>
-                        <div class="spine-type">时祷书</div>
-                        <div class="view-hint">◈ 点击查看 ◈</div>
-                        <div class="footband"></div>
-                    </div>
-
-                </div>
+            <div class="pantheon-title">
+                ROMANUS PANTHEON
+                <span class="light">— 十二主神 · 十二智慧领域 —</span>
             </div>
-        </div>
+            <div class="pantheon-sub">点击石碑，探寻对应领域的古籍珍本</div>
 
-        <!-- ============================================================ -->
-        <!-- 新增板块 1：编辑精选                                         -->
-        <!-- ============================================================ -->
-        <section class="featured-section">
-            <h2 class="section-title">
-                <span class="deco">❧</span> 编辑精选 <span class="deco">❧</span>
-            </h2>
-            <div class="featured-card">
-                <div class="featured-image">📜</div>
-                <div class="featured-content">
-                    <span class="label">本月推荐</span>
-                    <h3>萨伏伊时祷书 <span class="sub">— 安妮·德·吕西尼昂 委托</span></h3>
-                    <div class="meta">
-                        <span><span class="label">年代</span> 1445年</span>
-                        <span><span class="label">类型</span> 时祷书</span>
-                        <span><span class="label">语言</span> 拉丁语</span>
-                        <span><span class="label">页数</span> 430页</span>
-                    </div>
-                    <div class="desc">
-                        《萨伏伊时祷书》由安妮·德·吕西尼昂委托制作。她是塞浦路斯、耶路撒冷和亚美尼亚王国的公主，后嫁给萨伏依公爵路易一世。这部时祷书最初是为她个人所用，后来以她的儿子萨伏依的路易命名，路易曾任日内瓦伯爵并短暂担任塞浦路斯国王。书中彩绘精美绝伦，是哥特式手稿艺术的巅峰之作。
-                    </div>
-                    <a href="#" class="btn-featured" onclick="openModal(4); return false;">探索这本手稿 →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- 新增板块 2：主题分类                                         -->
-        <!-- ============================================================ -->
-        <section class="categories-section">
-            <h2 class="section-title">
-                <span class="deco">✦</span> 主题分类 <span class="deco">✦</span>
-            </h2>
-            <div class="categories-grid">
-                <div class="category-item">
-                    <span class="icon">🌌</span>
-                    <div class="name">天文学</div>
-                    <div class="count">1 件藏品</div>
-                </div>
-                <div class="category-item">
-                    <span class="icon">🛡️</span>
-                    <div class="name">纹章学</div>
-                    <div class="count">1 件藏品</div>
-                </div>
-                <div class="category-item">
-                    <span class="icon">🌿</span>
-                    <div class="name">自然哲学</div>
-                    <div class="count">1 件藏品</div>
-                </div>
-                <div class="category-item">
-                    <span class="icon">⛪</span>
-                    <div class="name">时祷书</div>
-                    <div class="count">2 件藏品</div>
-                </div>
+            <div class="stele-grid">
+                <a href="#" class="stele" data-god="jupiter" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">朱庇特</div>
+                    <div class="latin">Jupiter</div>
+                    <div class="theme">法律</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="apollo" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">阿波罗</div>
+                    <div class="latin">Apollo</div>
+                    <div class="theme">音乐</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="minerva" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">密涅瓦</div>
+                    <div class="latin">Minerva</div>
+                    <div class="theme">智慧</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="aesculapius" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">埃斯科拉庇俄斯</div>
+                    <div class="latin">Aesculapius</div>
+                    <div class="theme">医药</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="mars" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">马尔斯</div>
+                    <div class="latin">Mars</div>
+                    <div class="theme">战争</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="venus" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">维纳斯</div>
+                    <div class="latin">Venus</div>
+                    <div class="theme">爱情</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="mercury" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">墨丘利</div>
+                    <div class="latin">Mercurius</div>
+                    <div class="theme">商业</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="diana" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">狄安娜</div>
+                    <div class="latin">Diana</div>
+                    <div class="theme">狩猎</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="vesta" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">维斯塔</div>
+                    <div class="latin">Vesta</div>
+                    <div class="theme">家庭</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="neptunus" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">尼普顿</div>
+                    <div class="latin">Neptūnus</div>
+                    <div class="theme">海洋</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="pluto" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">普路托</div>
+                    <div class="latin">Plūtō</div>
+                    <div class="theme">冥界</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+                <a href="#" class="stele" data-god="bacchus" data-link="#">
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">巴克斯</div>
+                    <div class="latin">Bacchus</div>
+                    <div class="theme">戏剧</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
             </div>
         </section>
 
-        <!-- ============================================================ -->
-        <!-- 新增板块 3：藏家评价                                         -->
-        <!-- ============================================================ -->
+        <!-- ===== 轮播区 ===== -->
+        <section class="carousel-section">
+            <div class="carousel-grid">
+                <a href="#" class="carousel-item">
+                    <div class="icon-placeholder">⚜</div>
+                    <span class="badge">精选</span>
+                    <h3>Ulugh Beg 星座书</h3>
+                    <p>帖木儿苏丹为撒马尔罕宫廷定制的精美抄本，天文学与艺术的瑰宝。</p>
+                    <div class="call-to">了解更多 →</div>
+                </a>
+                <a href="#" class="carousel-item">
+                    <div class="icon-placeholder">⚜</div>
+                    <span class="badge">精选</span>
+                    <h3>Cocharelli 抄本</h3>
+                    <p>热那亚中世纪珍本，以历史事件与商业生活场景的独特视角呈现。</p>
+                    <div class="call-to">了解更多 →</div>
+                </a>
+                <a href="#" class="carousel-item">
+                    <div class="icon-placeholder">⚜</div>
+                    <span class="badge">精选</span>
+                    <h3>埃尔朗根 Othéa 书简</h3>
+                    <p>克里斯蒂娜·德·皮桑手稿，威廉·弗莱兰特绘制的 103 幅半灰色细密画。</p>
+                    <div class="call-to">了解更多 →</div>
+                </a>
+                <a href="#" class="carousel-item">
+                    <div class="icon-placeholder">⚜</div>
+                    <span class="badge">精选</span>
+                    <h3>第八天球之书</h3>
+                    <p>阿方索十世《星座论》的后期版本，包含 46 幅圆形星图。</p>
+                    <div class="call-to">了解更多 →</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== 客户标志 ===== -->
+        <section class="clients-section">
+            <h2>全球领先的图书馆信赖我们</h2>
+            <div class="clients-grid">
+                <span class="client">多伦多大学</span>
+                <span class="client">摩根图书馆</span>
+                <span class="client">卡尔顿大学</span>
+                <span class="client">圣母大学</span>
+            </div>
+        </section>
+
+        <!-- ===== 特色功能 ===== -->
+        <section class="features-section">
+            <div class="feature-item">
+                <span class="icon">⚜</span>
+                <h3>摹本专家</h3>
+                <p>我们专精于彩绘手抄本摹本，无论出版社新品或品相优良的旧藏，均能以具竞争力的价格为您寻得所需。</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">⚜</span>
+                <h3>独立供应商</h3>
+                <p>我们既非出版社，亦非古旧书商。我们没有库存压力，只为您的利益而服务——为您甄选最优，价格最佳。</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">⚜</span>
+                <h3>免费数据库</h3>
+                <p>一个完全可检索的数据库，为您而建，永享免费。无论现在或将来，始终向所有研究者与收藏家开放。</p>
+            </div>
+        </section>
+
+        <!-- ===== 评价 ===== -->
         <section class="testimonials-section">
-            <h2 class="section-title">
-                <span class="deco">✦</span> 藏家评价 <span class="deco">✦</span>
-            </h2>
+            <h2>来自世界各地的声音</h2>
             <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="quote">
-                        每一本手稿都像是通往中世纪的一扇窗。书架的呈现方式让我仿佛置身于一座古老的图书馆，细节令人惊叹。
+                <div class="testimonial-box">
+                    <div class="head">
+                        <div class="avatar">M</div>
+                        <div class="name">Dr. Marina Smyth <em>名誉馆员 · 中世纪研究所 · 圣母大学</em></div>
                     </div>
-                    <div class="author">—— 托马斯·冯·黑森 <span>· 珍本收藏家</span></div>
+                    <p>“初次遇见 Giovanni 时，我便为他的能力所折服——他能与出版社合作，以教育机构特惠价格提供全套摹本。多年来，他与团队始终如一，提供了范围广泛、品质上乘的珍品……” <a href="#">阅读更多</a></p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="quote">
-                        我购买了《天文志》，其星图插画的精美程度远超预期。网站的介绍非常详尽，购买过程也让人安心。
+                <div class="testimonial-box">
+                    <div class="head">
+                        <div class="avatar">C</div>
+                        <div class="name">Charlotte Kramer <em>出版人 · Verlag Müller und Schindler &amp; Faksimile Verlag</em></div>
                     </div>
-                    <div class="author">—— 埃莉诺·贝克 <span>· 科学史学者</span></div>
+                    <p>“我仍记得在法兰克福书展初遇 Giovanni——一位年轻而极其可亲的绅士，从第一刻起便赢得了我们的信任。多年来，我见证了他一贯的认真、投入与热忱，对书籍与中世纪艺术的热爱令人钦佩……” <a href="#">阅读更多</a></p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="quote">
-                        这个平台将古籍的学术价值与商业销售完美结合。不仅买到了心仪的书，还学到了很多知识。
+                <div class="testimonial-box">
+                    <div class="head">
+                        <div class="avatar">P</div>
+                        <div class="name">Peter <em>私人收藏家 · 英格兰</em></div>
                     </div>
-                    <div class="author">—— 亨利·德·克莱蒙 <span>· 艺术赞助人</span></div>
+                    <p>“发现这个网站并结识 Giovanni，实属机缘。他为我提供了品相极佳的二手摹本，价格优越。每次包裹抵达，总因精心包装而完美无损。感谢他，我为收藏增添了许多珍品……” <a href="#">阅读更多</a></p>
+                </div>
+                <div class="testimonial-box">
+                    <div class="head">
+                        <div class="avatar">A</div>
+                        <div class="name">艺术史教授 <em>犹他州大学</em></div>
+                    </div>
+                    <p>“我将 Facsimile Finder 作为学生进行手稿与早期书籍研究的资源，也将其作为我自身研究与教学活动的工具——及时了解最新出版物，有助于我为图书馆特藏发展提供咨询……” <a href="#">阅读更多</a></p>
                 </div>
             </div>
         </section>
 
-        <!-- ============================================================ -->
-        <!-- 新增板块 4：手稿动态                                         -->
-        <!-- ============================================================ -->
-        <section class="news-section">
-            <h2 class="section-title">
-                <span class="deco">✦</span> 手稿动态 <span class="deco">✦</span>
-            </h2>
-            <div class="news-list">
-                <div class="news-item">
-                    <div class="date">2026年7月12日</div>
-                    <h4>慕尼黑皇家图书馆宣布数字化计划</h4>
-                    <p>超过300件中世纪手稿将进行高精度数字化，其中包括我们藏品的多件姊妹本。</p>
-                    <a href="#" class="read-more">阅读更多 →</a>
-                </div>
-                <div class="news-item">
-                    <div class="date">2026年7月8日</div>
-                    <h4>《不列颠纹章全书》修复完成</h4>
-                    <p>经过专家团队数月的精心修复，这本1540年的纹章学巨著已恢复往昔光彩。</p>
-                    <a href="#" class="read-more">阅读更多 →</a>
-                </div>
-                <div class="news-item">
-                    <div class="date">2026年7月3日</div>
-                    <h4>线上手稿展览即将开幕</h4>
-                    <p>我们将联合斯特拉斯堡大学举办线上展览，聚焦罗曼式彩绘抄本。</p>
-                    <a href="#" class="read-more">阅读更多 →</a>
-                </div>
+        <!-- ===== 博客 ===== -->
+        <section class="blog-section">
+            <h2>书斋博客 · 彩绘手抄本与摹本的历史</h2>
+            <div class="blog-grid">
+                <a href="#" class="blog-post">
+                    <div class="body">
+                        <span class="icon-placeholder">⚜</span>
+                        <div class="date">2026年5月6日</div>
+                        <h3>将中世纪手稿带入课堂：Giovanni Scorcioni 的讲座与工作坊</h3>
+                        <p>通过触摸感受历史——让摹本成为教学的桥梁。</p>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </a>
+                <a href="#" class="blog-post">
+                    <div class="body">
+                        <span class="icon-placeholder">⚜</span>
+                        <div class="date">2026年1月30日</div>
+                        <h3>当《死亡之书》走进课堂：通过触摸教授历史</h3>
+                        <p>用摹本还原古埃及的信仰世界，让历史不再遥远。</p>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </a>
+                <a href="#" class="blog-post">
+                    <div class="body">
+                        <span class="icon-placeholder">⚜</span>
+                        <div class="date">2025年11月20日</div>
+                        <h3>列奥纳多·斐波那契：改变世界计数方式的数学家</h3>
+                        <p>从《算盘书》到黄金比例，一位中世纪数学家的传奇。</p>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </a>
+                <a href="#" class="blog-post">
+                    <div class="body">
+                        <span class="icon-placeholder">⚜</span>
+                        <div class="date">2025年11月11日</div>
+                        <h3>法兰克福书展 2025：早启与新视野</h3>
+                        <p>在书展的晨曦中探寻古籍摹本的最新动向。</p>
+                        <span class="read-more">阅读全文 →</span>
+                    </div>
+                </a>
             </div>
         </section>
 
-        <!-- ============================================================ -->
-        <!-- 新增板块 5：邮件订阅                                         -->
-        <!-- ============================================================ -->
-        <section class="subscribe-section">
-            <h3>📬 订阅珍品动态</h3>
-            <p>获取最新上架、展览与学术资讯，不错过任何一件珍贵手稿。</p>
-            <div class="subscribe-form">
-                <input type="email" placeholder="您的邮箱地址" />
-                <button type="button">订阅</button>
+        <!-- ===== 分类浏览 ===== -->
+        <section class="browse-section">
+            <h2>探索超过 1580 种彩绘手抄本摹本</h2>
+            <div class="browse-categories">
+                <div class="browse-cat">
+                    <h4>主题</h4>
+                    <ul>
+                        <li><a href="#">启示录与贝亚图斯</a></li>
+                        <li><a href="#">天文 / 占星</a></li>
+                        <li><a href="#">动物寓言集</a></li>
+                        <li><a href="#">编年史 / 历史</a></li>
+                        <li><a href="#">文学 · 诗歌</a></li>
+                    </ul>
+                </div>
+                <div class="browse-cat">
+                    <h4>风格</h4>
+                    <ul>
+                        <li><a href="#">亚美尼亚</a></li>
+                        <li><a href="#">拜占庭</a></li>
+                        <li><a href="#">加洛林</a></li>
+                        <li><a href="#">哥特</a></li>
+                        <li><a href="#">北方文艺复兴</a></li>
+                    </ul>
+                </div>
+                <div class="browse-cat">
+                    <h4>语言</h4>
+                    <ul>
+                        <li><a href="#">阿拉伯语</a></li>
+                        <li><a href="#">英语</a></li>
+                        <li><a href="#">法语</a></li>
+                        <li><a href="#">拉丁语</a></li>
+                        <li><a href="#">意大利语</a></li>
+                    </ul>
+                </div>
+                <div class="browse-cat">
+                    <h4>国家</h4>
+                    <ul>
+                        <li><a href="#">奥地利</a></li>
+                        <li><a href="#">法国</a></li>
+                        <li><a href="#">德国</a></li>
+                        <li><a href="#">意大利</a></li>
+                        <li><a href="#">西班牙</a></li>
+                    </ul>
+                </div>
+                <div class="browse-cat">
+                    <h4>出版社</h4>
+                    <ul>
+                        <li><a href="#">ADEVA</a></li>
+                        <li><a href="#">Faksimile Verlag</a></li>
+                        <li><a href="#">M. Moleiro Editor</a></li>
+                        <li><a href="#">Mueller &amp; Schindler</a></li>
+                        <li><a href="#">Quaternio Verlag</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- ===== 页脚 ===== -->
-        <footer class="footer">
-            <div class="deco">✦ ✦ ✦ ✦ ✦</div>
-            <p style="margin-bottom: 0.2rem;">
-                <span style="font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1rem;">珍品彩绘抄本 · 典藏目录</span>
-            </p>
-            <p style="font-size: 0.82rem; color: #9a8a72;">
-                所有藏品均为历史文献 · 咨询购买请致信
-                <a href="mailto:rarebooks@example.com">rarebooks@example.com</a>
-                <span style="display: inline-block; margin: 0 0.3rem;">|</span>
-                <span style="font-style: italic;">慕尼黑 · 斯特拉斯堡 · 布达</span>
-            </p>
-            <p style="margin-top: 0.4rem; font-size: 0.7rem; color: #6a5a4a; letter-spacing: 0.04rem;">
-                © 2026 · 所有手稿描述及图像版权归收藏机构所有 · 仅供鉴赏
-            </p>
+        <footer class="temple-footer">
+            <div class="footer-grid">
+                <div>
+                    <h4>关于我们</h4>
+                    <p>卡美洛古籍图书馆是一家专营彩绘手抄本摹本的文化机构。我们秉持“传承文明，珍藏历史”的理念，为世界各地的图书馆、研究机构与私人收藏家提供优质藏品与专业服务。</p>
+                    <p style="margin-top:10px;">地址：圣马力诺 · 卡美洛街 12 号<br />电话：+39 (329) 316 9912（欧洲）<br />邮箱：info@camelotlibrary.com</p>
+                </div>
+                <div>
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">高级检索</a></li>
+                        <li><a href="#">全部摹本</a></li>
+                        <li><a href="#">按价格筛选</a></li>
+                        <li><a href="#">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>服务与支持</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">购买指南</a></li>
+                        <li><a href="#">委托出售</a></li>
+                        <li><a href="#">视频资源</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                    <p style="margin-top:14px; font-size:0.8rem; color:#c9b89a;">© 2026 卡美洛古籍图书馆<br />Quires Srl 旗下品牌</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>本网站展示所有藏品均为实物拍摄 · 版权归卡美洛古籍图书馆所有</p>
+            </div>
         </footer>
 
     </div>
-    <!-- end container -->
-
-    <!-- ===== 模态框 ===== -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box" id="modalBox">
-            <button class="modal-close" id="modalClose" aria-label="关闭详情">✕</button>
-
-            <div class="modal-title" id="modalTitle">
-                《书名》<span class="sub">— 作者</span>
-            </div>
-
-            <div class="modal-meta" id="modalMeta">
-                <span><span class="label">年代</span> <span id="mYear">—</span></span>
-                <span class="sep">|</span>
-                <span><span class="label">类型</span> <span id="mType">—</span></span>
-                <span class="sep">|</span>
-                <span><span class="label">语言</span> <span id="mLang">—</span></span>
-                <span class="sep">|</span>
-                <span><span class="label">页数</span> <span id="mPages">—</span></span>
-            </div>
-
-            <div class="modal-grid" id="modalGrid">
-                <!-- 动态注入 -->
-            </div>
-
-            <!-- 详细描述 (扩展为多段落) -->
-            <div class="modal-desc" id="modalDesc">
-                <!-- 动态注入 -->
-            </div>
-
-            <div class="modal-extras" id="modalExtras">
-                <!-- 额外信息 -->
-            </div>
-
-            <!-- 相关藏品推荐 -->
-            <div class="related-section" id="relatedSection">
-                <h4>📖 您可能也喜欢</h4>
-                <div class="related-items" id="relatedItems">
-                    <!-- 动态生成 -->
-                </div>
-            </div>
-
-            <div class="modal-price" id="modalPrice">
-                € <span id="mPrice">0</span> <small>EUR</small>
-            </div>
-
-            <div class="modal-notice">
-                <span class="icon">⚜</span>
-                <span><strong>商品说明：</strong> 一经售出，不支持任何理由的退款或退换，请慎重下单。</span>
-            </div>
-
-            <div class="modal-actions">
-                <button class="btn-close-modal" id="modalCloseBtn">关闭</button>
-                <a href="#" class="btn-purchase" id="modalBuyBtn">咨询购买</a>
-            </div>
-        </div>
-    </div>
 
     <script>
-        // ================================================================
-        // 书籍数据 —— 扩充了极详细的描述（历史、艺术、文献、收藏轶事）
-        // ================================================================
-        const booksData = [{
-            id: 1,
-            title: '天文志',
-            subtitle: '盖乌斯·尤利乌斯·希吉努斯',
-            author: '盖乌斯·尤利乌斯·希吉努斯',
-            year: '约1125年',
-            type: '天文学',
-            language: '拉丁语',
-            pages: '64页',
-            price: '9,800',
-            // 扩展描述：多段落
-            longDesc: [
-                '本手稿为12世纪早期抄写版本，包含希吉努斯《天文志》、历书与数篇关于计时法的科学论述，虽今仅存第二卷内容，仍可窥见其整体结构与编排风貌。书中配有多幅星座手绘插图，笔法质朴，兼具法国北部与德国南部书籍装饰风格，推测绘制地为斯特拉斯堡。',
-                '<span class="sub-head">📜 历史背景</span>希吉努斯（Gaius Julius Hyginus）是奥古斯都时代著名的学者，曾任帕拉蒂尼图书馆馆长。他的《天文志》是古代晚期最重要的天文学文献之一，系统梳理了希腊化时代的星座神话与天文知识。这份12世纪的抄本，正值中世纪天文学复兴的初期，抄写者以清晰的加洛林小字书写，并在页边补充了当时对古典天文学的最新注释。',
-                '<span class="sub-head">🎨 艺术特征</span>插图以棕褐色墨水绘制，线条简练而充满表现力。每幅星座图都标注了拉丁语星名，部分星座人物身着当时的服饰，反映了12世纪抄写者对古典形象的本土化理解。页面装饰采用红蓝两色的首字母，并配有简单的卷须纹样，呈现出罗曼式书籍装帧的典型风貌。',
-                '<span class="sub-head">📖 文献价值</span>此抄本不仅保存了希吉努斯的原文，还包含大量旁注，这些注释暗示了12世纪斯特拉斯堡学者对天文学、星占学和历法计算的浓厚兴趣。手稿的物理形态——包括羊皮纸的厚度、针孔与折痕——为研究中世纪抄本制作工艺提供了珍贵实物证据。'
-            ],
-            extras: {
-                '尺寸': '215 × 145 mm',
-                '装帧': '棕色摩洛哥皮装，烫金纹饰',
-                '收藏编号': 'MS. Lat. 1234',
-                '来源': '曼海姆宫廷图书馆 → 慕尼黑皇家图书馆'
-            },
-            grid: [
-                { tag: '作者', val: '盖乌斯·尤利乌斯·希吉努斯' },
-                { tag: '语种', val: '拉丁语' },
-                { tag: '页数', val: '64页' },
-                { tag: '年代', val: '约1125年' }
-            ],
-            // 相关推荐 (其他书id)
-            related: [3, 4]
-        }, {
-            id: 2,
-            title: '不列颠纹章全书',
-            subtitle: '佚名 · 约翰·雅各布·富格尔 藏',
-            author: '佚名',
-            year: '1540年',
-            type: '纹章学',
-            language: '法语',
-            pages: '130页',
-            price: '12,500',
-            longDesc: [
-                '约翰·雅各布·富格尔特别关注欧洲王朝历史和纹章学，为了扩大他的收藏，他购买了这部作品，即英国贵族纹章的最新版本。本书以国王亨利八世的华丽纹章开始，纹章采用金色和银色，色彩鲜艳。纹章中还有国王的纹章徽章，包括都铎玫瑰和嘉德勋章的蓝色绶带，饰有金色边饰，绣有金色座右铭：Honi soit qvi mal y pense（恶人有恶报）。接下来是亨利六位妻子的家族徽章、英格兰和爱尔兰12位最重要的贵族的徽章以及嘉德勋章成员的徽章。接下来是英国王室、英国贵族、英国主教和其他英国家族的徽章。1571年，由于生意困难，约翰·雅各布被迫将他的藏书卖给了巴伐利亚国王阿尔布雷希特五世。',
-                '<span class="sub-head">👑 政治与象征</span>这部纹章书不仅仅是贵族名录，更是都铎王朝权力格局的视觉化呈现。亨利八世的纹章占据了整个开本，其豪华的装饰反映了国王对自我形象的塑造。书中还收录了当时英国各大家族的世系纹章，为研究16世纪英国政治联姻与权力网络提供了不可替代的图像档案。',
-                '<span class="sub-head">🎨 彩绘技法</span>手稿中的纹章以蛋彩和金箔绘制，色彩至今依然鲜艳。纹章盾牌的底色采用群青、朱砂和铅白，边缘以金线勾勒，并施加了细致的阴影以增加立体感。书中的装饰边框融合了意大利文艺复兴的蔓藤花样与法国北部的写实风格，展现了富格尔家族收藏的国际视野。',
-                '<span class="sub-head">📚 收藏传奇</span>约翰·雅各布·富格尔是16世纪欧洲最富有的银行家之一，他的藏书楼被誉为“阿尔卑斯山以北最壮丽的图书馆”。这部手稿因其精美的制作和重要的历史价值，被富格尔视为其收藏中的明珠。1571年因财务危机被迫出售，后辗转进入巴伐利亚王室，至今仍保存完好。'
-            ],
-            extras: {
-                '尺寸': '285 × 190 mm',
-                '装帧': '深红色天鹅绒装，金边',
-                '收藏编号': 'MS. Fr. 567',
-                '来源': '富格尔家族 → 巴伐利亚皇家图书馆'
-            },
-            grid: [
-                { tag: '作者', val: '佚名' },
-                { tag: '赞助人', val: '约翰·雅各布·富格尔' },
-                { tag: '语种', val: '法语' },
-                { tag: '页数', val: '130页' }
-            ],
-            related: [5, 4]
-        }, {
-            id: 3,
-            title: '论万物本性之书',
-            subtitle: '圣比德 · 塞涅卡 合卷',
-            author: '圣比德 / 塞涅卡',
-            year: '1490年',
-            type: '自然哲学',
-            language: '拉丁语',
-            pages: '156页',
-            price: '15,200',
-            longDesc: [
-                '《论万物本性之书》是一部1490年于布达制作的羊皮纸手抄本，彩绘极富装饰，带有马加什·科尔温及其后继者弗拉迪斯拉夫二世的纹章；该抄本将八世纪盎格鲁-撒克逊学者圣比德的短论《论万物本性》与公元一世纪罗马政治家、哲学家塞涅卡的《自然问题》合订于一册。',
-                '<span class="sub-head">📖 双璧合卷</span>将圣比德与塞涅卡的作品合订，体现了15世纪人文主义者对古典与基督教传统并重的学术理念。圣比德的《论万物本性》以基督教宇宙观阐释自然现象，而塞涅卡的《自然问题》则基于斯多葛哲学探讨气象、地理等问题，两者形成了奇妙的对话。这种合订方式在当时极为罕见，反映了马加什·科尔温宫廷的开放学术氛围。',
-                '<span class="sub-head">🎨 彩绘与纹章</span>手稿的装饰极尽华丽，首字母采用金蓝双色，并以精致的白描蔓藤填充。书中有多处全页彩色装饰，包括马加什·科尔温的纹章——纹章上的乌鸦与戒指图案寓意着“正义”。弗拉迪斯拉夫二世继位后，又在卷末添加了自己的纹章，见证了匈牙利王权的更迭。',
-                '<span class="sub-head">🏛️ 制作背景</span>布达是15世纪晚期欧洲重要的抄本制作中心。这部手稿的抄写员和彩绘师均来自意大利，他们将文艺复兴早期的装饰风格带入匈牙利，与当地的拜占庭传统融合，形成了独特的“布达风格”。羊皮纸质量上乘，墨水至今清晰可辨，是研究匈牙利文艺复兴手稿的典范。'
-            ],
-            extras: {
-                '尺寸': '240 × 160 mm',
-                '装帧': '深棕色小牛皮，带金属搭扣',
-                '收藏编号': 'MS. Bud. 89',
-                '来源': '马加什·科尔温图书馆 → 布达宫廷'
-            },
-            grid: [
-                { tag: '语种', val: '拉丁语' },
-                { tag: '页数', val: '156页' },
-                { tag: '年代', val: '1490年' },
-                { tag: '制作地', val: '布达' }
-            ],
-            related: [1, 4]
-        }, {
-            id: 4,
-            title: '萨伏伊时祷书',
-            subtitle: '安妮·德·吕西尼昂 委托',
-            author: '佚名',
-            year: '1445年',
-            type: '时祷书',
-            language: '拉丁语',
-            pages: '430页',
-            price: '18,700',
-            longDesc: [
-                '《萨伏伊时祷书》由安妮·德·吕西尼昂委托制作。她是塞浦路斯、耶路撒冷和亚美尼亚王国的公主，后嫁给萨伏依公爵路易一世。这部时祷书最初是为她个人所用，后来以她的儿子萨伏依的路易命名，路易曾任日内瓦伯爵并短暂担任塞浦路斯国王。',
-                '<span class="sub-head">👑 女性赞助人与权力</span>安妮公主的委托行为在15世纪女性赞助中颇具代表性。她不仅是一位国王的女儿和公爵夫人，更是一位虔诚的基督徒。时祷书的内容精心编排，包含大量适合个人默想的祷文，以及圣徒传插图，这些都与她个人的信仰和政治身份紧密相关。书中多次出现她的个人纹章（百合花与十字架），彰显了她的自主权。',
-                '<span class="sub-head">🎨 彩绘大师的杰作</span>本书的彩绘由两位大师完成：一位是“萨伏依的路易时祷书大师”，其风格细腻，人物表情生动；另一位是古列尔莫·吉拉尔迪，他擅长用丰富的蓝色和金色营造神圣氛围。全书共包含14幅整页微型画，描绘了基督生平、圣母事迹以及塞浦路斯守护圣徒的传奇，画面中的建筑和服饰细节为研究15世纪西欧文化提供了珍贵图像。',
-                '<span class="sub-head">📜 文本与礼仪</span>时祷书按照罗马礼仪编排，但加入了若干带有东方教会色彩的祷文，这可能反映了安妮公主对塞浦路斯（当时仍属于东正教影响区）出身的纪念。手稿中的日历页标注了塞浦路斯和萨伏依两地的节日，是文化融合的实物证据。',
-                '<span class="sub-head">📖 传承与影响</span>这部手稿在萨伏依家族中流传了数代，后来被法国国王弗朗索瓦一世收藏，成为法国王室图书馆的珍宝。它对后世的时祷书制作产生了深远影响，尤其是其独特的边框装饰风格，在16世纪的法国书籍中常被模仿。'
-            ],
-            extras: {
-                '尺寸': '195 × 135 mm',
-                '装帧': '深蓝色皮革，镀金边，饰有百合花',
-                '收藏编号': 'MS. Sav. 101',
-                '来源': '安妮公主 → 萨伏依公爵家族'
-            },
-            grid: [
-                { tag: '作者', val: '佚名' },
-                { tag: '彩绘师', val: '萨伏依的路易时祷书大师 · 古列尔莫·吉拉尔迪' },
-                { tag: '赞助人', val: '安妮·德·吕西尼昂' },
-                { tag: '页数', val: '430页' }
-            ],
-            related: [5, 2]
-        }, {
-            id: 5,
-            title: '亨利二世时祷书',
-            subtitle: '丹特维尔家族 委托',
-            author: '佚名',
-            year: '1542年',
-            type: '时祷书',
-            language: '拉丁语',
-            pages: '258页',
-            price: '14,900',
-            longDesc: [
-                '《亨利二世时祷书》是一部制作于1542年至1547年间的手绘祈祷手抄本，采用拉丁语书写，按罗马礼仪编排。其名称源于后来的收藏者法国国王亨利二世，但最初的委托制作人实际上是丹特维尔家族的成员，包括戈谢尔二世、纪尧姆、弗朗索瓦二世和让·德·丹特维尔等人。该家族是16世纪法国重要的外交与宗教世家，曾多次赞助精美手抄本。',
-                '<span class="sub-head">🏛️ 丹特维尔家族的政治野心</span>丹特维尔家族在16世纪法国宫廷中势力显赫，多位成员担任过外交使节和枢机主教。委托制作这部时祷书不仅是为了家族信仰，更是为了展示其地位与财富。书中多处出现家族纹章（三只银色的鸟），以及代表家族格言的卷轴，体现了贵族赞助人通过艺术巩固权力的策略。',
-                '<span class="sub-head">🎨 文艺复兴与哥特风格的融合</span>本书的彩绘由“亨利二世大师”与诺埃尔·贝勒马尔合作完成。前者的风格偏向意大利文艺复兴，人物比例准确，场景具有透视感；后者则保留了法国晚期哥特式的装饰性线条和丰富色彩。两者的结合使得这本书在宏大的建筑框架中，充满了精致的花卉和果实装饰，是法国文艺复兴手稿的典型代表。',
-                '<span class="sub-head">👑 与王室的关系</span>虽然书是为丹特维尔家族制作，但其名称却与亨利二世相关，这是因为后来亨利二世获得了这本书，并添加了自己的标记。手稿中还包含为法国国王祈祷的段落，暗示了丹特维尔家族对王室的忠诚。这种“赞助人-君主”的双重联系，使本书成为研究16世纪法国政治与艺术互动的关键文物。',
-                '<span class="sub-head">📖 文本特色</span>除了常规的时祷书内容，本书还增加了一段关于圣米歇尔山的朝圣祷文，反映了当时法国贵族对宗教圣地的热衷。书末附有一份家族成员年表，将丹特维尔家族的谱系与宗教日程结合起来，具有家族编年史的功能。'
-            ],
-            extras: {
-                '尺寸': '225 × 155 mm',
-                '装帧': '红色天鹅绒，金银丝线刺绣',
-                '收藏编号': 'MS. Fr. 202',
-                '来源': '丹特维尔家族 → 法国王室'
-            },
-            grid: [
-                { tag: '作者', val: '佚名' },
-                { tag: '彩绘师', val: '亨利二世大师 · 诺埃尔·贝勒马尔' },
-                { tag: '赞助人', val: '戈谢尔·德·丹特维尔 等' },
-                { tag: '页数', val: '258页' }
-            ],
-            related: [4, 2]
-        }];
+        document.addEventListener('DOMContentLoaded', function() {
 
-        // ================================================================
-        // 模态框控制
-        // ================================================================
-        const overlay = document.getElementById('modalOverlay');
-        const modalBox = document.getElementById('modalBox');
-        const closeBtn = document.getElementById('modalClose');
-        const closeBtn2 = document.getElementById('modalCloseBtn');
-
-        // 暴露 openModal 给全局
-        window.openModal = function(bookId) {
-            const book = booksData.find(b => b.id === bookId);
-            if (!book) return;
-
-            // 标题
-            document.getElementById('modalTitle').innerHTML =
-                `《${book.title}》<span class="sub">— ${book.subtitle}</span>`;
-
-            // meta
-            document.getElementById('mYear').textContent = book.year;
-            document.getElementById('mType').textContent = book.type;
-            document.getElementById('mLang').textContent = book.language;
-            document.getElementById('mPages').textContent = book.pages;
-
-            // grid
-            const gridContainer = document.getElementById('modalGrid');
-            gridContainer.innerHTML = '';
-            book.grid.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'item';
-                div.innerHTML = `<span class="tag">${item.tag}</span><span class="val">${item.val}</span>`;
-                gridContainer.appendChild(div);
-            });
-
-            // 详细描述 (多段落)
-            const descContainer = document.getElementById('modalDesc');
-            descContainer.innerHTML = '';
-            if (book.longDesc && Array.isArray(book.longDesc)) {
-                book.longDesc.forEach(para => {
-                    const p = document.createElement('p');
-                    p.innerHTML = para;
-                    descContainer.appendChild(p);
-                });
-            } else {
-                descContainer.textContent = book.description || '';
-            }
-
-            // extras
-            const extrasContainer = document.getElementById('modalExtras');
-            extrasContainer.innerHTML = '';
-            for (const [key, val] of Object.entries(book.extras)) {
-                const div = document.createElement('div');
-                div.className = 'extra-item';
-                div.innerHTML = `<span class="label">${key}</span> ${val}`;
-                extrasContainer.appendChild(div);
-            }
-
-            // 相关藏品
-            const relatedContainer = document.getElementById('relatedItems');
-            relatedContainer.innerHTML = '';
-            if (book.related && book.related.length > 0) {
-                book.related.forEach(relId => {
-                    const relBook = booksData.find(b => b.id === relId);
-                    if (relBook) {
-                        const span = document.createElement('span');
-                        span.className = 'rel-item';
-                        span.textContent = `《${relBook.title}》`;
-                        span.dataset.id = relId;
-                        span.addEventListener('click', function() {
-                            openModal(parseInt(this.dataset.id));
-                        });
-                        relatedContainer.appendChild(span);
+            // 搜索交互
+            const searchBtn = document.querySelector('.temple-search button');
+            const searchInput = document.querySelector('.temple-search input');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const q = searchInput ? searchInput.value.trim() : '';
+                    if (q) {
+                        alert('您正在搜索：“' + q + '”\n（实际将跳转至检索结果页面）');
+                    } else {
+                        alert('请输入关键词。');
                     }
                 });
-            } else {
-                const span = document.createElement('span');
-                span.className = 'rel-item';
-                span.textContent = '暂无其他推荐';
-                relatedContainer.appendChild(span);
+            }
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        searchBtn.click();
+                    }
+                });
             }
 
-            // price
-            document.getElementById('mPrice').textContent = book.price;
+            // ===== 万神殿石碑点击跳转 =====
+            const stelae = document.querySelectorAll('.stele');
+            const godNames = {
+                'jupiter': '朱庇特 (法律)',
+                'apollo': '阿波罗 (音乐)',
+                'minerva': '密涅瓦 (智慧)',
+                'aesculapius': '埃斯科拉庇俄斯 (医药)',
+                'mars': '马尔斯 (战争)',
+                'venus': '维纳斯 (爱情)',
+                'mercury': '墨丘利 (商业)',
+                'diana': '狄安娜 (狩猎)',
+                'vesta': '维斯塔 (家庭)',
+                'neptunus': '尼普顿 (海洋)',
+                'pluto': '普路托 (冥界)',
+                'bacchus': '巴克斯 (戏剧)'
+            };
 
-            // 显示模态框
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        };
-
-        function closeModal() {
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // 事件绑定：书脊点击
-        document.querySelectorAll('.book-spine').forEach(spine => {
-            spine.addEventListener('click', function(e) {
-                const bookId = parseInt(this.dataset.book);
-                openModal(bookId);
+            stelae.forEach(stele => {
+                stele.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const god = this.dataset.god;
+                    const name = godNames[god] || '未知神祇';
+                    alert('您将跳转至「' + name + '」专题页面。\n（此链接为演示，实际将跳转至相应页面。）');
+                    window.location.href = this.dataset.link || '#';
+                });
             });
-        });
 
-        closeBtn.addEventListener('click', closeModal);
-        closeBtn2.addEventListener('click', closeModal);
-        overlay.addEventListener('click', function(e) {
-            if (e.target === overlay) closeModal();
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && overlay.classList.contains('active')) {
-                closeModal();
-            }
-        });
-
-        // 购买按钮
-        document.getElementById('modalBuyBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('📖 感谢您的关注！\n请发送邮件至 rarebooks@example.com 咨询购买事宜。');
-        });
-
-        // 动态中的 "阅读更多" 按钮点击提示
-        document.querySelectorAll('.read-more').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('📰 更多动态即将更新，敬请期待。');
+            // 其他演示链接（轮播、博客、分类等）
+            document.querySelectorAll('.carousel-item, .blog-post, .browse-cat ul li a').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    if (this.tagName === 'A' && this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        alert('此链接为演示，实际将跳转至相应页面。');
+                    }
+                });
             });
-        });
-
-        // 分类板块点击提示
-        document.querySelectorAll('.category-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const name = this.querySelector('.name')?.textContent || '分类';
-                alert(`🔍 正在筛选 “${name}” 相关藏品（功能开发中）`);
-            });
-        });
-
-        // 订阅按钮
-        document.querySelector('.subscribe-form button').addEventListener('click', function() {
-            const input = this.closest('.subscribe-form').querySelector('input');
-            const email = input.value.trim();
-            if (email && email.includes('@')) {
-                alert(`✅ 订阅成功！我们将向 ${email} 发送最新资讯。`);
-                input.value = '';
-            } else {
-                alert('⚠️ 请填写有效的邮箱地址。');
-            }
         });
     </script>
 
