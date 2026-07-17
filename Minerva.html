@@ -874,7 +874,7 @@
                 <!-- ===== 第二块石碑：萨伏伊时祷书 ===== -->
                 <a href="Book_romanum_louis.html" class="stele" data-id="1001">
                     <div class="thumb-wrap">
-                        <img src="romanum_louis_4.JPEG" alt="萨伏伊时祷书" loading="lazy" />
+                        <img src="romanum_louis_3.JPEG" alt="萨伏伊时祷书" loading="lazy" />
                     </div>
                     <div class="symbol-mark">⚜</div>
                     <div class="name">萨伏伊时祷书</div>
@@ -883,7 +883,7 @@
                     <div class="entry-hint">进入 →</div>
                 </a>
 
-                <!-- ===== 第三块石碑：亨利四世时祷书（已替换） ===== -->
+                <!-- ===== 第三块石碑：亨利四世时祷书 ===== -->
                 <a href="Book_henry_iv_hours.html" class="stele" data-id="1103">
                     <div class="thumb-wrap">
                         <img src="henry_iv_hours_1.JPEG" alt="亨利四世时祷书" loading="lazy" />
@@ -1032,13 +1032,25 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // ===== 获取元素 =====
+            // ===== 修复“阅读更多”功能 =====
+            const descToggle = document.getElementById('descToggle');
+            const descExpand = document.getElementById('descExpand');
+            if (descToggle && descExpand) {
+                let open = false;
+                descToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    open = !open;
+                    descExpand.classList.toggle('open', open);
+                    descToggle.textContent = open ? '收起' : '阅读更多';
+                });
+            }
+
+            // ===== 搜索功能 =====
             const searchBtn = document.getElementById('searchBtn');
             const searchInput = document.getElementById('searchInput');
             const resultCount = document.getElementById('resultCount');
             const steleItems = document.querySelectorAll('.stele');
 
-            // ===== 过滤函数 =====
             function filterManuscripts(keyword) {
                 const trimmed = keyword.trim().toLowerCase();
                 let visibleCount = 0;
@@ -1067,13 +1079,11 @@
                 resultCount.textContent = visibleCount + ' 件藏品';
             }
 
-            // ===== 执行搜索 =====
             function performSearch() {
                 const keyword = searchInput.value;
                 filterManuscripts(keyword);
             }
 
-            // ===== 绑定事件 =====
             if (searchBtn) {
                 searchBtn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1090,7 +1100,7 @@
                 });
             }
 
-            // ===== 页面加载时显示全部 =====
+            // 页面加载时显示全部
             filterManuscripts('');
 
             // ===== 日期筛选（演示） =====
