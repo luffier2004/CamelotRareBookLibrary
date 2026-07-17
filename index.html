@@ -40,14 +40,13 @@
             transition: all 0.3s ease;
         }
 
-        /* ===== 神庙三角楣（修改：flex 布局，左侧放 Logo，右侧放标题） ===== */
+        /* ===== 神庙三角楣 ===== */
         .pediment {
             position: relative;
             margin: -8px -40px 0 -40px;
             padding: 12px 40px 12px;
             background: linear-gradient(180deg, #8b1a1a 0%, #5c0e0e 100%);
             border-bottom: 4px solid #c9a84c;
-            text-align: center;
             box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.4);
             display: flex;
             align-items: center;
@@ -76,16 +75,13 @@
             background: linear-gradient(90deg, #c9a84c, #f0d68a, #c9a84c);
             opacity: 0.5;
         }
-
-        /* Logo 图片样式 */
         .pediment-logo {
-            height: 50px;      /* 可调整大小 */
+            height: 50px;
             width: auto;
             display: block;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
             flex-shrink: 0;
         }
-
         .pediment h1 {
             font-family: 'Cinzel', serif;
             font-weight: 700;
@@ -168,6 +164,12 @@
             align-items: center;
             gap: 12px;
         }
+        .temple-logo .icon {
+            font-size: 2.2rem;
+            color: #8b1a1a;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
         .temple-logo .title {
             font-family: 'Cinzel', serif;
             font-weight: 700;
@@ -185,8 +187,6 @@
             color: #7a5d46;
             margin-left: 6px;
         }
-
-        /* 搜索 */
         .temple-search {
             display: flex;
             border: 1px solid #c9a84c;
@@ -224,7 +224,7 @@
             background: #5c0e0e;
         }
 
-        /* ===== 导航 ===== */
+        /* ===== 导航 — 已移除“全部摹本”和“按价格筛选” ===== */
         .temple-nav {
             padding: 12px 0 8px;
             margin: 0 0 12px;
@@ -260,19 +260,16 @@
             opacity: 1;
         }
 
-        /* ================================================================ */
-        /* ===== 万神殿 — 仅此区域改为明亮暖色 ===== */
+        /* ===== 万神殿 ===== */
         .pantheon-magnus {
             margin: 16px 0 30px;
             padding: 40px 30px 30px;
-            background: #f5efe4;  /* 浅色背景 */
+            background: #f5efe4;
             border: 4px solid #b8923a;
             border-radius: 2px;
             box-shadow: inset 0 0 60px rgba(184, 146, 58, 0.08), 0 0 0 1px #d4c0a0 inset;
             position: relative;
         }
-
-        /* SPQR 标志 — 红底黄字 */
         .spqr-banner {
             position: absolute;
             top: -14px;
@@ -290,20 +287,15 @@
             color: #f0d68a;
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         }
-        .spqr-banner::before {
-            content: '⚜';
-            font-size: 0.6rem;
-            color: #f0d68a;
-            margin-right: 8px;
-            opacity: 0.6;
-        }
+        .spqr-banner::before,
         .spqr-banner::after {
             content: '⚜';
             font-size: 0.6rem;
             color: #f0d68a;
-            margin-left: 8px;
             opacity: 0.6;
         }
+        .spqr-banner::before { margin-right: 8px; }
+        .spqr-banner::after { margin-left: 8px; }
 
         .pantheon-title {
             text-align: center;
@@ -325,7 +317,6 @@
             font-style: italic;
             font-family: 'Cormorant Garamond', serif;
             display: block;
-            margin-top: 0px;
             text-transform: none;
         }
         .pantheon-sub {
@@ -340,13 +331,12 @@
             letter-spacing: 4px;
         }
 
-        /* ===== 石碑 — 浅色 ===== */
+        /* 石碑网格 */
         .stele-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
-
         .stele {
             background: linear-gradient(170deg, #faf6ee 0%, #f0e8dc 60%, #e8ddd0 100%);
             border: 2px solid #b8923a;
@@ -387,14 +377,12 @@
             background: linear-gradient(90deg, transparent, #b8923a, #f0d68a, #b8923a, transparent);
             opacity: 0.3;
         }
-
         .stele:hover {
             transform: translateY(-5px) scale(1.02);
             border-color: #c9a84c;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 0 20px rgba(184, 146, 58, 0.08);
             background: linear-gradient(170deg, #fcf8f0, #f5efe4, #ede4d8);
         }
-
         .stele .symbol-mark {
             font-family: 'Cinzel', serif;
             font-size: 1.8rem;
@@ -402,7 +390,6 @@
             color: #8b6a3a;
             line-height: 1;
             margin-bottom: 4px;
-            letter-spacing: 0;
             opacity: 0.5;
         }
         .stele .name {
@@ -446,13 +433,8 @@
             transform: translateY(-50%);
             opacity: 0.5;
         }
-        .stele .theme::before {
-            left: -12px;
-        }
-        .stele .theme::after {
-            right: -12px;
-        }
-
+        .stele .theme::before { left: -12px; }
+        .stele .theme::after { right: -12px; }
         .stele .entry-hint {
             font-family: 'Cinzel', serif;
             font-size: 0.5rem;
@@ -463,12 +445,7 @@
             opacity: 0;
             transition: 0.3s;
         }
-        .stele:hover .entry-hint {
-            opacity: 0.5;
-        }
-
-        /* ================================================================ */
-        /* ===== 以下所有模块恢复深色古典样式（上上版） ===== */
+        .stele:hover .entry-hint { opacity: 0.5; }
 
         /* 轮播区 */
         .carousel-section {
@@ -561,7 +538,7 @@
         .clients-section h2 {
             font-family: 'Cinzel', serif;
             font-weight: 400;
-            font-size: 1rem;
+            font-size: 1.0rem;
             color: #5c4436;
             text-align: center;
             letter-spacing: 4px;
@@ -584,6 +561,7 @@
             text-transform: uppercase;
             border-bottom: 2px solid transparent;
             transition: 0.3s;
+            cursor: default;
         }
         .clients-grid .client:hover {
             opacity: 1;
@@ -630,7 +608,7 @@
             margin-top: 6px;
         }
 
-        /* 评价 */
+        /* 评价 — 古罗马哲人名言，无“阅读更多” */
         .testimonials-section {
             margin: 30px 0 20px;
         }
@@ -700,13 +678,13 @@
             line-height: 1.7;
             font-style: italic;
         }
-        .testimonial-box p a {
+        .testimonial-box p .latin-quote {
+            display: block;
+            font-style: italic;
             color: #8b1a1a;
-            text-decoration: none;
-            border-bottom: 1px dotted #c9a84c;
-        }
-        .testimonial-box p a:hover {
-            color: #2c1810;
+            font-size: 0.85rem;
+            margin-top: 4px;
+            font-family: 'Cormorant Garamond', serif;
         }
 
         /* 博客 */
@@ -856,7 +834,7 @@
             display: block;
         }
 
-        /* ===== 页脚 — 深色 ===== */
+        /* ===== 页脚 — 已删除地址电话邮箱等，快速链接只保留首页、高级检索、关于我们 ===== */
         .temple-footer {
             background: rgba(30, 18, 12, 0.6);
             padding: 28px 20px 18px;
@@ -961,450 +939,469 @@
 </head>
 <body>
 
-    <div class="temple">
+<div class="temple">
 
-        <!-- 罗马柱装饰 -->
-        <div class="column-left"></div>
-        <div class="column-right"></div>
+    <!-- 罗马柱装饰 -->
+    <div class="column-left"></div>
+    <div class="column-right"></div>
 
-        <!-- ===== 三角楣（Logo 在标题左侧） ===== -->
-        <div class="pediment">
-            <img src="Logo.png" alt="卡美洛古籍图书馆 Logo" class="pediment-logo" />
-            <h1>— 卡美洛古籍图书馆 —</h1>
-        </div>
-
-        <!-- 头部 -->
-        <header class="temple-header">
-            <div class="temple-logo">
-                <div>
-                    <div class="title"><span>卡美洛</span> 古籍图书馆</div>
-                    <div class="sub">彩绘手抄本 · 摹本珍藏 · 学术数据库</div>
-                </div>
-            </div>
-            <div class="temple-search">
-                <input type="text" placeholder="搜索超过 1580 种摹本..." />
-                <button>检索</button>
-            </div>
-        </header>
-
-        <!-- 导航 -->
-        <nav class="temple-nav">
-            <a href="#">首页</a>
-            <a href="#">高级检索</a>
-            <a href="#">全部摹本</a>
-            <a href="#">按价格筛选</a>
-            <a href="#">视频</a>
-            <a href="#">书评</a>
-            <a href="#">书斋博客</a>
-        </nav>
-
-        <!-- ================================================================ -->
-        <!-- ===== 万神殿 — 仅此区域改为明亮暖色 ===== -->
-        <section class="pantheon-magnus">
-            <div class="spqr-banner">S·P·Q·R</div>
-
-            <div class="pantheon-title">
-                ROMANUS PANTHEON
-                <span class="light">— 十二主神 · 十二智慧领域 —</span>
-            </div>
-            <div class="pantheon-sub">点击石碑，探寻对应领域的古籍珍本</div>
-
-            <div class="stele-grid">
-                <a href="#" class="stele" data-god="jupiter" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">朱庇特</div>
-                    <div class="latin">Jupiter</div>
-                    <div class="theme">法律</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="apollo" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">阿波罗</div>
-                    <div class="latin">Apollo</div>
-                    <div class="theme">音乐</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="minerva" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">密涅瓦</div>
-                    <div class="latin">Minerva</div>
-                    <div class="theme">智慧</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="aesculapius" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">埃斯科拉庇俄斯</div>
-                    <div class="latin">Aesculapius</div>
-                    <div class="theme">医药</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="mars" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">马尔斯</div>
-                    <div class="latin">Mars</div>
-                    <div class="theme">战争</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="venus" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">维纳斯</div>
-                    <div class="latin">Venus</div>
-                    <div class="theme">爱情</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="mercury" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">墨丘利</div>
-                    <div class="latin">Mercurius</div>
-                    <div class="theme">商业</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="diana" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">狄安娜</div>
-                    <div class="latin">Diana</div>
-                    <div class="theme">狩猎</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="vesta" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">维斯塔</div>
-                    <div class="latin">Vesta</div>
-                    <div class="theme">家庭</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="neptunus" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">尼普顿</div>
-                    <div class="latin">Neptūnus</div>
-                    <div class="theme">海洋</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="pluto" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">普路托</div>
-                    <div class="latin">Plūtō</div>
-                    <div class="theme">冥界</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-                <a href="#" class="stele" data-god="bacchus" data-link="#">
-                    <div class="symbol-mark">⚜</div>
-                    <div class="name">巴克斯</div>
-                    <div class="latin">Bacchus</div>
-                    <div class="theme">戏剧</div>
-                    <div class="entry-hint">进入 →</div>
-                </a>
-            </div>
-        </section>
-
-        <!-- ===== 轮播区 ===== -->
-        <section class="carousel-section">
-            <div class="carousel-grid">
-                <a href="#" class="carousel-item">
-                    <div class="icon-placeholder">⚜</div>
-                    <span class="badge">精选</span>
-                    <h3>Ulugh Beg 星座书</h3>
-                    <p>帖木儿苏丹为撒马尔罕宫廷定制的精美抄本，天文学与艺术的瑰宝。</p>
-                    <div class="call-to">了解更多 →</div>
-                </a>
-                <a href="#" class="carousel-item">
-                    <div class="icon-placeholder">⚜</div>
-                    <span class="badge">精选</span>
-                    <h3>Cocharelli 抄本</h3>
-                    <p>热那亚中世纪珍本，以历史事件与商业生活场景的独特视角呈现。</p>
-                    <div class="call-to">了解更多 →</div>
-                </a>
-                <a href="#" class="carousel-item">
-                    <div class="icon-placeholder">⚜</div>
-                    <span class="badge">精选</span>
-                    <h3>埃尔朗根 Othéa 书简</h3>
-                    <p>克里斯蒂娜·德·皮桑手稿，威廉·弗莱兰特绘制的 103 幅半灰色细密画。</p>
-                    <div class="call-to">了解更多 →</div>
-                </a>
-                <a href="#" class="carousel-item">
-                    <div class="icon-placeholder">⚜</div>
-                    <span class="badge">精选</span>
-                    <h3>第八天球之书</h3>
-                    <p>阿方索十世《星座论》的后期版本，包含 46 幅圆形星图。</p>
-                    <div class="call-to">了解更多 →</div>
-                </a>
-            </div>
-        </section>
-
-        <!-- ===== 客户标志 ===== -->
-        <section class="clients-section">
-            <h2>全球领先的图书馆信赖我们</h2>
-            <div class="clients-grid">
-                <span class="client">多伦多大学</span>
-                <span class="client">摩根图书馆</span>
-                <span class="client">卡尔顿大学</span>
-                <span class="client">圣母大学</span>
-            </div>
-        </section>
-
-        <!-- ===== 特色功能 ===== -->
-        <section class="features-section">
-            <div class="feature-item">
-                <span class="icon">⚜</span>
-                <h3>摹本专家</h3>
-                <p>我们专精于彩绘手抄本摹本，无论出版社新品或品相优良的旧藏，均能以具竞争力的价格为您寻得所需。</p>
-            </div>
-            <div class="feature-item">
-                <span class="icon">⚜</span>
-                <h3>独立供应商</h3>
-                <p>我们既非出版社，亦非古旧书商。我们没有库存压力，只为您的利益而服务——为您甄选最优，价格最佳。</p>
-            </div>
-            <div class="feature-item">
-                <span class="icon">⚜</span>
-                <h3>免费数据库</h3>
-                <p>一个完全可检索的数据库，为您而建，永享免费。无论现在或将来，始终向所有研究者与收藏家开放。</p>
-            </div>
-        </section>
-
-        <!-- ===== 评价 ===== -->
-        <section class="testimonials-section">
-            <h2>来自世界各地的声音</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-box">
-                    <div class="head">
-                        <div class="avatar">M</div>
-                        <div class="name">Dr. Marina Smyth <em>名誉馆员 · 中世纪研究所 · 圣母大学</em></div>
-                    </div>
-                    <p>“初次遇见 Giovanni 时，我便为他的能力所折服——他能与出版社合作，以教育机构特惠价格提供全套摹本。多年来，他与团队始终如一，提供了范围广泛、品质上乘的珍品……” <a href="#">阅读更多</a></p>
-                </div>
-                <div class="testimonial-box">
-                    <div class="head">
-                        <div class="avatar">C</div>
-                        <div class="name">Charlotte Kramer <em>出版人 · Verlag Müller und Schindler &amp; Faksimile Verlag</em></div>
-                    </div>
-                    <p>“我仍记得在法兰克福书展初遇 Giovanni——一位年轻而极其可亲的绅士，从第一刻起便赢得了我们的信任。多年来，我见证了他一贯的认真、投入与热忱，对书籍与中世纪艺术的热爱令人钦佩……” <a href="#">阅读更多</a></p>
-                </div>
-                <div class="testimonial-box">
-                    <div class="head">
-                        <div class="avatar">P</div>
-                        <div class="name">Peter <em>私人收藏家 · 英格兰</em></div>
-                    </div>
-                    <p>“发现这个网站并结识 Giovanni，实属机缘。他为我提供了品相极佳的二手摹本，价格优越。每次包裹抵达，总因精心包装而完美无损。感谢他，我为收藏增添了许多珍品……” <a href="#">阅读更多</a></p>
-                </div>
-                <div class="testimonial-box">
-                    <div class="head">
-                        <div class="avatar">A</div>
-                        <div class="name">艺术史教授 <em>犹他州大学</em></div>
-                    </div>
-                    <p>“我将 Facsimile Finder 作为学生进行手稿与早期书籍研究的资源，也将其作为我自身研究与教学活动的工具——及时了解最新出版物，有助于我为图书馆特藏发展提供咨询……” <a href="#">阅读更多</a></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== 博客 ===== -->
-        <section class="blog-section">
-            <h2>书斋博客 · 彩绘手抄本与摹本的历史</h2>
-            <div class="blog-grid">
-                <a href="#" class="blog-post">
-                    <div class="body">
-                        <span class="icon-placeholder">⚜</span>
-                        <div class="date">2026年5月6日</div>
-                        <h3>将中世纪手稿带入课堂：Giovanni Scorcioni 的讲座与工作坊</h3>
-                        <p>通过触摸感受历史——让摹本成为教学的桥梁。</p>
-                        <span class="read-more">阅读全文 →</span>
-                    </div>
-                </a>
-                <a href="#" class="blog-post">
-                    <div class="body">
-                        <span class="icon-placeholder">⚜</span>
-                        <div class="date">2026年1月30日</div>
-                        <h3>当《死亡之书》走进课堂：通过触摸教授历史</h3>
-                        <p>用摹本还原古埃及的信仰世界，让历史不再遥远。</p>
-                        <span class="read-more">阅读全文 →</span>
-                    </div>
-                </a>
-                <a href="#" class="blog-post">
-                    <div class="body">
-                        <span class="icon-placeholder">⚜</span>
-                        <div class="date">2025年11月20日</div>
-                        <h3>列奥纳多·斐波那契：改变世界计数方式的数学家</h3>
-                        <p>从《算盘书》到黄金比例，一位中世纪数学家的传奇。</p>
-                        <span class="read-more">阅读全文 →</span>
-                    </div>
-                </a>
-                <a href="#" class="blog-post">
-                    <div class="body">
-                        <span class="icon-placeholder">⚜</span>
-                        <div class="date">2025年11月11日</div>
-                        <h3>法兰克福书展 2025：早启与新视野</h3>
-                        <p>在书展的晨曦中探寻古籍摹本的最新动向。</p>
-                        <span class="read-more">阅读全文 →</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- ===== 分类浏览 ===== -->
-        <section class="browse-section">
-            <h2>探索超过 1580 种彩绘手抄本摹本</h2>
-            <div class="browse-categories">
-                <div class="browse-cat">
-                    <h4>主题</h4>
-                    <ul>
-                        <li><a href="#">启示录与贝亚图斯</a></li>
-                        <li><a href="#">天文 / 占星</a></li>
-                        <li><a href="#">动物寓言集</a></li>
-                        <li><a href="#">编年史 / 历史</a></li>
-                        <li><a href="#">文学 · 诗歌</a></li>
-                    </ul>
-                </div>
-                <div class="browse-cat">
-                    <h4>风格</h4>
-                    <ul>
-                        <li><a href="#">亚美尼亚</a></li>
-                        <li><a href="#">拜占庭</a></li>
-                        <li><a href="#">加洛林</a></li>
-                        <li><a href="#">哥特</a></li>
-                        <li><a href="#">北方文艺复兴</a></li>
-                    </ul>
-                </div>
-                <div class="browse-cat">
-                    <h4>语言</h4>
-                    <ul>
-                        <li><a href="#">阿拉伯语</a></li>
-                        <li><a href="#">英语</a></li>
-                        <li><a href="#">法语</a></li>
-                        <li><a href="#">拉丁语</a></li>
-                        <li><a href="#">意大利语</a></li>
-                    </ul>
-                </div>
-                <div class="browse-cat">
-                    <h4>国家</h4>
-                    <ul>
-                        <li><a href="#">奥地利</a></li>
-                        <li><a href="#">法国</a></li>
-                        <li><a href="#">德国</a></li>
-                        <li><a href="#">意大利</a></li>
-                        <li><a href="#">西班牙</a></li>
-                    </ul>
-                </div>
-                <div class="browse-cat">
-                    <h4>出版社</h4>
-                    <ul>
-                        <li><a href="#">ADEVA</a></li>
-                        <li><a href="#">Faksimile Verlag</a></li>
-                        <li><a href="#">M. Moleiro Editor</a></li>
-                        <li><a href="#">Mueller &amp; Schindler</a></li>
-                        <li><a href="#">Quaternio Verlag</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== 页脚 ===== -->
-        <footer class="temple-footer">
-            <div class="footer-grid">
-                <div>
-                    <h4>关于我们</h4>
-                    <p>卡美洛古籍图书馆是一家专营彩绘手抄本摹本的文化机构。我们秉持“传承文明，珍藏历史”的理念，为世界各地的图书馆、研究机构与私人收藏家提供优质藏品与专业服务。</p>
-                    <p style="margin-top:10px;">地址：圣马力诺 · 卡美洛街 12 号<br />电话：+39 (329) 316 9912（欧洲）<br />邮箱：info@camelotlibrary.com</p>
-                </div>
-                <div>
-                    <h4>快速链接</h4>
-                    <ul>
-                        <li><a href="#">首页</a></li>
-                        <li><a href="#">高级检索</a></li>
-                        <li><a href="#">全部摹本</a></li>
-                        <li><a href="#">按价格筛选</a></li>
-                        <li><a href="#">关于我们</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>服务与支持</h4>
-                    <ul>
-                        <li><a href="#">常见问题</a></li>
-                        <li><a href="#">购买指南</a></li>
-                        <li><a href="#">委托出售</a></li>
-                        <li><a href="#">视频资源</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>关注我们</h4>
-                    <ul>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">YouTube</a></li>
-                    </ul>
-                    <p style="margin-top:14px; font-size:0.8rem; color:#c9b89a;">© 2026 卡美洛古籍图书馆<br />Quires Srl 旗下品牌</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>本网站展示所有藏品均为实物拍摄 · 版权归卡美洛古籍图书馆所有</p>
-            </div>
-        </footer>
-
+    <!-- ===== 三角楣 ===== -->
+    <div class="pediment">
+        <img src="logo.png" alt="卡美洛古籍图书馆 Logo" class="pediment-logo" />
+        <h1>— 卡美洛古籍图书馆 —</h1>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    <!-- 头部 -->
+    <header class="temple-header">
+        <div class="temple-logo">
+            <div class="icon">⚜</div>
+            <div>
+                <div class="title"><span>卡美洛</span> 古籍图书馆</div>
+                <div class="sub">彩绘手抄本 · 学术数据库</div>
+            </div>
+        </div>
+        <div class="temple-search">
+            <input type="text" placeholder="搜索超过 1580 种摹本..." />
+            <button>检索</button>
+        </div>
+    </header>
 
-            // 搜索交互
-            const searchBtn = document.querySelector('.temple-search button');
-            const searchInput = document.querySelector('.temple-search input');
-            if (searchBtn) {
-                searchBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const q = searchInput ? searchInput.value.trim() : '';
-                    if (q) {
-                        alert('您正在搜索：“' + q + '”\n（实际将跳转至检索结果页面）');
-                    } else {
-                        alert('请输入关键词。');
-                    }
-                });
-            }
-            if (searchInput) {
-                searchInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        searchBtn.click();
-                    }
-                });
-            }
+    <!-- ===== 导航 — 已移除“全部摹本”和“按价格筛选” ===== -->
+    <nav class="temple-nav">
+        <a href="#">首页</a>
+        <a href="#">高级检索</a>
+        <a href="#">视频</a>
+        <a href="#">书评</a>
+        <a href="#">书斋博客</a>
+    </nav>
 
-            // ===== 万神殿石碑点击跳转 =====
-            const stelae = document.querySelectorAll('.stele');
-            const godNames = {
-                'jupiter': '朱庇特 (法律)',
-                'apollo': '阿波罗 (音乐)',
-                'minerva': '密涅瓦 (智慧)',
-                'aesculapius': '埃斯科拉庇俄斯 (医药)',
-                'mars': '马尔斯 (战争)',
-                'venus': '维纳斯 (爱情)',
-                'mercury': '墨丘利 (商业)',
-                'diana': '狄安娜 (狩猎)',
-                'vesta': '维斯塔 (家庭)',
-                'neptunus': '尼普顿 (海洋)',
-                'pluto': '普路托 (冥界)',
-                'bacchus': '巴克斯 (戏剧)'
-            };
+    <!-- ===== 万神殿 ===== -->
+    <section class="pantheon-magnus">
+        <div class="spqr-banner">S·P·Q·R</div>
+        <div class="pantheon-title">
+            ROMANUS PANTHEON
+            <span class="light">— 十二主神 · 十二智慧领域 —</span>
+        </div>
+        <div class="pantheon-sub">点击石碑，探寻对应领域的古籍珍本</div>
+        <div class="stele-grid">
+            <a href="#" class="stele" data-god="jupiter" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">朱庇特</div>
+                <div class="latin">Jupiter</div>
+                <div class="theme">法律</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="apollo" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">阿波罗</div>
+                <div class="latin">Apollo</div>
+                <div class="theme">音乐</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="minerva" data-link="Minerva.html">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">密涅瓦</div>
+                <div class="latin">Minerva</div>
+                <div class="theme">哲学</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="aesculapius" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">埃斯科拉庇俄斯</div>
+                <div class="latin">Aesculapius</div>
+                <div class="theme">医药</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="mars" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">马尔斯</div>
+                <div class="latin">Mars</div>
+                <div class="theme">战争</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="venus" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">维纳斯</div>
+                <div class="latin">Venus</div>
+                <div class="theme">爱情</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="mercury" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">墨丘利</div>
+                <div class="latin">Mercurius</div>
+                <div class="theme">商业</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="diana" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">狄安娜</div>
+                <div class="latin">Diana</div>
+                <div class="theme">狩猎</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="vesta" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">维斯塔</div>
+                <div class="latin">Vesta</div>
+                <div class="theme">家庭</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="neptunus" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">尼普顿</div>
+                <div class="latin">Neptūnus</div>
+                <div class="theme">海洋</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="pluto" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">普路托</div>
+                <div class="latin">Plūtō</div>
+                <div class="theme">冥界</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+            <a href="#" class="stele" data-god="bacchus" data-link="#">
+                <div class="symbol-mark">⚜</div>
+                <div class="name">巴克斯</div>
+                <div class="latin">Bacchus</div>
+                <div class="theme">戏剧</div>
+                <div class="entry-hint">进入 →</div>
+            </a>
+        </div>
+    </section>
 
-            stelae.forEach(stele => {
-                stele.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const god = this.dataset.god;
-                    const name = godNames[god] || '未知神祇';
-                    alert('您将跳转至「' + name + '」专题页面。\n（此链接为演示，实际将跳转至相应页面。）');
-                    window.location.href = this.dataset.link || '#';
-                });
+    <!-- ===== 轮播区 ===== -->
+    <section class="carousel-section">
+        <div class="carousel-grid">
+            <a href="#" class="carousel-item">
+                <div class="icon-placeholder">⚜</div>
+                <span class="badge">精选</span>
+                <h3>Ulugh Beg 星座书</h3>
+                <p>帖木儿苏丹为撒马尔罕宫廷定制的精美抄本，天文学与艺术的瑰宝。</p>
+                <div class="call-to">了解更多 →</div>
+            </a>
+            <a href="#" class="carousel-item">
+                <div class="icon-placeholder">⚜</div>
+                <span class="badge">精选</span>
+                <h3>Cocharelli 抄本</h3>
+                <p>热那亚中世纪珍本，以历史事件与商业生活场景的独特视角呈现。</p>
+                <div class="call-to">了解更多 →</div>
+            </a>
+            <a href="#" class="carousel-item">
+                <div class="icon-placeholder">⚜</div>
+                <span class="badge">精选</span>
+                <h3>埃尔朗根 Othéa 书简</h3>
+                <p>克里斯蒂娜·德·皮桑手稿，威廉·弗莱兰特绘制的 103 幅半灰色细密画。</p>
+                <div class="call-to">了解更多 →</div>
+            </a>
+            <a href="#" class="carousel-item">
+                <div class="icon-placeholder">⚜</div>
+                <span class="badge">精选</span>
+                <h3>第八天球之书</h3>
+                <p>阿方索十世《星座论》的后期版本，包含 46 幅圆形星图。</p>
+                <div class="call-to">了解更多 →</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== 客户标志 ===== -->
+    <section class="clients-section">
+        <h2>帝国诸大图书馆 · 皆仰赖吾辈甄选之善本</h2>
+        <div class="clients-grid">
+            <span class="client">亚历山大图书馆</span>
+            <span class="client">帕拉丁图书馆</span>
+            <span class="client">乌尔比亚图书馆</span>
+            <span class="client">塞尔苏斯图书馆</span>
+        </div>
+    </section>
+
+    <!-- ===== 特色功能 ===== -->
+    <section class="features-section">
+        <div class="feature-item">
+            <span class="icon">⚜</span>
+            <h3>珍本甄选</h3>
+            <p>我们专注于彩绘手抄本原本的甄选与流通。无论是皇家敕令写本，还是贵族私家旧藏，我们都能以合理的市场价格，为您精准匹配所需藏品。</p>
+        </div>
+        <div class="feature-item">
+            <span class="icon">⚜</span>
+            <h3>独立书商</h3>
+            <p>我们不是普通书商，也不是旧货摊位。我们不积压库存，而是根据您的具体需求，在全球范围内搜寻彩绘手抄本珍本，并以公道的价格为您奉上。</p>
+        </div>
+        <div class="feature-item">
+            <span class="icon">⚜</span>
+            <h3>公共目录</h3>
+            <p>卡美洛古籍图书馆已将所有馆藏抄本完成编目，这些目录信息将永久面向学术界和收藏界免费开放。查阅不设门槛，不收取费用，当前如此，未来亦然。</p>
+        </div>
+    </section>
+
+    <!-- ===== 评价 — 古罗马哲人名言，无“阅读更多” ===== -->
+    <section class="testimonials-section">
+        <h2>古哲先贤 · 论书之箴言</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-box">
+                <div class="head">
+                    <div class="avatar">C</div>
+                    <div class="name">马尔库斯·图利乌斯·西塞罗 <em>罗马元老院议员 · 哲学家 · 修辞学家</em></div>
+                </div>
+                <p>
+                    “一间没有书籍的房间，就像一具没有灵魂的躯体。”
+                    <span class="latin-quote">“Cubiculum sine libris est quasi corpus sine anima.”</span>
+                </p>
+            </div>
+            <div class="testimonial-box">
+                <div class="head">
+                    <div class="avatar">S</div>
+                    <div class="name">卢基乌斯·安奈乌斯·塞涅卡 <em>斯多葛学派哲学家 · 政治家 · 剧作家</em></div>
+                </div>
+                <p>
+                    “书籍是知识的财富，是灵魂的良药。”
+                    <span class="latin-quote">“Libri sunt thesaurus scientiae, medicina animi.”</span>
+                </p>
+            </div>
+            <div class="testimonial-box">
+                <div class="head">
+                    <div class="avatar">O</div>
+                    <div class="name">普布利乌斯·奥维狄乌斯·纳索 <em>罗马诗人 · 《变形记》作者</em></div>
+                </div>
+                <p>
+                    “艺术源于学习，习惯使之完美。”
+                    <span class="latin-quote">“Ars ex doctrina venit, consuetudo perfecti.”</span>
+                </p>
+            </div>
+            <div class="testimonial-box">
+                <div class="head">
+                    <div class="avatar">H</div>
+                    <div class="name">昆图斯·贺拉提乌斯·弗拉库斯 <em>罗马诗人 · 讽刺作家 · 文艺批评家</em></div>
+                </div>
+                <p>
+                    “书籍带来快乐，也带来教诲。”
+                    <span class="latin-quote">“Libri delectant, docent etiam.”</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 博客 ===== -->
+    <section class="blog-section">
+        <h2>书斋博客 · 彩绘手抄本与摹本的历史</h2>
+        <div class="blog-grid">
+            <a href="#" class="blog-post">
+                <div class="body">
+                    <span class="icon-placeholder">⚜</span>
+                    <div class="date">2026年5月6日</div>
+                    <h3>将中世纪手稿带入课堂：Giovanni Scorcioni 的讲座与工作坊</h3>
+                    <p>通过触摸感受历史——让摹本成为教学的桥梁。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+            </a>
+            <a href="#" class="blog-post">
+                <div class="body">
+                    <span class="icon-placeholder">⚜</span>
+                    <div class="date">2026年1月30日</div>
+                    <h3>当《死亡之书》走进课堂：通过触摸教授历史</h3>
+                    <p>用摹本还原古埃及的信仰世界，让历史不再遥远。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+            </a>
+            <a href="#" class="blog-post">
+                <div class="body">
+                    <span class="icon-placeholder">⚜</span>
+                    <div class="date">2025年11月20日</div>
+                    <h3>列奥纳多·斐波那契：改变世界计数方式的数学家</h3>
+                    <p>从《算盘书》到黄金比例，一位中世纪数学家的传奇。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+            </a>
+            <a href="#" class="blog-post">
+                <div class="body">
+                    <span class="icon-placeholder">⚜</span>
+                    <div class="date">2025年11月11日</div>
+                    <h3>法兰克福书展 2025：早启与新视野</h3>
+                    <p>在书展的晨曦中探寻古籍摹本的最新动向。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== 分类浏览 ===== -->
+    <section class="browse-section">
+        <h2>探索超过 1580 种彩绘手抄本</h2>
+        <div class="browse-categories">
+            <div class="browse-cat">
+                <h4>主题</h4>
+                <ul>
+                    <li><a href="#">启示录与贝亚图斯</a></li>
+                    <li><a href="#">天文 / 占星</a></li>
+                    <li><a href="#">动物寓言集</a></li>
+                    <li><a href="#">编年史 / 历史</a></li>
+                    <li><a href="#">文学 · 诗歌</a></li>
+                </ul>
+            </div>
+            <div class="browse-cat">
+                <h4>风格</h4>
+                <ul>
+                    <li><a href="#">亚美尼亚</a></li>
+                    <li><a href="#">拜占庭</a></li>
+                    <li><a href="#">加洛林</a></li>
+                    <li><a href="#">哥特</a></li>
+                    <li><a href="#">北方文艺复兴</a></li>
+                </ul>
+            </div>
+            <div class="browse-cat">
+                <h4>语言</h4>
+                <ul>
+                    <li><a href="#">阿拉伯语</a></li>
+                    <li><a href="#">英语</a></li>
+                    <li><a href="#">法语</a></li>
+                    <li><a href="#">拉丁语</a></li>
+                    <li><a href="#">意大利语</a></li>
+                </ul>
+            </div>
+            <div class="browse-cat">
+                <h4>国家</h4>
+                <ul>
+                    <li><a href="#">奥地利</a></li>
+                    <li><a href="#">法国</a></li>
+                    <li><a href="#">德国</a></li>
+                    <li><a href="#">意大利</a></li>
+                    <li><a href="#">西班牙</a></li>
+                </ul>
+            </div>
+            <div class="browse-cat">
+                <h4>出版社</h4>
+                <ul>
+                    <li><a href="#">ADEVA</a></li>
+                    <li><a href="#">Faksimile Verlag</a></li>
+                    <li><a href="#">M. Moleiro Editor</a></li>
+                    <li><a href="#">Mueller &amp; Schindler</a></li>
+                    <li><a href="#">Quaternio Verlag</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 页脚 ===== -->
+    <footer class="temple-footer">
+        <div class="footer-grid">
+            <div>
+                <h4>关于我们</h4>
+                <p>卡美洛古籍图书馆是一家专营彩绘手抄本的文化机构。我们所提供的每一册抄本，均为手工书写、手工彩绘的珍品，承载着中世纪缮写室的技法与匠心。</p>
+            </div>
+            <div>
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">高级检索</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>服务与支持</h4>
+                <ul>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">购买指南</a></li>
+                    <li><a href="#">委托出售</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>关注我们</h4>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+                <p style="margin-top:14px; font-size:0.8rem; color:#c9b89a;">© 2026 卡美洛古籍图书馆</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>本网站版权归卡美洛古籍图书馆所有</p>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // 搜索交互
+        const searchBtn = document.querySelector('.temple-search button');
+        const searchInput = document.querySelector('.temple-search input');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const q = searchInput ? searchInput.value.trim() : '';
+                if (q) {
+                    alert('您正在搜索：“' + q + '”\n（实际将跳转至检索结果页面）');
+                } else {
+                    alert('请输入关键词。');
+                }
             });
+        }
+        if (searchInput) {
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    searchBtn.click();
+                }
+            });
+        }
 
-            // 其他演示链接（轮播、博客、分类等）
-            document.querySelectorAll('.carousel-item, .blog-post, .browse-cat ul li a').forEach(el => {
-                el.addEventListener('click', function(e) {
-                    if (this.tagName === 'A' && this.getAttribute('href') === '#') {
-                        e.preventDefault();
-                        alert('此链接为演示，实际将跳转至相应页面。');
+        // 万神殿石碑点击跳转
+        const stelae = document.querySelectorAll('.stele');
+        const godNames = {
+            'jupiter': '朱庇特 (法律)',
+            'apollo': '阿波罗 (音乐)',
+            'minerva': '密涅瓦 (哲学)',
+            'aesculapius': '埃斯科拉庇俄斯 (医药)',
+            'mars': '马尔斯 (战争)',
+            'venus': '维纳斯 (爱情)',
+            'mercury': '墨丘利 (商业)',
+            'diana': '狄安娜 (狩猎)',
+            'vesta': '维斯塔 (家庭)',
+            'neptunus': '尼普顿 (海洋)',
+            'pluto': '普路托 (冥界)',
+            'bacchus': '巴克斯 (戏剧)'
+        };
+
+        stelae.forEach(stele => {
+            stele.addEventListener('click', function(e) {
+                e.preventDefault();
+                const god = this.dataset.god;
+                const target = this.dataset.link || '#';
+
+                if (god === 'minerva') {
+                    if (target !== '#') {
+                        window.location.href = target;
+                    } else {
+                        alert('该专题页面尚未配置，敬请期待。');
                     }
-                });
+                    return;
+                }
+
+                const name = godNames[god] || '未知神祇';
+                alert('您将跳转至「' + name + '」专题页面。\n（此链接为演示，实际将跳转至相应页面。）');
+                if (target !== '#') {
+                    window.location.href = target;
+                } else {
+                    alert('该专题页面尚未配置，敬请期待。');
+                }
             });
         });
-    </script>
+
+        // 其他演示链接
+        document.querySelectorAll('.carousel-item, .blog-post, .browse-cat ul li a').forEach(el => {
+            el.addEventListener('click', function(e) {
+                if (this.tagName === 'A' && this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    alert('此链接为演示，实际将跳转至相应页面。');
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
