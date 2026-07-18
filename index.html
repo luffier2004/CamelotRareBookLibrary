@@ -966,13 +966,13 @@
         </div>
     </header>
 
-    <!-- ===== 导航 — 已移除“全部摹本”和“按价格筛选” ===== -->
+    <!-- ===== 导航 — “神谕”指向 oraculum.html ===== -->
     <nav class="temple-nav">
         <a href="#">首页</a>
-        <a href="#">高级检索</a>
-        <a href="#">视频</a>
-        <a href="#">书评</a>
-        <a href="#">书斋博客</a>
+        <a href="oraculum.html">神谕</a>
+        <a href="#">书谱</a>
+        <a href="#">书所</a>
+        <a href="#">纪闻</a>
     </nav>
 
     <!-- ===== 万神殿 ===== -->
@@ -984,11 +984,11 @@
         </div>
         <div class="pantheon-sub">点击石碑，探寻对应领域的古籍珍本</div>
         <div class="stele-grid">
-            <a href="#" class="stele" data-god="jupiter" data-link="#">
+            <a href="#" class="stele" data-god="Jupiter" data-link="Jupiter.html">
                 <div class="symbol-mark">⚜</div>
                 <div class="name">朱庇特</div>
                 <div class="latin">Jupiter</div>
-                <div class="theme">法律</div>
+                <div class="theme">秩序</div>
                 <div class="entry-hint">进入 →</div>
             </a>
             <a href="#" class="stele" data-god="apollo" data-link="#">
@@ -1012,7 +1012,7 @@
                 <div class="theme">医药</div>
                 <div class="entry-hint">进入 →</div>
             </a>
-            <a href="#" class="stele" data-god="mars" data-link="#">
+            <a href="#" class="stele" data-god="mars" data-link="Mars.html">
                 <div class="symbol-mark">⚜</div>
                 <div class="name">马尔斯</div>
                 <div class="latin">Mars</div>
@@ -1044,7 +1044,7 @@
                 <div class="symbol-mark">⚜</div>
                 <div class="name">维斯塔</div>
                 <div class="latin">Vesta</div>
-                <div class="theme">家庭</div>
+                <div class="theme">家族</div>
                 <div class="entry-hint">进入 →</div>
             </a>
             <a href="#" class="stele" data-god="neptunus" data-link="#">
@@ -1293,7 +1293,7 @@
                 <h4>快速链接</h4>
                 <ul>
                     <li><a href="#">首页</a></li>
-                    <li><a href="#">高级检索</a></li>
+                    <li><a href="oraculum.html">神谕</a></li>
                     <li><a href="#">关于我们</a></li>
                 </ul>
             </div>
@@ -1349,40 +1349,12 @@
             });
         }
 
-        // 万神殿石碑点击跳转
+        // 万神殿石碑点击 — 无弹窗直接跳转（若链接为 # 则提示未配置）
         const stelae = document.querySelectorAll('.stele');
-        const godNames = {
-            'jupiter': '朱庇特 (法律)',
-            'apollo': '阿波罗 (音乐)',
-            'minerva': '密涅瓦 (哲学)',
-            'aesculapius': '埃斯科拉庇俄斯 (医药)',
-            'mars': '马尔斯 (战争)',
-            'venus': '维纳斯 (爱情)',
-            'mercury': '墨丘利 (商业)',
-            'diana': '狄安娜 (狩猎)',
-            'vesta': '维斯塔 (家庭)',
-            'neptunus': '尼普顿 (海洋)',
-            'pluto': '普路托 (冥界)',
-            'bacchus': '巴克斯 (戏剧)'
-        };
-
         stelae.forEach(stele => {
             stele.addEventListener('click', function(e) {
                 e.preventDefault();
-                const god = this.dataset.god;
                 const target = this.dataset.link || '#';
-
-                if (god === 'minerva') {
-                    if (target !== '#') {
-                        window.location.href = target;
-                    } else {
-                        alert('该专题页面尚未配置，敬请期待。');
-                    }
-                    return;
-                }
-
-                const name = godNames[god] || '未知神祇';
-                alert('您将跳转至「' + name + '」专题页面。\n（此链接为演示，实际将跳转至相应页面。）');
                 if (target !== '#') {
                     window.location.href = target;
                 } else {
