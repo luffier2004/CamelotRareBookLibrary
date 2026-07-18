@@ -270,7 +270,15 @@
         .temple-nav a:hover::before {
             opacity: 0.6;
         }
-
+      /* ===== 修复：添加 active 样式 ===== */
+        .temple-nav a.active {
+            color: #8b1a1a;
+            border-bottom-color: #f0d68a;
+            border-bottom-width: 3px;
+        }
+        .temple-nav a.active::before {
+            opacity: 0.6;
+        }
         /* ===== 面包屑 ===== */
         .temple-breadcrumb {
             padding: 8px 0 14px;
