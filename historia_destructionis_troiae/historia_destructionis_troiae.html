@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卡美洛古籍图书馆 · 特洛伊毁灭史</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            background: #1a0f0a;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image:
+                radial-gradient(ellipse at 20% 30%, #3d1f14 0%, #0d0806 100%);
+        }
+
+        /* ===== 主容器 ===== */
+        .temple {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            background: #ece4d7;
+            background-image:
+                repeating-linear-gradient(45deg, rgba(200, 180, 160, 0.06) 0px, rgba(200, 180, 160, 0.06) 2px, transparent 2px, transparent 6px),
+                radial-gradient(ellipse at 50% 20%, #f5efe4, #dcd0c0);
+            border: 8px solid #b8923a;
+            box-shadow:
+                0 0 0 2px #5c3a1a,
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                inset 0 0 60px rgba(180, 140, 80, 0.08);
+            border-radius: 4px;
+            position: relative;
+            padding: 0 40px 30px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== 神庙三角楣 ===== */
+        .pediment {
+            position: relative;
+            margin: -8px -40px 0 -40px;
+            padding: 12px 40px 12px;
+            background: linear-gradient(180deg, #8b1a1a 0%, #5c0e0e 100%);
+            border-bottom: 4px solid #c9a84c;
+            text-align: center;
+            box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .pediment::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #c9a84c, #f0d68a, #c9a84c, transparent);
+            border-radius: 0 0 50% 50%;
+        }
+        .pediment::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #c9a84c, #f0d68a, #c9a84c);
+            opacity: 0.5;
+        }
+
+        .pediment-logo {
+            height: 50px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            flex-shrink: 0;
+        }
+
+        .pediment h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 2.0rem;
+            color: #f5efe4;
+            letter-spacing: 6px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            margin: 0;
+        }
+
+        /* ===== 罗马柱装饰 ===== */
+        .temple .column-left,
+        .temple .column-right {
+            position: absolute;
+            top: 80px;
+            bottom: 40px;
+            width: 18px;
+            background: linear-gradient(90deg, #dcd0c0, #f5efe4, #dcd0c0);
+            border-left: 2px solid #c9a84c;
+            border-right: 2px solid #c9a84c;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .temple .column-left {
+            left: 14px;
+        }
+        .temple .column-right {
+            right: 14px;
+        }
+        .temple .column-left::before,
+        .temple .column-right::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: radial-gradient(ellipse at 50% 100%, #c9a84c, transparent 70%);
+            opacity: 0.3;
+            border-radius: 50% 50% 0 0;
+        }
+        .temple .column-left::after,
+        .temple .column-right::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: radial-gradient(ellipse at 50% 0%, #c9a84c, transparent 70%);
+            opacity: 0.3;
+            border-radius: 0 0 50% 50%;
+        }
+
+        /* ===== 头部 ===== */
+        .temple-header {
+            padding: 20px 0 16px;
+            border-bottom: 2px solid #c9a84c;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            position: relative;
+        }
+        .temple-header::after {
+            content: '⚜ ⚜ ⚜';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ece4d7;
+            padding: 0 16px;
+            color: #b8923a;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+        }
+
+        .temple-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .temple-logo .icon {
+            font-size: 2.2rem;
+            color: #8b1a1a;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
+        .temple-logo .title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            color: #3d1f14;
+        }
+        .temple-logo .title span {
+            color: #8b1a1a;
+        }
+        .temple-logo .sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #7a5d46;
+            margin-left: 6px;
+        }
+
+        /* ===== 导航 ===== */
+        .temple-nav {
+            padding: 12px 0 8px;
+            margin: 0 0 12px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 28px;
+        }
+        .temple-nav a {
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+            color: #5c4436;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            position: relative;
+        }
+        .temple-nav a::before {
+            content: '⚜ ';
+            opacity: 0.6;
+            transition: 0.2s;
+        }
+        .temple-nav a:hover {
+            color: #8b1a1a;
+            border-bottom-color: #c9a84c;
+        }
+        .temple-nav a:hover::before {
+            opacity: 1;
+        }
+        .temple-nav a.active {
+            color: #8b1a1a;
+            border-bottom-color: #c9a84c;
+        }
+        .temple-nav a.active::before {
+            opacity: 1;
+        }
+
+        /* ===== 面包屑 ===== */
+        .temple-breadcrumb {
+            padding: 8px 0 14px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: #7a5d46;
+        }
+        .temple-breadcrumb a {
+            color: #8b1a1a;
+            text-decoration: none;
+            border-bottom: 1px dotted #c9a84c;
+            transition: 0.2s;
+        }
+        .temple-breadcrumb a:hover {
+            color: #3d1f14;
+            border-bottom-color: #3d1f14;
+        }
+
+        /* ===== 标题区 ===== */
+        .temple-title {
+            padding: 12px 0 10px;
+            margin-bottom: 18px;
+            text-align: center;
+            border-bottom: 2px solid rgba(201, 168, 76, 0.3);
+            position: relative;
+        }
+        .temple-title h2 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #2c1810;
+            letter-spacing: 6px;
+            text-shadow: 2px 2px 0 rgba(200, 180, 160, 0.3);
+        }
+        .temple-title h2 .light {
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: #7a5d46;
+            letter-spacing: 3px;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            margin-left: 12px;
+        }
+        .temple-title .tags {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        .temple-title .tags span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(201, 168, 76, 0.12);
+            padding: 4px 18px;
+            border-radius: 30px;
+            color: #5c4436;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+        }
+
+        /* ===== 图片展示 ===== */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin: 20px 0 30px;
+            padding: 10px;
+            background: rgba(180, 160, 130, 0.1);
+            border-radius: 4px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+        .image-grid .img-frame {
+            background: #f5efe4;
+            border: 6px solid #c9a84c;
+            outline: 2px solid #8b6a3a;
+            outline-offset: -4px;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            aspect-ratio: 1024 / 1554;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+        .image-grid .img-frame::after {
+            content: '✧';
+            position: absolute;
+            bottom: 6px;
+            right: 10px;
+            font-size: 1.2rem;
+            color: #c9a84c;
+            opacity: 0.4;
+        }
+        .image-grid .img-frame:hover {
+            transform: scale(1.03);
+            box-shadow: 6px 8px 28px rgba(0, 0, 0, 0.25);
+            border-color: #f0d68a;
+        }
+        .image-grid .img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ===== 双栏 ===== */
+        .temple-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 10px;
+        }
+        .temple-col-main {
+            flex: 2;
+            min-width: 280px;
+        }
+        .temple-col-side {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        /* ===== 正文 ===== */
+        .temple-text p {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 1.15rem;
+            color: #2c1810;
+            margin-bottom: 18px;
+            text-align: justify;
+            text-indent: 2em;
+            line-height: 1.8;
+        }
+        .temple-text p:first-of-type::first-letter {
+            font-family: 'Cinzel', serif;
+            font-size: 4.2rem;
+            float: left;
+            line-height: 0.9;
+            margin-right: 10px;
+            color: #8b1a1a;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        .temple-text strong {
+            color: #5c0e0e;
+            font-weight: 600;
+        }
+
+        /* ===== 声明 ===== */
+        .temple-statement {
+            margin: 30px 0 10px;
+            padding: 22px 28px;
+            background: rgba(180, 160, 130, 0.08);
+            border-left: 6px solid #8b1a1a;
+            border-radius: 2px;
+            font-size: 1rem;
+            color: #3d2a1a;
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+        }
+        .temple-statement::before {
+            content: '▣';
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            font-size: 1.6rem;
+            color: #c9a84c;
+            opacity: 0.3;
+        }
+        .temple-statement h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            color: #5c0e0e;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            font-style: normal;
+        }
+
+        /* ===== 右侧 ===== */
+        .temple-offering {
+            background: rgba(180, 160, 130, 0.08);
+            padding: 24px 20px;
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: 24px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            box-shadow: inset 0 0 30px rgba(180, 160, 130, 0.05);
+        }
+        .temple-offering .label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: #7a5d46;
+            text-transform: uppercase;
+        }
+        .temple-offering .value {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c1810;
+            margin: 6px 0 16px;
+            letter-spacing: 2px;
+        }
+        .temple-offering .btn {
+            background: #8b1a1a;
+            border: none;
+            color: #f5efe4;
+            padding: 12px 40px;
+            border-radius: 40px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #c9a84c;
+            box-shadow: 0 2px 8px rgba(139, 26, 26, 0.3);
+        }
+        .temple-offering .btn:hover {
+            background: #5c0e0e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(139, 26, 26, 0.4);
+        }
+
+        /* ===== 书籍档案 ===== */
+        .temple-archive {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 22px 22px 18px;
+            border-radius: 4px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            position: relative;
+        }
+        .temple-archive::before {
+            content: '❧ 铭文板 ❧';
+            position: absolute;
+            top: -10px;
+            right: 18px;
+            background: #ece4d7;
+            padding: 0 14px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            color: #7a5d46;
+        }
+        .temple-archive h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: #2c1810;
+            border-bottom: 2px solid rgba(201, 168, 76, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        .temple-archive dl {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 6px 14px;
+        }
+        .temple-archive dt {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            color: #5c4436;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px dotted rgba(201, 168, 76, 0.2);
+            padding-bottom: 3px;
+        }
+        .temple-archive dd {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            color: #2c1810;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px 6px;
+            align-items: center;
+            border-bottom: 1px dotted rgba(201, 168, 76, 0.15);
+            padding-bottom: 3px;
+        }
+        .temple-archive dd a {
+            color: #8b1a1a;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(201, 168, 76, 0.4);
+            transition: 0.2s;
+        }
+        .temple-archive dd a:hover {
+            color: #2c1810;
+            border-bottom-color: #2c1810;
+        }
+
+        /* ===== 可点击标签 ===== */
+        .archive-tag {
+            display: inline-block;
+            background: rgba(201, 168, 76, 0.12);
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: #3d1f14;
+            cursor: pointer;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            transition: 0.2s;
+            line-height: 1.6;
+            margin: 1px 0;
+            letter-spacing: 0.3px;
+        }
+        .archive-tag:hover {
+            background: #8b1a1a;
+            color: #f5efe4;
+            border-color: #8b1a1a;
+            transform: scale(1.04);
+            box-shadow: 0 4px 12px rgba(139, 26, 26, 0.2);
+        }
+        .archive-tag.place-tag {
+            background: rgba(160, 140, 120, 0.15);
+            border-color: rgba(160, 140, 120, 0.2);
+            color: #5c4436;
+        }
+        .archive-tag.place-tag:hover {
+            background: #5c4436;
+            color: #f5efe4;
+            border-color: #5c4436;
+        }
+
+        /* ===== 模态框通用 ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 6, 4, 0.85);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #f5efe4;
+            max-width: 540px;
+            width: 90%;
+            border-radius: 4px;
+            padding: 32px 36px 28px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            border: 6px solid #8b1a1a;
+            outline: 2px solid #c9a84c;
+            outline-offset: -4px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-box .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            font-size: 2.2rem;
+            cursor: pointer;
+            color: #7a5d46;
+            background: none;
+            border: none;
+            font-family: 'Cinzel', serif;
+            transition: 0.2s;
+            z-index: 10;
+        }
+        .modal-box .close-btn:hover {
+            color: #8b1a1a;
+            transform: rotate(90deg);
+        }
+        .modal-box h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c1810;
+            margin-bottom: 12px;
+            border-bottom: 2px solid rgba(201, 168, 76, 0.3);
+            padding-bottom: 10px;
+            letter-spacing: 3px;
+        }
+        .modal-box .content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #2c1810;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        /* ===== 购物车 - 超紧凑账单 ===== */
+        .bill-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 0;
+            border-bottom: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2c1810;
+            line-height: 1.3;
+        }
+        .bill-row .label {
+            color: #5c4436;
+            font-weight: 400;
+        }
+        .bill-row .value {
+            font-weight: 600;
+            color: #2c1810;
+        }
+        .bill-row .value.amount {
+            color: #8b1a1a;
+            font-weight: 700;
+        }
+
+        .bill-total {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c1810;
+            padding-top: 4px;
+            border-top: 2px solid #c9a84c;
+            margin-top: 2px;
+            line-height: 1.3;
+        }
+        .bill-total .total-price {
+            color: #8b1a1a;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            justify-content: flex-end;
+        }
+        .cart-actions .btn-secondary {
+            background: transparent;
+            border: 1px solid #7a5d46;
+            color: #7a5d46;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .cart-actions .btn-secondary:hover {
+            background: #7a5d46;
+            color: #f5efe4;
+        }
+        .cart-actions .btn-primary {
+            background: #8b1a1a;
+            border: none;
+            color: #f5efe4;
+            padding: 8px 28px;
+            border-radius: 40px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid #c9a84c;
+        }
+        .cart-actions .btn-primary:hover {
+            background: #5c0e0e;
+            transform: scale(1.02);
+        }
+
+        .payment-info {
+            text-align: center;
+            padding: 10px 0;
+        }
+        .payment-info .social {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #8b1a1a;
+            font-weight: 600;
+            margin: 12px 0 6px;
+        }
+        .payment-info .detail {
+            font-size: 1.1rem;
+            color: #2c1810;
+        }
+        .payment-info .icon {
+            font-size: 2.8rem;
+            color: #c9a84c;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+
+        /* ===== 底部 ===== */
+        .temple-footer {
+            background: rgba(30, 18, 12, 0.6);
+            padding: 28px 20px 18px;
+            margin-top: 45px;
+            border-radius: 4px;
+            border-top: 3px solid #c9a84c;
+            backdrop-filter: blur(2px);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 28px;
+        }
+        .footer-grid h4 {
+            font-family: 'Cinzel', serif;
+            color: #c9a84c;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            padding-bottom: 6px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        .footer-grid p,
+        .footer-grid li {
+            font-size: 0.9rem;
+            color: #d4c5b2;
+            line-height: 1.8;
+        }
+        .footer-grid ul {
+            list-style: none;
+        }
+        .footer-grid ul li a {
+            text-decoration: none;
+            color: #b8a693;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+        .footer-grid ul li a:hover {
+            color: #f0d68a;
+            border-bottom-color: #c9a84c;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            font-size: 0.85rem;
+            color: #c9b89a;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+        .footer-bottom p {
+            color: #c9b89a;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 1024px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+        }
+        @media (max-width: 768px) {
+            .temple {
+                padding: 0 20px 20px;
+            }
+            .pediment {
+                margin: -8px -20px 0 -20px;
+                padding: 10px 20px;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .pediment h1 {
+                font-size: 1.4rem;
+                letter-spacing: 4px;
+            }
+            .pediment-logo {
+                height: 40px;
+            }
+            .temple-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .temple-title h2 {
+                font-size: 2rem;
+            }
+            .temple-title h2 .light {
+                font-size: 1rem;
+                display: block;
+                margin-left: 0;
+            }
+            .temple-col-main,
+            .temple-col-side {
+                flex: 1 1 100%;
+            }
+            .temple-archive dl {
+                grid-template-columns: 1fr;
+            }
+            .temple .column-left,
+            .temple .column-right {
+                display: none;
+            }
+            .temple-text p:first-of-type::first-letter {
+                font-size: 3rem;
+            }
+            .cart-actions {
+                flex-direction: column;
+            }
+            .cart-actions .btn-secondary,
+            .cart-actions .btn-primary {
+                width: 100%;
+                text-align: center;
+            }
+            .bill-row {
+                font-size: 1.0rem;
+                padding: 0px 0;
+            }
+            .bill-total {
+                font-size: 1.2rem;
+                padding-top: 3px;
+                margin-top: 1px;
+            }
+        }
+        @media (max-width: 480px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .pediment h1 {
+                font-size: 1.2rem;
+            }
+            .modal-box {
+                padding: 24px 20px;
+            }
+            .bill-row {
+                font-size: 0.9rem;
+                padding: 0px 0;
+            }
+            .bill-total {
+                font-size: 1.0rem;
+                padding-top: 2px;
+                margin-top: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== 主容器 ===== -->
+    <div class="temple">
+
+        <!-- 罗马柱装饰 -->
+        <div class="column-left"></div>
+        <div class="column-right"></div>
+
+        <!-- ===== 三角楣 ===== -->
+        <div class="pediment">
+            <img src="../logo.png" alt="卡美洛古籍图书馆 Logo" class="pediment-logo" />
+            <h1>— 卡美洛古籍图书馆 —</h1>
+        </div>
+
+        <!-- ===== 头部 ===== -->
+        <header class="temple-header">
+            <div class="temple-logo">
+                <div class="icon">⚜</div>
+                <div>
+                    <div class="title"><span>卡美洛</span> 古籍图书馆</div>
+                    <div class="sub">彩绘手抄本 · 学术数据库</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== 导航 ===== -->
+        <nav class="temple-nav">
+            <a href="../index.html">首页</a>
+            <a href="../oraculum.html">神谕</a>
+            <a href="../Minerva.html">书谱</a>
+            <a href="#" class="active">名谱</a>
+            <a href="#">纪闻</a>
+        </nav>
+
+        <!-- ===== 面包屑 ===== -->
+        <div class="temple-breadcrumb">
+            <a href="../Mars.html">← 返回搜索结果</a> &nbsp;|&nbsp; <a href="../index.html">开始新检索</a>
+        </div>
+
+        <!-- ===== 标题 ===== -->
+        <div class="temple-title">
+            <h2>
+                特洛伊毁灭史
+                <span class="light">北方文艺复兴彩绘抄本</span>
+            </h2>
+            <div class="tags">
+                <span>北方文艺复兴</span>
+                <span>史诗文学</span>
+                <span>中古法语</span>
+            </div>
+        </div>
+
+        <!-- ===== 图片展示 ===== -->
+        <div class="image-grid">
+            <div class="img-frame"><img src="historia_destructionis_troiae_1.jpeg" alt="特洛伊毁灭史 1" loading="lazy" /></div>
+            <div class="img-frame"><img src="historia_destructionis_troiae_2.jpeg" alt="特洛伊毁灭史 2" loading="lazy" /></div>
+            <div class="img-frame"><img src="historia_destructionis_troiae_3.jpeg" alt="特洛伊毁灭史 3" loading="lazy" /></div>
+            <div class="img-frame"><img src="historia_destructionis_troiae_4.jpeg" alt="特洛伊毁灭史 4" loading="lazy" /></div>
+        </div>
+
+        <!-- ===== 双栏 ===== -->
+        <div class="temple-row">
+            <div class="temple-col-main">
+                <div class="temple-text">
+                    <p><strong>《特洛伊毁灭史》</strong>是15世纪末北方文艺复兴时期一部杰出的彩绘手抄本。西西里诗人吉多·德尔·科隆（Guido delle Colonne）用拉丁文撰写了这部史诗，以阿尔戈英雄的传说开篇，以特洛伊城的覆灭终结。15世纪，一位匿名作家将其译为法语。这份手稿约于1500年为普瓦捷的艾马尔（Aymar de Poitiers）制作，书中（fol.1v）出现了艾马尔的纹章，证明其最初的归属。艾马尔于1501年去世后，家族将手稿赠予巴黎的圣日耳曼德普雷修道院。</p>
+                    <p>手稿共128页，包含17幅全页插图，描绘了美狄亚、特洛伊国王普里阿摩斯、安特诺尔的沉船、帕里斯与海伦、卡斯托尔与波鲁克斯、阿喀琉斯与帕特洛克勒斯、尤利西斯、赫克托尔、墨涅拉俄斯、阿伽门农等众多史诗人物。这些插图以文艺复兴时期的建筑风格和开阔的空间表现著称，构图拥挤而充满动感，是让·科隆布（Jean Colombe）工作室的典型风格。</p>
+                    <p>这部手稿记录了许多荷马史诗中未收录的事件，以不同的传统丰富了荷马史诗的叙事，成为一部具有原创性的独立作品。细密画深受古罗马遗物的启发，同时保留了科隆布工作室特有的动态构图与细腻描绘。让·科隆布是15世纪法国最多产的彩绘师之一，虽难以确定具体参与画师的人数，但整部装饰无疑出自其工作室之手。</p>
+
+                    <!-- 声明 -->
+                    <div class="temple-statement">
+                        <h4>请阅读</h4>
+                        <p>国际社会正义运动及其引发的辩论促使我们开始以批判性的视角审视我们网站的内容。这让我们认识到，我们数据库中的大部分文本都是以西方为中心的。我们已要求内容作者注意许多学术资料中潜在的种族和文化偏见，并在描述手稿时尽量兼顾多元视角。我们也认识到，这仅仅是迈向消除不平等的微小第一步。</p>
+                        <p>如果您在我们的传播内容中注意到任何种族主义或不公正叙事的痕迹，请告知我们，帮助我们成为变革的一部分。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 右侧 ===== -->
+            <div class="temple-col-side">
+                <!-- 供奉台 / 购物车入口 -->
+                <div class="temple-offering">
+                    <div class="label">咨询与购买</div>
+                    <div class="value">获取更多信息</div>
+                    <button class="btn" id="openCartBtn">加入购物车</button>
+                </div>
+
+                <!-- 档案 -->
+                <div class="temple-archive">
+                    <h4>书籍档案</h4>
+                    <dl>
+                        <dt>其他标题</dt>
+                        <dd>Historia Destructionis Troiae</dd>
+
+                        <dt>创作时间</dt>
+                        <dd>1495年</dd>
+
+                        <dt>地点</dt>
+                        <dd>
+                            <span class="archive-tag place-tag" data-type="place" data-name="法国，巴黎">法国，巴黎</span>
+                        </dd>
+
+                        <dt>类型</dt>
+                        <dd>史诗文学</dd>
+
+                        <dt>风格</dt>
+                        <dd><a href="#">北方文艺复兴</a></dd>
+
+                        <dt>语言</dt>
+                        <dd><a href="#">中古法语</a></dd>
+
+                        <dt>作者</dt>
+                        <dd>
+                            <span class="archive-tag" data-type="person" data-name="吉多·德尔·科隆">吉多·德尔·科隆</span>
+                        </dd>
+
+                        <dt>彩绘师</dt>
+                        <dd>
+                            <span class="archive-tag" data-type="person" data-name="让·科隆布">让·科隆布</span>
+                            <span class="archive-tag" data-type="person" data-name="雅克兰·德·蒙吕松">雅克兰·德·蒙吕松</span>
+                        </dd>
+
+                        <dt>赞助人</dt>
+                        <dd>
+                            <span class="archive-tag" data-type="person" data-name="普瓦捷的艾马尔">普瓦捷的艾马尔</span>
+                        </dd>
+
+                        <dt>页数</dt>
+                        <dd>128页</dd>
+
+                        <dt>内容</dt>
+                        <dd>特洛伊战争 · 阿尔戈英雄传说 · 神话人物</dd>
+
+                        <dt>插图</dt>
+                        <dd>17幅全页细密画 · 文艺复兴建筑风格 · 动态构图 · 古罗马遗风</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 底部 ===== -->
+        <footer class="temple-footer">
+            <div class="footer-grid">
+                <div>
+                    <h4>关于我们</h4>
+                    <p>卡美洛古籍图书馆是一家专营彩绘手抄本的文化机构。我们所提供的每一册抄本，均为手工书写、手工彩绘的珍品，承载着中世纪缮写室的技法与匠心。</p>
+                </div>
+                <div>
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="oraculum.html">神谕</a></li>
+                        <li><a href="Minerva.html">书谱</a></li>
+                        <li><a href="#">名谱</a></li>
+                        <li><a href="#">纪闻</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>服务与支持</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">购买指南</a></li>
+                        <li><a href="#">委托出售</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                    <p style="margin-top:14px; font-size:0.8rem; color:#c9b89a;">© 2026 卡美洛古籍图书馆<br /></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>本网站版权归卡美洛古籍图书馆所有</p>
+            </div>
+        </footer>
+
+        <!-- ===== 模态框：人物/地点 ===== -->
+        <div class="modal-overlay" id="infoModal">
+            <div class="modal-box">
+                <button class="close-btn" id="modalClose">&times;</button>
+                <h4 id="modalTitle">标题</h4>
+                <div class="content" id="modalContent">内容</div>
+            </div>
+        </div>
+
+        <!-- ===== 模态框：购物车 ===== -->
+        <div class="modal-overlay" id="cartModal">
+            <div class="modal-box">
+                <button class="close-btn" id="cartClose">&times;</button>
+                <h4>核对账单</h4>
+                <div class="content">
+                    <div class="bill-row">
+                        <span class="label">商品</span>
+                        <span class="value">特洛伊毁灭史</span>
+                    </div>
+                    <div class="bill-row">
+                        <span class="label">单价</span>
+                        <span class="value amount">¥ 2.00</span>
+                    </div>
+                    <div class="bill-row">
+                        <span class="label">数量</span>
+                        <span class="value">1 件</span>
+                    </div>
+
+                    <div class="bill-total">
+                        <span>总计</span>
+                        <span class="total-price">¥ 2.00</span>
+                    </div>
+
+                    <div class="cart-actions">
+                        <button class="btn-secondary" id="cartCancel">继续浏览</button>
+                        <button class="btn-primary" id="checkoutBtn">确认购买</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 模态框：支付方式 ===== -->
+        <div class="modal-overlay" id="paymentModal">
+            <div class="modal-box">
+                <button class="close-btn" id="paymentClose">&times;</button>
+                <h4>完成支付</h4>
+                <div class="content payment-info">
+                    <div class="icon">✧</div>
+                    <p>请通过以下方式联系我们支付：</p>
+                    <div class="social">小红书：卡美洛古籍图书馆</div>
+                    <p style="margin-top: 12px; font-size: 0.9rem; color: #5c4436;">我们将在收到信息后与您确认订单。</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ===== 人物与地点资料库 =====
+        const infoDB = {
+            "吉多·德尔·科隆": "吉多·德尔·科隆（Guido delle Colonne，约1210-1287）是西西里诗人、法官与编年史家。他以拉丁语撰写了《特洛伊毁灭史》（Historia Destructionis Troiae），将特洛伊战争传说系统化，成为中世纪欧洲流传最广的特洛伊史诗之一，对但丁、乔叟等后世作家影响深远。",
+            "让·科隆布": "让·科隆布（Jean Colombe，约1430-1493）是法国文艺复兴时期最杰出的细密画彩绘师之一。他活跃于布日尔与巴黎，以《贝里公爵的豪华时祷书》的补绘插图而闻名。其作品融合了佛兰德斯与意大利的影响，以生动的叙事、细腻的人物和丰富的色彩著称，对法国书籍艺术影响深远。",
+            "雅克兰·德·蒙吕松": "雅克兰·德·蒙吕松（Jacquenat de Montluçon）是15世纪法国彩绘师，活跃于让·科隆布的工作室。她以绘制精美的手稿插图著称，参与过多部重要抄本的装饰工作，是当时少有的女性艺术家之一。",
+            "普瓦捷的艾马尔": "艾马尔·德·普瓦捷（Aymar de Poitiers，卒于1501年）是法国贵族，普瓦捷领主。他是《特洛伊毁灭史》法译本的赞助人，其纹章出现在手稿首页。艾马尔去世后，手稿由其家族捐赠给圣日耳曼德普雷修道院。",
+            "法国，巴黎": "巴黎是法国首都，自中世纪以来一直是欧洲艺术与文化中心。15–16世纪，巴黎聚集了大量优秀的彩绘师、抄写员和装帧师，成为手抄本制作的重要城市，法国王室对书籍艺术的赞助促进了文艺复兴风格的传播。"
+        };
+
+        // ===== 模态框交互 =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // 信息模态框
+            const infoModal = document.getElementById('infoModal');
+            const modalClose = document.getElementById('modalClose');
+            if (modalClose) {
+                modalClose.onclick = function(e) {
+                    e.stopPropagation();
+                    infoModal.classList.remove('active');
+                };
+            }
+            if (infoModal) {
+                infoModal.onclick = function(e) {
+                    if (e.target === this) this.classList.remove('active');
+                };
+            }
+
+            // 购物车模态框
+            const cartModal = document.getElementById('cartModal');
+            const cartClose = document.getElementById('cartClose');
+            const openCartBtn = document.getElementById('openCartBtn');
+            const cartCancel = document.getElementById('cartCancel');
+
+            if (openCartBtn) {
+                openCartBtn.onclick = function() {
+                    cartModal.classList.add('active');
+                };
+            }
+            if (cartClose) {
+                cartClose.onclick = function(e) {
+                    e.stopPropagation();
+                    cartModal.classList.remove('active');
+                };
+            }
+            if (cartCancel) {
+                cartCancel.onclick = function() {
+                    cartModal.classList.remove('active');
+                };
+            }
+            if (cartModal) {
+                cartModal.onclick = function(e) {
+                    if (e.target === this) this.classList.remove('active');
+                };
+            }
+
+            // 支付模态框
+            const paymentModal = document.getElementById('paymentModal');
+            const paymentClose = document.getElementById('paymentClose');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            if (checkoutBtn) {
+                checkoutBtn.onclick = function() {
+                    cartModal.classList.remove('active');
+                    paymentModal.classList.add('active');
+                };
+            }
+            if (paymentClose) {
+                paymentClose.onclick = function(e) {
+                    e.stopPropagation();
+                    paymentModal.classList.remove('active');
+                };
+            }
+            if (paymentModal) {
+                paymentModal.onclick = function(e) {
+                    if (e.target === this) this.classList.remove('active');
+                };
+            }
+
+            // 标签点击（人物/地点）
+            document.querySelectorAll('.archive-tag').forEach(tag => {
+                tag.onclick = function() {
+                    const name = this.dataset.name;
+                    const content = infoDB[name] || `关于「${name}」的详细资料暂未收录。`;
+                    document.getElementById('modalTitle').textContent = name;
+                    document.getElementById('modalContent').textContent = content;
+                    infoModal.classList.add('active');
+                };
+            });
+        });
+    </script>
+
+</body>
+</html>
