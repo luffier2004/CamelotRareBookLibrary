@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>尼普顿·海神 · 卡美洛古籍图书馆</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            background: #1a0f0a;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-image: radial-gradient(ellipse at 20% 30%, #3d1f14 0%, #0d0806 100%);
+        }
+
+        /* ===== 主容器 — 深色古典 ===== */
+        .temple {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            background: #ece4d7;
+            background-image: repeating-linear-gradient(45deg, rgba(200, 180, 160, 0.06) 0px, rgba(200, 180, 160, 0.06) 2px, transparent 2px, transparent 6px),
+                radial-gradient(ellipse at 50% 20%, #f5efe4, #dcd0c0);
+            border: 8px solid #b8923a;
+            box-shadow: 0 0 0 2px #5c3a1a, 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(180, 140, 80, 0.08);
+            border-radius: 4px;
+            position: relative;
+            padding: 0 40px 30px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== 神庙三角楣 ===== */
+        .pediment {
+            position: relative;
+            margin: -8px -40px 0 -40px;
+            padding: 12px 40px 12px;
+            background: linear-gradient(180deg, #8b1a1a 0%, #5c0e0e 100%);
+            border-bottom: 4px solid #c9a84c;
+            text-align: center;
+            box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .pediment::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #c9a84c, #f0d68a, #c9a84c, transparent);
+            border-radius: 0 0 50% 50%;
+        }
+        .pediment::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #c9a84c, #f0d68a, #c9a84c);
+            opacity: 0.5;
+        }
+
+        .pediment-logo {
+            height: 50px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            flex-shrink: 0;
+        }
+
+        .pediment h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 2.0rem;
+            color: #f5efe4;
+            letter-spacing: 6px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            margin: 0;
+        }
+
+        /* ===== 罗马柱装饰 ===== */
+        .temple .column-left,
+        .temple .column-right {
+            position: absolute;
+            top: 80px;
+            bottom: 40px;
+            width: 18px;
+            background: linear-gradient(90deg, #dcd0c0, #f5efe4, #dcd0c0);
+            border-left: 2px solid #c9a84c;
+            border-right: 2px solid #c9a84c;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .temple .column-left {
+            left: 14px;
+        }
+        .temple .column-right {
+            right: 14px;
+        }
+        .temple .column-left::before,
+        .temple .column-right::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: radial-gradient(ellipse at 50% 100%, #c9a84c, transparent 70%);
+            opacity: 0.3;
+            border-radius: 50% 50% 0 0;
+        }
+        .temple .column-left::after,
+        .temple .column-right::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: radial-gradient(ellipse at 50% 0%, #c9a84c, transparent 70%);
+            opacity: 0.3;
+            border-radius: 0 0 50% 50%;
+        }
+
+        /* ===== 头部 ===== */
+        .temple-header {
+            padding: 20px 0 16px;
+            border-bottom: 2px solid #c9a84c;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            position: relative;
+        }
+        .temple-header::after {
+            content: '⚜ ⚜ ⚜';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ece4d7;
+            padding: 0 16px;
+            color: #b8923a;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+        }
+        .temple-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .temple-logo .title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            color: #3d1f14;
+        }
+        .temple-logo .title span {
+            color: #8b1a1a;
+        }
+        .temple-logo .sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #7a5d46;
+            margin-left: 6px;
+        }
+
+        /* ===== 导航 ===== */
+        .temple-nav {
+            padding: 12px 0 8px;
+            margin: 0 0 12px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 28px;
+        }
+        .temple-nav a {
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+            color: #5c4436;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            position: relative;
+        }
+        .temple-nav a::before {
+            content: '⚜ ';
+            opacity: 0.6;
+            transition: 0.2s;
+        }
+        .temple-nav a:hover {
+            color: #8b1a1a;
+            border-bottom-color: #c9a84c;
+        }
+        .temple-nav a:hover::before {
+            opacity: 1;
+        }
+        .temple-nav a.active {
+            color: #8b1a1a;
+            border-bottom-color: #c9a84c;
+        }
+        .temple-nav a.active::before {
+            opacity: 1;
+        }
+
+        /* ================================================================ */
+        /* ===== 万神殿 — 尼普顿·海神 ===== */
+        .pantheon-magnus {
+            margin: 16px 0 30px;
+            padding: 40px 30px 30px;
+            background: #f5efe4;
+            border: 4px solid #b8923a;
+            border-radius: 2px;
+            box-shadow: inset 0 0 60px rgba(184, 146, 58, 0.08), 0 0 0 1px #d4c0a0 inset;
+            position: relative;
+        }
+
+        .spqr-banner {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #b22222;
+            padding: 4px 28px 4px 32px;
+            border: 2px solid #f0d68a;
+            border-radius: 2px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 10px;
+            color: #f0d68a;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+        .spqr-banner::before {
+            content: '⚜';
+            font-size: 0.6rem;
+            color: #f0d68a;
+            margin-right: 8px;
+            opacity: 0.6;
+        }
+        .spqr-banner::after {
+            content: '⚜';
+            font-size: 0.6rem;
+            color: #f0d68a;
+            margin-left: 8px;
+            opacity: 0.6;
+        }
+
+        .pantheon-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 2.4rem;
+            color: #3d1f14;
+            letter-spacing: 8px;
+            text-shadow: 1px 1px 0 rgba(184, 146, 58, 0.15);
+            margin-top: 8px;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+        .pantheon-title .light {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #7a5d46;
+            letter-spacing: 6px;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            display: block;
+            margin-top: 0px;
+            text-transform: none;
+        }
+        .pantheon-sub {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: #5c4436;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(184, 146, 58, 0.2);
+            padding-bottom: 14px;
+            letter-spacing: 3px;
+        }
+
+        /* ---- 描述文字（尼普顿·海神） ---- */
+        .manuscript-desc {
+            margin: 6px 0 18px;
+            padding: 0 6px;
+            color: #3d2a1a;
+            font-size: 1.0rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .manuscript-desc p {
+            margin-bottom: 0.6rem;
+        }
+        .manuscript-desc .read_more {
+            color: #8b1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dotted #c9a84c;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+        .manuscript-desc .read_more:hover {
+            color: #2c1810;
+        }
+        .manuscript-desc .expand {
+            display: none;
+            margin-top: 8px;
+        }
+        .manuscript-desc .expand.open {
+            display: block;
+        }
+
+        /* ===== 摹本石碑网格 ===== */
+        .stele-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 6px;
+        }
+
+        .stele {
+            background: linear-gradient(170deg, #faf6ee 0%, #f0e8dc 60%, #e8ddd0 100%);
+            border: 2px solid #b8923a;
+            border-radius: 2px;
+            padding: 14px 12px 12px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.35s ease;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 240, 0.5);
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        .stele::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 10px;
+            background: linear-gradient(180deg, #f0d68a, #b8923a);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            opacity: 0.5;
+        }
+        .stele::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #b8923a, #f0d68a, #b8923a, transparent);
+            opacity: 0.3;
+        }
+
+        .stele:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #c9a84c;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 0 20px rgba(184, 146, 58, 0.08);
+            background: linear-gradient(170deg, #fcf8f0, #f5efe4, #ede4d8);
+        }
+
+        .stele .thumb-wrap {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border: 2px solid #b8923a;
+            border-radius: 1px;
+            margin-bottom: 10px;
+            background: #dcd0c0;
+            flex-shrink: 0;
+        }
+        .stele .thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+            display: block;
+        }
+        .stele:hover .thumb-wrap img {
+            transform: scale(1.02);
+        }
+
+        .stele .symbol-mark {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #8b6a3a;
+            line-height: 1;
+            margin-bottom: 2px;
+            letter-spacing: 0;
+            opacity: 0.5;
+        }
+        .stele .name {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.0rem;
+            color: #2c1810;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+        .stele .latin {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.7rem;
+            color: #7a5d46;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+            opacity: 0.8;
+            line-height: 1.3;
+            max-height: 2.6rem;
+            overflow: hidden;
+        }
+        .stele .theme {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: #8b1a1a;
+            letter-spacing: 4px;
+            border-top: 1px solid rgba(139, 26, 26, 0.15);
+            padding-top: 6px;
+            margin-top: 4px;
+            width: 70%;
+            text-transform: uppercase;
+            position: relative;
+        }
+        .stele .theme::before,
+        .stele .theme::after {
+            content: '⚜';
+            font-size: 0.35rem;
+            color: #b8923a;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.5;
+        }
+        .stele .theme::before {
+            left: -12px;
+        }
+        .stele .theme::after {
+            right: -12px;
+        }
+
+        .stele .entry-hint {
+            font-family: 'Cinzel', serif;
+            font-size: 0.5rem;
+            letter-spacing: 4px;
+            color: #8b6a3a;
+            margin-top: 6px;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .stele:hover .entry-hint {
+            opacity: 0.5;
+        }
+
+        /* ===== 页脚 ===== */
+        .temple-footer {
+            background: rgba(30, 18, 12, 0.6);
+            padding: 28px 20px 18px;
+            margin-top: 45px;
+            border-radius: 4px;
+            border-top: 3px solid #c9a84c;
+            backdrop-filter: blur(2px);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 28px;
+        }
+        .footer-grid h4 {
+            font-family: 'Cinzel', serif;
+            color: #c9a84c;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            padding-bottom: 6px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        .footer-grid p,
+        .footer-grid li {
+            font-size: 0.9rem;
+            color: #d4c5b2;
+            line-height: 1.8;
+        }
+        .footer-grid ul {
+            list-style: none;
+        }
+        .footer-grid ul li a {
+            text-decoration: none;
+            color: #b8a693;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+        .footer-grid ul li a:hover {
+            color: #f0d68a;
+            border-bottom-color: #c9a84c;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            font-size: 0.85rem;
+            color: #c9b89a;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+        .footer-bottom p {
+            color: #c9b89a;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 1200px) {
+            .stele-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .stele-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .temple {
+                padding: 0 20px 20px;
+            }
+            .pediment {
+                margin: -8px -20px 0 -20px;
+                padding: 10px 20px;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .pediment h1 {
+                font-size: 1.4rem;
+                letter-spacing: 4px;
+            }
+            .pediment-logo {
+                height: 40px;
+            }
+            .temple-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .stele-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .temple .column-left,
+            .temple .column-right {
+                display: none;
+            }
+            .pantheon-title {
+                font-size: 1.8rem;
+                letter-spacing: 4px;
+            }
+            .pantheon-title .light {
+                font-size: 0.9rem;
+            }
+            .pantheon-magnus {
+                padding: 30px 16px 20px;
+            }
+            .spqr-banner {
+                font-size: 1.0rem;
+                letter-spacing: 6px;
+                padding: 3px 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .stele-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            .pediment h1 {
+                font-size: 1.0rem;
+                letter-spacing: 2px;
+            }
+            .pediment-logo {
+                height: 30px;
+            }
+            .temple-logo .title {
+                font-size: 1.0rem;
+            }
+            .temple-logo .sub {
+                font-size: 0.75rem;
+                display: block;
+                margin-left: 0;
+            }
+            .pantheon-title {
+                font-size: 1.4rem;
+                letter-spacing: 2px;
+            }
+            .pantheon-title .light {
+                font-size: 0.8rem;
+            }
+            .stele .name {
+                font-size: 0.95rem;
+            }
+            .spqr-banner {
+                font-size: 0.8rem;
+                letter-spacing: 4px;
+                padding: 2px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="temple">
+
+        <!-- 罗马柱装饰 -->
+        <div class="column-left"></div>
+        <div class="column-right"></div>
+
+        <!-- ===== 三角楣 ===== -->
+        <div class="pediment">
+            <img src="logo.png" alt="卡美洛古籍图书馆 Logo" class="pediment-logo" />
+            <h1>— 卡美洛古籍图书馆 —</h1>
+        </div>
+
+        <!-- 头部 -->
+        <header class="temple-header">
+            <div class="temple-logo">
+                <div>
+                    <div class="title"><span>卡美洛</span> 古籍图书馆</div>
+                    <div class="sub">彩绘手抄本 · 学术数据库</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 导航 — 名谱为当前激活页面 -->
+        <nav class="temple-nav">
+            <a href="index.html">首页</a>
+            <a href="oraculum.html">神谕</a>
+            <a href="#" class="active">名谱</a>
+            <a href="#">书所</a>
+            <a href="#">纪闻</a>
+        </nav>
+
+        <!-- ================================================================ -->
+        <!-- ===== 万神殿 — 尼普顿·海神 ===== -->
+        <section class="pantheon-magnus">
+            <div class="spqr-banner">S·P·Q·R</div>
+
+            <div class="pantheon-title">
+                NEPTUNUS · OCEANUS
+                <span class="light">— 海洋之书 · 航海与探索 —</span>
+            </div>
+            <div class="pantheon-sub">点击石碑，探索海洋奥秘</div>
+
+            <div class="manuscript-desc" id="descBlock">
+                <p>尼普顿（Neptunus）是罗马神话中的海神，掌管海洋、河流与风暴。他的三叉戟既是力量的象征，也是航海者祈求平安的寄托。在古典传统中，海洋不仅是连接世界的通道，更是探索未知、冒险与发现的象征，承载着人类对远方与彼岸的永恒向往。</p>
+                <p>从古代的水手传说到大航海时代的地理大发现，海洋一直是文明交流与知识传播的载体。波特兰海图、航海日志与地图集，记录了人类对海洋的征服与理解，也见证了跨文化相遇的复杂历史。尼普顿的神性提醒我们，海洋既是分隔，也是连接，既是挑战，也是机遇。</p>
+                <p><a class="read_more" id="descToggle">阅读更多</a></p>
+                <div class="expand" id="descExpand">
+                    <p>在罗马宗教中，尼普顿与希腊的波塞冬相对应，其神庙常与港口和海军基地相伴。海洋被视为帝国的命脉，罗马的繁荣离不开对地中海的掌控。中世纪与文艺复兴时期，航海技术的发展使欧洲人得以探索大西洋、印度洋乃至太平洋，开启了全球化进程。</p>
+                    <p>地图学在这一时期蓬勃发展，波特兰海图、世界地图与区域地图集成为航海家与统治者不可或缺的工具。这些作品不仅具有实用功能，也体现了当时对世界秩序与文化的理解，融合了科学、艺术与权力。</p>
+                    <p>本专题汇集了与海洋、航海、地理探索相关的典籍摹本，从古典地理学、中世纪波特兰海图，到文艺复兴时期的地图集。每一部书都是一次跨越海洋的旅程，邀请您探索未知的水域与文明。</p>
+                </div>
+            </div>
+
+            <div class="stele-grid" id="manuscriptGrid">
+                <!-- ===== 唯一石碑：波特兰诺地图集 ===== -->
+                <a href="atlas_portulano_vaz_dourado/Book_atlas_portulano_vaz_dourado.html" class="stele" data-id="portulano">
+                    <div class="thumb-wrap">
+                        <img src="atlas_portulano_vaz_dourado/atlas_portulano_vaz_dourado_2.jpg" alt="波特兰诺地图集" loading="lazy" />
+                    </div>
+                    <div class="symbol-mark">⚜</div>
+                    <div class="name">波特兰诺地图集</div>
+                    <div class="latin">Atlas Portulano Vaz Dourado</div>
+                    <div class="theme">地理学</div>
+                    <div class="entry-hint">进入 →</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== 页脚 ===== -->
+        <footer class="temple-footer">
+            <div class="footer-grid">
+                <div>
+                    <h4>关于我们</h4>
+                    <p>卡美洛古籍图书馆是一家专营彩绘手抄本的文化机构。我们所提供的每一册抄本，均为手工书写、手工彩绘的珍品，承载着中世纪缮写室的技法与匠心。</p>
+                </div>
+                <div>
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="oraculum.html">神谕</a></li>
+                        <li><a href="#">名谱</a></li>
+                        <li><a href="#">书所</a></li>
+                        <li><a href="#">纪闻</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>服务与支持</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">购买指南</a></li>
+                        <li><a href="#">委托出售</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                    <p style="margin-top:14px; font-size:0.8rem; color:#c9b89a;">© 2026 卡美洛古籍图书馆<br /></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>本网站版权归卡美洛古籍图书馆所有</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ===== “阅读更多”功能 =====
+            const descToggle = document.getElementById('descToggle');
+            const descExpand = document.getElementById('descExpand');
+            if (descToggle && descExpand) {
+                let open = false;
+                descToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    open = !open;
+                    descExpand.classList.toggle('open', open);
+                    descToggle.textContent = open ? '收起' : '阅读更多';
+                });
+            }
+
+            // ===== 石碑点击 =====
+            document.querySelectorAll('.stele').forEach(function(stele) {
+                stele.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (!href || href === '#') {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // ===== 其他链接 =====
+            document.querySelectorAll('.temple-nav a, .footer-grid ul li a').forEach(function(el) {
+                el.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
