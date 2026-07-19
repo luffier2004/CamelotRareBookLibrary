@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卡美洛古籍图书馆 · 奥古斯都称帝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            background: #1a0f0a;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image:
+                radial-gradient(ellipse at 20% 30%, #3d1f14 0%, #0d0806 100%);
+        }
+
+        .temple {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            background: #ece4d7;
+            background-image:
+                repeating-linear-gradient(45deg, rgba(200, 180, 160, 0.06) 0px, rgba(200, 180, 160, 0.06) 2px, transparent 2px, transparent 6px),
+                radial-gradient(ellipse at 50% 20%, #f5efe4, #dcd0c0);
+            border: 8px solid #b8923a;
+            box-shadow:
+                0 0 0 2px #5c3a1a,
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                inset 0 0 60px rgba(180, 140, 80, 0.08);
+            border-radius: 4px;
+            position: relative;
+            padding: 0 40px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .pediment {
+            position: relative;
+            margin: -8px -40px 0 -40px;
+            padding: 12px 40px 12px;
+            background: linear-gradient(180deg, #8b1a1a 0%, #5c0e0e 100%);
+            border-bottom: 4px solid #c9a84c;
+            text-align: center;
+            box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .pediment::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #c9a84c, #f0d68a, #c9a84c, transparent);
+            border-radius: 0 0 50% 50%;
+        }
+        .pediment::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #c9a84c, #f0d68a, #c9a84c);
+            opacity: 0.5;
+        }
+
+        .pediment-logo {
+            height: 50px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            flex-shrink: 0;
+        }
+
+        .pediment h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 2.0rem;
+            color: #f5efe4;
+            letter-spacing: 6px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            margin: 0;
+        }
+
+        .temple .column-left,
+        .temple .column-right {
+            position: absolute;
+            top: 80px;
+            bottom: 40px;
+            width: 18px;
+            background: linear-gradient(90deg, #dcd0c0, #f5efe4, #dcd0c0);
+            border-left: 2px solid #c9a84c;
+            border-right: 2px solid #c9a84c;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .temple .column-left { left: 14px; }
+        .temple .column-right { right: 14px; }
+        .temple .column-left::before,
+        .temple .column-right::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: radial-gradient(ellipse at 50% 100%, #c9a84c, transparent 70%);
+            opacity: 0.3;
+            border-radius: 50% 50% 0 0;
+        }
+        .temple .column-left::after,
+        .temple .column-right::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: radial-gradient(ellipse at 50% 0%, #c9a84c, transparent 70%);
+            opacity: 0.3;
+            border-radius: 0 0 50% 50%;
+        }
+
+        .temple-header {
+            padding: 20px 0 16px;
+            border-bottom: 2px solid #c9a84c;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            position: relative;
+        }
+        .temple-header::after {
+            content: '⚜ ⚜ ⚜';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ece4d7;
+            padding: 0 16px;
+            color: #b8923a;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+        }
+
+        .temple-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .temple-logo .icon {
+            font-size: 2.2rem;
+            color: #8b1a1a;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
+        .temple-logo .title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            color: #3d1f14;
+        }
+        .temple-logo .title span { color: #8b1a1a; }
+        .temple-logo .sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #7a5d46;
+            margin-left: 6px;
+        }
+
+        .temple-nav {
+            padding: 12px 0 8px;
+            margin: 0 0 12px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 28px;
+        }
+        .temple-nav a {
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
+            color: #5c4436;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            position: relative;
+        }
+        .temple-nav a::before {
+            content: '⚜ ';
+            opacity: 0.6;
+            transition: 0.2s;
+        }
+        .temple-nav a:hover {
+            color: #8b1a1a;
+            border-bottom-color: #c9a84c;
+        }
+        .temple-nav a:hover::before { opacity: 1; }
+        .temple-nav a.active {
+            color: #8b1a1a;
+            border-bottom-color: #c9a84c;
+        }
+        .temple-nav a.active::before { opacity: 1; }
+
+        .temple-breadcrumb {
+            padding: 8px 0 14px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: #7a5d46;
+        }
+        .temple-breadcrumb a {
+            color: #8b1a1a;
+            text-decoration: none;
+            border-bottom: 1px dotted #c9a84c;
+            transition: 0.2s;
+        }
+        .temple-breadcrumb a:hover {
+            color: #3d1f14;
+            border-bottom-color: #3d1f14;
+        }
+
+        .temple-title {
+            padding: 12px 0 10px;
+            margin-bottom: 18px;
+            text-align: center;
+            border-bottom: 2px solid rgba(201, 168, 76, 0.3);
+            position: relative;
+        }
+        .temple-title h2 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #2c1810;
+            letter-spacing: 6px;
+            text-shadow: 2px 2px 0 rgba(200, 180, 160, 0.3);
+        }
+        .temple-title h2 .light {
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: #7a5d46;
+            letter-spacing: 3px;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            margin-left: 12px;
+        }
+        .temple-title .tags {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        .temple-title .tags span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(201, 168, 76, 0.12);
+            padding: 4px 18px;
+            border-radius: 30px;
+            color: #5c4436;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+        }
+
+        /* ===== 单图展示 — 只变宽，不变形 ===== */
+        .image-single {
+            margin: 20px 0 30px;
+            padding: 6px;
+            background: rgba(180, 160, 130, 0.1);
+            border-radius: 4px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            display: flex;
+            justify-content: center;
+        }
+        .image-single .img-frame {
+            background: #f5efe4;
+            border: 6px solid #c9a84c;
+            outline: 2px solid #8b6a3a;
+            outline-offset: -4px;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+        .image-single .img-frame::after {
+            content: '✧';
+            position: absolute;
+            bottom: 6px;
+            right: 10px;
+            font-size: 1.2rem;
+            color: #c9a84c;
+            opacity: 0.4;
+        }
+        .image-single .img-frame:hover {
+            transform: scale(1.01);
+            box-shadow: 6px 8px 28px rgba(0, 0, 0, 0.25);
+            border-color: #f0d68a;
+        }
+        .image-single .img-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .temple-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 10px;
+        }
+        .temple-col-main { flex: 2; min-width: 280px; }
+        .temple-col-side { flex: 1; min-width: 240px; }
+
+        .temple-text p {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 1.15rem;
+            color: #2c1810;
+            margin-bottom: 18px;
+            text-align: justify;
+            text-indent: 2em;
+            line-height: 1.8;
+        }
+        .temple-text p:first-of-type::first-letter {
+            font-family: 'Cinzel', serif;
+            font-size: 4.2rem;
+            float: left;
+            line-height: 0.9;
+            margin-right: 10px;
+            color: #8b1a1a;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        .temple-text strong { color: #5c0e0e; font-weight: 600; }
+
+        .temple-statement {
+            margin: 30px 0 10px;
+            padding: 22px 28px;
+            background: rgba(180, 160, 130, 0.08);
+            border-left: 6px solid #8b1a1a;
+            border-radius: 2px;
+            font-size: 1rem;
+            color: #3d2a1a;
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+        }
+        .temple-statement::before {
+            content: '▣';
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            font-size: 1.6rem;
+            color: #c9a84c;
+            opacity: 0.3;
+        }
+        .temple-statement h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            color: #5c0e0e;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            font-style: normal;
+        }
+
+        /* ===== 右侧档案（已删除咨询板块） ===== */
+        .temple-archive {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 22px 22px 18px;
+            border-radius: 4px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            position: relative;
+        }
+        .temple-archive::before {
+            content: '❧ 铭文板 ❧';
+            position: absolute;
+            top: -10px;
+            right: 18px;
+            background: #ece4d7;
+            padding: 0 14px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            color: #7a5d46;
+        }
+        .temple-archive h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: #2c1810;
+            border-bottom: 2px solid rgba(201, 168, 76, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        .temple-archive dl {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 6px 14px;
+        }
+        .temple-archive dt {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            color: #5c4436;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px dotted rgba(201, 168, 76, 0.2);
+            padding-bottom: 3px;
+        }
+        .temple-archive dd {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            color: #2c1810;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px 6px;
+            align-items: center;
+            border-bottom: 1px dotted rgba(201, 168, 76, 0.15);
+            padding-bottom: 3px;
+        }
+        .temple-archive dd a {
+            color: #8b1a1a;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(201, 168, 76, 0.4);
+            transition: 0.2s;
+        }
+        .temple-archive dd a:hover {
+            color: #2c1810;
+            border-bottom-color: #2c1810;
+        }
+
+        .archive-tag {
+            display: inline-block;
+            background: rgba(201, 168, 76, 0.12);
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: #3d1f14;
+            cursor: pointer;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            transition: 0.2s;
+            line-height: 1.6;
+            margin: 1px 0;
+            letter-spacing: 0.3px;
+        }
+        .archive-tag:hover {
+            background: #8b1a1a;
+            color: #f5efe4;
+            border-color: #8b1a1a;
+            transform: scale(1.04);
+            box-shadow: 0 4px 12px rgba(139, 26, 26, 0.2);
+        }
+        .archive-tag.place-tag {
+            background: rgba(160, 140, 120, 0.15);
+            border-color: rgba(160, 140, 120, 0.2);
+            color: #5c4436;
+        }
+        .archive-tag.place-tag:hover {
+            background: #5c4436;
+            color: #f5efe4;
+            border-color: #5c4436;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 6, 4, 0.85);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.active { display: flex; }
+
+        .modal-box {
+            background: #f5efe4;
+            max-width: 540px;
+            width: 90%;
+            border-radius: 4px;
+            padding: 32px 36px 28px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            border: 6px solid #8b1a1a;
+            outline: 2px solid #c9a84c;
+            outline-offset: -4px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-box .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            font-size: 2.2rem;
+            cursor: pointer;
+            color: #7a5d46;
+            background: none;
+            border: none;
+            font-family: 'Cinzel', serif;
+            transition: 0.2s;
+            z-index: 10;
+        }
+        .modal-box .close-btn:hover {
+            color: #8b1a1a;
+            transform: rotate(90deg);
+        }
+        .modal-box h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c1810;
+            margin-bottom: 12px;
+            border-bottom: 2px solid rgba(201, 168, 76, 0.3);
+            padding-bottom: 10px;
+            letter-spacing: 3px;
+        }
+        .modal-box .content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #2c1810;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .temple-footer {
+            background: rgba(30, 18, 12, 0.6);
+            padding: 28px 20px 18px;
+            margin-top: 45px;
+            border-radius: 4px;
+            border-top: 3px solid #c9a84c;
+            backdrop-filter: blur(2px);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 28px;
+        }
+        .footer-grid h4 {
+            font-family: 'Cinzel', serif;
+            color: #c9a84c;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            padding-bottom: 6px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        .footer-grid p,
+        .footer-grid li {
+            font-size: 0.9rem;
+            color: #d4c5b2;
+            line-height: 1.8;
+        }
+        .footer-grid ul { list-style: none; }
+        .footer-grid ul li a {
+            text-decoration: none;
+            color: #b8a693;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+        .footer-grid ul li a:hover {
+            color: #f0d68a;
+            border-bottom-color: #c9a84c;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            font-size: 0.85rem;
+            color: #c9b89a;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+        .footer-bottom p { color: #c9b89a; }
+
+        @media (max-width: 768px) {
+            .temple { padding: 0 20px 20px; }
+            .pediment { margin: -8px -20px 0 -20px; padding: 10px 20px; flex-direction: column; gap: 6px; }
+            .pediment h1 { font-size: 1.4rem; letter-spacing: 4px; }
+            .pediment-logo { height: 40px; }
+            .temple-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .temple-title h2 { font-size: 2rem; }
+            .temple-title h2 .light { font-size: 1rem; display: block; margin-left: 0; }
+            .temple-col-main, .temple-col-side { flex: 1 1 100%; }
+            .temple-archive dl { grid-template-columns: 1fr; }
+            .temple .column-left, .temple .column-right { display: none; }
+            .temple-text p:first-of-type::first-letter { font-size: 3rem; }
+        }
+        @media (max-width: 480px) {
+            .pediment h1 { font-size: 1.2rem; }
+            .modal-box { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== 主容器 ===== -->
+    <div class="temple">
+
+        <div class="column-left"></div>
+        <div class="column-right"></div>
+
+        <!-- ===== 三角楣 ===== -->
+        <div class="pediment">
+            <img src="../logo.png" alt="卡美洛古籍图书馆 Logo" class="pediment-logo" />
+            <h1>— 卡美洛古籍图书馆 —</h1>
+        </div>
+
+        <!-- ===== 头部 ===== -->
+        <header class="temple-header">
+            <div class="temple-logo">
+                <div class="icon">⚜</div>
+                <div>
+                    <div class="title"><span>卡美洛</span> 古籍图书馆</div>
+                    <div class="sub">彩绘手抄本 · 学术数据库</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== 导航 ===== -->
+        <nav class="temple-nav">
+            <a href="../index.html">首页</a>
+            <a href="../oraculum.html">神谕</a>
+            <a href="../Minerva.html">名谱</a>
+            <a href="#">书所</a>
+            <a href="../Acta_Senatus.html" class="active">纪闻</a>
+        </nav>
+
+        <!-- ===== 面包屑 ===== -->
+        <div class="temple-breadcrumb">
+            <a href="../Acta_Senatus.html">← 返回搜索结果</a> &nbsp;|&nbsp; <a href="../index.html">开始新检索</a>
+        </div>
+
+        <!-- ===== 标题 ===== -->
+        <div class="temple-title">
+            <h2>
+                奥古斯都称帝
+                <span class="light">元首制确立 · 罗马帝国肇始</span>
+            </h2>
+            <div class="tags">
+                <span>罗马帝国</span>
+                <span>奥古斯都</span>
+                <span>元首制</span>
+            </div>
+        </div>
+
+        <!-- ===== 单图展示 — 只变宽，不变形 ===== -->
+        <div class="image-single">
+            <div class="img-frame">
+                <img src="Augustus_imperator.png" alt="奥古斯都称帝 · 元首制确立" loading="lazy" />
+            </div>
+        </div>
+
+        <!-- ===== 双栏 ===== -->
+        <div class="temple-row">
+            <div class="temple-col-main">
+                <div class="temple-text">
+
+                    <p><strong>公元前27年1月16日</strong>，罗马元老院正式授予盖乌斯·屋大维“奥古斯都”（Augustus）尊号。这一事件被后世史家视为罗马共和国与罗马帝国的分水岭，标志着延续近五百年的共和政体名存实亡，元首制时代由此开启。奥古斯都虽自称“第一公民”（Princeps），宣称恢复共和传统，实则将军事、行政、立法、宗教等一切大权集于一身，为后世罗马皇帝确立了统治范式。</p>
+
+                    <p>奥古斯都称帝并非一蹴而就，而是历经十余年政治博弈与军事较量的结果。公元前44年，尤利乌斯·凯撒被共和派元老刺杀，罗马陷入内战。年仅十八岁的屋大维以凯撒养子与继承人的身份登上政治舞台，与马克·安东尼、雷必达结成“后三头同盟”，清剿共和派势力。公元前42年腓立比战役后，共和派彻底覆灭，三头同盟瓜分罗马世界：安东尼统治东方，屋大维统治西方，雷必达控制非洲。然而，权力同盟终难持久，公元前36年屋大维剥夺雷必达军权，公元前31年亚克兴海战中击败安东尼与埃及女王克利奥帕特拉的联军，安东尼与克利奥帕特拉相继自杀，屋大维遂成罗马世界的唯一主宰。</p>
+
+                    <p>亚克兴海战之后，屋大维并未急于称王称帝，而是以极为审慎的政治智慧逐步构建新秩序。他深知罗马人对“王政”的厌恶——自公元前509年驱逐塔克文家族以来，共和观念已根植于罗马人的集体记忆。凯撒因公开称帝的野心而遭刺杀的前车之鉴，更让他时刻警惕。因此，屋大维选择了一条渐进式的权力集中之路：他于公元前29年返回罗马，举行盛大的凯旋式，却同时宣布恢复共和制，遣散部分军队，举行公民大会选举。这些象征性举动赢得了元老院与罗马民众的好感，为后续的体制变革奠定了民意基础。</p>
+
+                    <p>公元前27年1月13日，屋大维在元老院发表演说，宣称放弃一切权力，将行省与军队交还元老院与罗马人民。这出精心设计的“政治戏剧”令元老院措手不及，他们深知罗马已离不开屋大维的强权统治——连年内战已使共和国制度名存实亡，唯有屋大维能维持秩序。元老院不仅拒绝接受其辞呈，反而授予他一系列前所未有的权力与荣誉。三天后的1月16日，元老院正式授予屋大维“奥古斯都”尊号，意为“神圣者”、“至尊者”，这一称号自此成为罗马皇帝的专用头衔，后世所有罗马皇帝均以此为尊号。</p>
+
+                    <p>奥古斯都称帝后，旋即着手对帝国体制进行全面改革。在行省治理方面，他将帝国疆域划分为两类行省：元老院行省与元首行省。元老院行省（如亚该亚、亚细亚）由元老院任命总督治理，不驻军，表面维持共和传统；元首行省（如高卢、西班牙、叙利亚）则由皇帝直接任命总督，驻有重兵，确保皇帝对军事力量的绝对掌控。这种划分既安抚了元老院，使其保有部分统治权与尊严，又确保皇帝掌握全部军事力量，任何潜在的反叛皆无从发动。行省税收亦被系统化、规范化，帝国财政由此走上正轨，奠定了罗马帝国三百年繁荣的经济基础。</p>
+
+                    <p>公元前23年，奥古斯都辞去执政官之职，但元老院旋即授予其终身保民官之权，并扩展其大统帅权至帝国所有行省。此时奥古斯都虽无皇帝之名，已具皇帝之实。他在晚年撰写的《功业录》（Res Gestae）中谦逊地宣称自己“以权威超越所有人，但权力并不比任何人多”。然而历史事实是，奥古斯都去世后，其继任者提比略顺利继承全部权力，元首制已成为不可动摇的制度安排，罗马共和国已彻底成为历史。</p>
+
+
+
+                    <!-- 声明 -->
+                    <div class="temple-statement">
+                        <h4>请阅读</h4>
+                        <p>国际社会正义运动及其引发的辩论促使我们开始以批判性的视角审视我们网站的内容。这让我们认识到，我们数据库中的大部分文本都是以西方为中心的。我们已要求内容作者注意许多学术资料中潜在的种族和文化偏见，并在描述手稿时尽量兼顾多元视角。我们也认识到，这仅仅是迈向消除不平等的微小第一步。</p>
+                        <p>如果您在我们的传播内容中注意到任何种族主义或不公正叙事的痕迹，请告知我们，帮助我们成为变革的一部分。</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== 右侧档案 ===== -->
+            <div class="temple-col-side">
+                <div class="temple-archive">
+                    <h4>文章档案</h4>
+                    <dl>
+                        <dt>年份</dt>
+                        <dd>公元前27年</dd>
+
+                        <dt>地点</dt>
+                        <dd>
+                            <span class="archive-tag place-tag" data-type="place" data-name="罗马">罗马</span>
+                        </dd>
+
+                        <dt>类型</dt>
+                        <dd>纪闻 · 编年史</dd>
+
+                        <dt>主题</dt>
+                        <dd><a href="#">政治变革</a></dd>
+
+                        <dt>关键词</dt>
+                        <dd>奥古斯都 · 元首制 · 罗马帝国</dd>
+
+                        <dt>书记员</dt>
+                        <dd>
+                            <span class="archive-tag" data-type="person" data-name="塔西佗">塔西佗</span>
+                        </dd>
+
+                        <dt>资料来源</dt>
+                        <dd>《功业录》· 塔西佗《编年史》· 苏维托尼乌斯《十二凯撒传》</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 底部 ===== -->
+        <footer class="temple-footer">
+            <div class="footer-grid">
+                <div>
+                    <h4>关于我们</h4>
+                    <p>卡美洛古籍图书馆是一家专营彩绘手抄本的文化机构。我们所提供的每一册抄本，均为手工书写、手工彩绘的珍品，承载着中世纪缮写室的技法与匠心。</p>
+                </div>
+                <div>
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="../index.html">首页</a></li>
+                        <li><a href="../oraculum.html">神谕</a></li>
+                        <li><a href="../Minerva.html">名谱</a></li>
+                        <li><a href="#">书所</a></li>
+                        <li><a href="../Acta_Senatus.html">纪闻</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>服务与支持</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">购买指南</a></li>
+                        <li><a href="#">委托出售</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                    <p style="margin-top:14px; font-size:0.8rem; color:#c9b89a;">© 2026 卡美洛古籍图书馆<br /></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>本网站版权归卡美洛古籍图书馆所有</p>
+            </div>
+        </footer>
+
+        <!-- ===== 模态框：人物/地点 ===== -->
+        <div class="modal-overlay" id="infoModal">
+            <div class="modal-box">
+                <button class="close-btn" id="modalClose">&times;</button>
+                <h4 id="modalTitle">标题</h4>
+                <div class="content" id="modalContent">内容</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ===== 人物与地点资料库 =====
+        const infoDB = {
+            "罗马": "罗马是意大利半岛中部城市，公元前753年由罗慕路斯建城。公元前27年，元老院在此授予屋大维“奥古斯都”尊号，标志罗马帝国的开端。",
+            "塔西佗": "塔西佗（Publius Cornelius Tacitus，约56年－120年）是罗马帝国时期最重要的历史学家之一，著有《编年史》与《历史》，为研究罗马早期帝国提供了最详实的史料。"
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 信息模态框
+            const infoModal = document.getElementById('infoModal');
+            const modalClose = document.getElementById('modalClose');
+            if (modalClose) {
+                modalClose.onclick = function(e) {
+                    e.stopPropagation();
+                    infoModal.classList.remove('active');
+                };
+            }
+            if (infoModal) {
+                infoModal.onclick = function(e) {
+                    if (e.target === this) this.classList.remove('active');
+                };
+            }
+
+            // 标签点击（人物/地点）
+            document.querySelectorAll('.archive-tag').forEach(tag => {
+                tag.onclick = function() {
+                    const name = this.dataset.name;
+                    const content = infoDB[name] || `关于「${name}」的详细资料暂未收录。`;
+                    document.getElementById('modalTitle').textContent = name;
+                    document.getElementById('modalContent').textContent = content;
+                    infoModal.classList.add('active');
+                };
+            });
+        });
+    </script>
+
+</body>
+</html>
