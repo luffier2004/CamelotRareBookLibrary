@@ -766,74 +766,6 @@
             border-bottom-color: #8b1a1a;
         }
 
-        /* 分类浏览 */
-        .browse-section {
-            margin: 30px 0 20px;
-            padding: 20px 10px;
-            background: rgba(180, 160, 130, 0.06);
-            border-top: 1px solid rgba(201, 168, 76, 0.15);
-            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-        }
-        .browse-section h2 {
-            font-family: 'Cinzel', serif;
-            font-weight: 400;
-            font-size: 1rem;
-            color: #5c4436;
-            text-align: center;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-        .browse-categories {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-        }
-        .browse-cat {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 12px 14px 16px;
-            border-radius: 4px;
-            border: 1px solid rgba(201, 168, 76, 0.08);
-            transition: 0.3s;
-        }
-        .browse-cat:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(201, 168, 76, 0.2);
-        }
-        .browse-cat h4 {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 0.7rem;
-            color: #2c1810;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-            padding-bottom: 6px;
-        }
-        .browse-cat ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .browse-cat ul li {
-            font-size: 0.8rem;
-            padding: 3px 0;
-            color: #5c4436;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.05);
-            transition: 0.2s;
-            cursor: default;
-        }
-        .browse-cat ul li:hover {
-            color: #8b1a1a;
-            padding-left: 4px;
-        }
-        .browse-cat ul li a {
-            color: inherit;
-            text-decoration: none;
-            display: block;
-        }
-
         /* ===== 页脚 ===== */
         .temple-footer {
             background: rgba(30, 18, 12, 0.6);
@@ -897,7 +829,6 @@
             .stele-grid { grid-template-columns: repeat(3, 1fr); }
             .carousel-grid { grid-template-columns: repeat(2, 1fr); }
             .blog-grid { grid-template-columns: repeat(2, 1fr); }
-            .browse-categories { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 992px) {
             .stele-grid { grid-template-columns: repeat(2, 1fr); }
@@ -914,7 +845,6 @@
             .stele-grid { grid-template-columns: 1fr 1fr; }
             .carousel-grid { grid-template-columns: 1fr; }
             .blog-grid { grid-template-columns: 1fr; }
-            .browse-categories { grid-template-columns: 1fr 1fr; }
             .temple .column-left, .temple .column-right { display: none; }
             .pantheon-title { font-size: 2rem; letter-spacing: 6px; }
             .pantheon-title .light { font-size: 1rem; }
@@ -923,7 +853,6 @@
         }
         @media (max-width: 480px) {
             .stele-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
-            .browse-categories { grid-template-columns: 1fr; }
             .pediment h1 { font-size: 1.0rem; letter-spacing: 2px; }
             .pediment-logo { height: 30px; }
             .temple-search input { width: 100px; }
@@ -1057,7 +986,7 @@
                 <div class="theme">冥界</div>
                 <div class="entry-hint">进入 →</div>
             </a>
-            <a href="#" class="stele" data-god="bacchus" data-link="Bacchus.html">
+            <a href="#" class="stele" data-god="bacchus" data-link="#">
                 <div class="symbol-mark">⚜</div>
                 <div class="name">巴克斯</div>
                 <div class="latin">Bacchus</div>
@@ -1067,7 +996,7 @@
         </div>
     </section>
 
-    <!-- ===== 轮播区（已全部替换） ===== -->
+    <!-- ===== 轮播区 ===== -->
     <section class="carousel-section">
         <div class="carousel-grid">
             <!-- 第一篇：《死亡之舞》 -->
@@ -1226,63 +1155,6 @@
                     <span class="read-more">阅读全文 →</span>
                 </div>
             </a>
-        </div>
-    </section>
-
-    <!-- ===== 分类浏览 ===== -->
-    <section class="browse-section">
-        <h2>探索超过 1580 种彩绘手抄本</h2>
-        <div class="browse-categories">
-            <div class="browse-cat">
-                <h4>主题</h4>
-                <ul>
-                    <li><a href="#">启示录与贝亚图斯</a></li>
-                    <li><a href="#">天文 / 占星</a></li>
-                    <li><a href="#">动物寓言集</a></li>
-                    <li><a href="#">编年史 / 历史</a></li>
-                    <li><a href="#">文学 · 诗歌</a></li>
-                </ul>
-            </div>
-            <div class="browse-cat">
-                <h4>风格</h4>
-                <ul>
-                    <li><a href="#">亚美尼亚</a></li>
-                    <li><a href="#">拜占庭</a></li>
-                    <li><a href="#">加洛林</a></li>
-                    <li><a href="#">哥特</a></li>
-                    <li><a href="#">北方文艺复兴</a></li>
-                </ul>
-            </div>
-            <div class="browse-cat">
-                <h4>语言</h4>
-                <ul>
-                    <li><a href="#">阿拉伯语</a></li>
-                    <li><a href="#">英语</a></li>
-                    <li><a href="#">法语</a></li>
-                    <li><a href="#">拉丁语</a></li>
-                    <li><a href="#">意大利语</a></li>
-                </ul>
-            </div>
-            <div class="browse-cat">
-                <h4>国家</h4>
-                <ul>
-                    <li><a href="#">奥地利</a></li>
-                    <li><a href="#">法国</a></li>
-                    <li><a href="#">德国</a></li>
-                    <li><a href="#">意大利</a></li>
-                    <li><a href="#">西班牙</a></li>
-                </ul>
-            </div>
-            <div class="browse-cat">
-                <h4>出版社</h4>
-                <ul>
-                    <li><a href="#">ADEVA</a></li>
-                    <li><a href="#">Faksimile Verlag</a></li>
-                    <li><a href="#">M. Moleiro Editor</a></li>
-                    <li><a href="#">Mueller &amp; Schindler</a></li>
-                    <li><a href="#">Quaternio Verlag</a></li>
-                </ul>
-            </div>
         </div>
     </section>
 
